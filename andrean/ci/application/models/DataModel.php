@@ -13,12 +13,16 @@ class DataModel extends CI_Model{
     {
         if ($tipe == 'artikel') {
             return $this->db->get('artikel')->result_array();
+        }else if ($tipe == 'kerja') {
+            return $this->db->get('kerja')->result_array();
         }
     }
     public function getSingleData($tipe, $key)
     {
         if ($tipe == 'artikel') {
             return $this->db->get_where('artikel',['kode_artikel' => $key])->row_array();
+        }else if ($tipe == 'kerja') {
+            return $this->db->get_where('kerja',['kode_kerja' => $key])->row_array();
         }
     }
 

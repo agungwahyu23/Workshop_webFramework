@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Artikel extends CI_Controller {
+class Kerja extends CI_Controller {
 
 	function __construct()
 	{
@@ -14,17 +14,17 @@ class Artikel extends CI_Controller {
 
 	public function index()
 	{
-		$data['title'] = "Data Artikel";
-		$data['data'] = $this->DataModel->getResultData('artikel');
-		$data['content'] = 'artikel/data';
+		$data['title'] = "Data kerja";
+		$data['data'] = $this->DataModel->getResultData('kerja');
+		$data['content'] = 'kerja/data';
 		$this->load->view('layout/index', $data);
 	}
 
 	public function add()
 	{
-		$data['title'] = "Form Artikel";
+		$data['title'] = "Form Pekerja";
 		$data['aksi'] = "1";
-		$data['content'] = 'artikel/add';
+		$data['content'] = 'kerja/add';
 		$this->load->view('layout/index', $data);
 	}
 
@@ -32,18 +32,18 @@ class Artikel extends CI_Controller {
 	{
 		$data['title'] = "Proses Add";
 		$arr = [
-			'judul' => $this->input->post('judul', true),
-			'penulis' => $this->input->post('penulis', true),
-			'deskripsi' => $this->input->post('deskripsi', true),
+			'nama' => $this->input->post('nama', true),
+			'no_hp' => $this->input->post('no_hp', true),
+			'lowker' => $this->input->post('lowker', true),
 			'create_at' => date('Y-m-d H:i:s')	
 		];
-		$cek = $this->DataModel->insert('artikel', $arr);
+		$cek = $this->DataModel->insert('kerja', $arr);
 		if($cek){
 			$this->session->set_flashdata("pesan",['Berhasil','Berhasil Menyimpan Data']);
-			redirect(base_url('artikel'));
+			redirect(base_url('kerja'));
 		}else {
 			$this->session->set_flashdata("pesan", ['Gagal', 'Gagal Menyimpan Data']);
-			redirect(base_url('artikel'));
+			redirect(base_url('kerja'));
 
 		}
 
@@ -52,49 +52,49 @@ class Artikel extends CI_Controller {
 
 	public function detail($id)
 	{
-		$data['title'] = "Detail Artikel ";
-		$data['data'] = $this->DataModel->getSingleData('artikel', $id);
-		$data['title'] = "Detail Artikel ". $data['data']['judul'];
-		$data['content'] = 'artikel/detail';
+		$data['title'] = "Detail Pekerja ";
+		$data['data'] = $this->DataModel->getSingleData('kerja', $id);
+		$data['title'] = "Detail Pekerja ". $data['data']['nama'];
+		$data['content'] = 'kerja/detail';
 		$this->load->view('layout/index', $data);
 	}
 	public function edit($id)
 	{
-		$data['title'] = "Edit Artikel";
-		$data['data'] = $this->DataModel->getSingleData('artikel', $id);
+		$data['title'] = "Edit Pekerja";
+		$data['data'] = $this->DataModel->getSingleData('kerja', $id);
 		$data['aksi'] = "2";
-		$data['content'] = 'artikel/add';
+		$data['content'] = 'kerja/add';
 		$this->load->view('layout/index', $data);
 	}
 	public function update($id)
 	{
 		$data['title'] = "Proses Edit";
 		$arr = [
-			'judul' => $this->input->post('judul', true),
-			'penulis' => $this->input->post('penulis', true),
-			'deskripsi' => $this->input->post('deskripsi', true),
+			'nama' => $this->input->post('nama', true),
+			'no_hp' => $this->input->post('no_hp', true),
+			'lowker' => $this->input->post('lowker', true),
 		];
-		$cek = $this->DataModel->update('artikel', $arr, 'kode_artikel', $id);
+		$cek = $this->DataModel->update('kerja', $arr, 'kode_kerja', $id);
 		if ($cek) {
 			$this->session->set_flashdata("pesan", ['Berhasil', 'Berhasil Edit Data']);
-			redirect(base_url('artikel'));
+			redirect(base_url('kerja'));
 		} else {
 			$this->session->set_flashdata("pesan", ['Gagal', 'Gagal Edit Data']);
-			redirect(base_url('artikel'));
+			redirect(base_url('kerja'));
 		}
 	}
 
 	public function delete($id)
 	{
-		$data['title'] = "Delete Artikel";
+		$data['title'] = "Delete kerja";
 		
-		$cek = $this->DataModel->delete('artikel','kode_artikel', $id);
+		$cek = $this->DataModel->delete('kerja','kode_kerja', $id);
 		if ($cek) {
 			$this->session->set_flashdata("pesan", ['Berhasil', 'Berhasil Hapus Data']);
-			redirect(base_url('artikel'));
+			redirect(base_url('kerja'));
 		} else {
 			$this->session->set_flashdata("pesan", ['Gagal', 'Gagal Hapus Data']);
-			redirect(base_url('artikel'));
+			redirect(base_url('kerja'));
 		}
 	}
 }

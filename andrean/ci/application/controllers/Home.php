@@ -14,10 +14,23 @@ class Home extends CI_Controller {
 
 	public function index()
 	{
-		$data['data'] = $this->DataModel->getData();
-		// echo print_r($data);
-		// echo "Selamat Datang";
-		$this->load->view('home/home', $data);
+		$data['title'] = 'Beranda';
+		$data['content'] = 'home/home';
+		$this->load->view('layout/index', $data);
+	}
+
+	public function kontak()
+	{
+		$data['title'] = 'Kontak';
+		$data['content'] = 'home/kontak';
+		$this->load->view('layout/index', $data);
+	}
+
+	public function tentang()
+	{
+		$data['title'] = 'Tentang';
+		$data['content'] = 'home/tentang';
+		$this->load->view('layout/index', $data);
 	}
 
 	public function add(){

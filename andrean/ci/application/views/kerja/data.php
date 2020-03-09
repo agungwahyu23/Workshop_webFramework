@@ -1,9 +1,9 @@
 
     <h1>
-        Data Artikel
+        Data Pekerja
     </h1>
     <div>
-        <a class="btn btn-primary" href="<?= base_url('artikel/add') ?>">Tambah</a>
+        <a class="btn btn-primary" href="<?= base_url('kerja/add') ?>">Tambah</a>
     </div><br />
     <?php
     if (isset($_SESSION['pesan'])) {
@@ -14,9 +14,9 @@
     <table border="1" class="table table-bordered">
         <tr>
             <td>No</td>
-            <td>Judul</td>
-            <td>Penulis</td>
-            <td>Deskripsi</td>
+            <td>Nama</td>
+            <td>No HP</td>
+            <td>Lowker</td>
             <td>Tanggal</td>
             <td>Aksi</td>
         </tr>
@@ -25,16 +25,16 @@
         foreach ($data as $p) { ?>
             <tr>
                 <td><?= $no ?></td>
-                <td><?= $p['judul'] ?></td>
-                <td><?= $p['penulis'] ?></td>
-                <td><?= $p['deskripsi'] ?></td>
+                <td><?= $p['nama'] ?></td>
+                <td><?= $p['no_hp'] ?></td>
+                <td><?= $p['lowker'] ?></td>
                 <td><?= $p['create_at'] ?></td>
                 <td>
-                    <a href="<?= base_url('artikel/detail/' . $p['kode_artikel']) ?>">Detail</a>
+                    <a href="<?= base_url('kerja/detail/' . $p['kode_kerja']) ?>">Detail</a>
                     &nbsp;
-                    <a href="<?= base_url('artikel/edit/' . $p['kode_artikel']) ?>">Edit</a>
+                    <a href="<?= base_url('kerja/edit/' . $p['kode_kerja']) ?>">Edit</a>
                     &nbsp;
-                    <a href="<?= base_url('artikel/delete/' . $p['kode_artikel']) ?>" onclick="return confirm('apakah anda yakin ingin menghapus data?')">Hapus</a>
+                    <a href="<?= base_url('kerja/delete/' . $p['kode_kerja']) ?>" onclick="return confirm('apakah anda yakin ingin menghapus data?')">Hapus</a>
                 </td>
             </tr>
 
