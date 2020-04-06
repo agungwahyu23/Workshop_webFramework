@@ -8,10 +8,10 @@
       <a class="btn btn-primary btn-lg" href="#" role="button"><i class="fa fa-phone"></i> 0283918293821</a>
     </div>
     <div class="col-md-4">
-      <a class="btn btn-primary btn-lg" href="#" role="button"><i class="fa fa-phone"></i> 0283918293821</a>
+      <a class="btn btn-primary btn-lg" href="#" role="button"><i class="fa fa-envelope"></i> andreanthree1@gmail.com</a>
     </div>
     <div class="col-md-4">
-      <a class="btn btn-primary btn-lg" href="#" role="button"><i class="fa fa-phone"></i> 0283918293821</a>
+      <a class="btn btn-primary btn-lg" href="#" role="button"><i class="fa fa-map-marker"></i> jalan danau toba 3</a>
     </div>
     
   </div>
