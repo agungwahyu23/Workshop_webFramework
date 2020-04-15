@@ -56,16 +56,16 @@
             </li>
             <center><h4>Data User</h4></center>
             <li>
-                <a href="mailbox.html" aria-expanded="false"><i class="fa fa-gear icon-wrap"></i> <span class="mini-click-non">Admin</span></a>
+                <a href="mailbox.html" aria-expanded="false"><i class="fa fa-user icon-wrap"></i> <span class="mini-click-non">Admin</span></a>
             </li>
             <li>
-                <a href="mailbox.html" aria-expanded="false"><i class="fa fa-gear icon-wrap"></i> <span class="mini-click-non">Guru</span></a>
+                <a href="mailbox.html" aria-expanded="false"><i class="fa fa-user icon-wrap"></i> <span class="mini-click-non">Guru</span></a>
             </li>
             <li>
-                <a href="mailbox.html" aria-expanded="false"><i class="fa fa-gear icon-wrap"></i> <span class="mini-click-non">Siswa</span></a>
+                <a href="mailbox.html" aria-expanded="false"><i class="fa fa-user icon-wrap"></i> <span class="mini-click-non">Siswa</span></a>
             </li>
             <li>
-                <a href="mailbox.html" aria-expanded="false"><i class="fa fa-gear icon-wrap"></i> <span class="mini-click-non"></span></a>
+                <a href="mailbox.html" aria-expanded="false"><i class="fa fa-user icon-wrap"></i> <span class="mini-click-non"></span></a>
             </li>
             <li>
                 <a class="has-arrow" href="#" aria-expanded="false"><i class="fa fa-user icon-wrap"></i> <span class="mini-click-non"></span></a>
