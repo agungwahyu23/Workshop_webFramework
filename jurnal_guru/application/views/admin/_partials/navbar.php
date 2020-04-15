@@ -34,29 +34,45 @@
             </li>
             <center><h4>Data Master</h4></center>
             <li>
-                <a href="mailbox.html" aria-expanded="false"><i class="icon nalika-forms icon-wrap"></i> <span class="mini-click-non">Tahun Ajaran</span></a>
+                <a href="mailbox.html" aria-expanded="false"><i class="fa fa-wpforms icon-wrap"></i> <span class="mini-click-non">Tahun Ajaran</span></a>
             </li>
             <li>
-                <a href="mailbox.html" aria-expanded="false"><i class="icon nalika-forms icon-wrap"></i> <span class="mini-click-non">Data Jurusan</span></a>
+                <a href="mailbox.html" aria-expanded="false"><i class="fa fa-wpforms icon-wrap"></i> <span class="mini-click-non">Data Jurusan</span></a>
             </li>
             <li>
-                <a class="has-arrow" href="mailbox.html" aria-expanded="false"><i class="icon nalika-smartphone-call icon-wrap"></i> <span class="mini-click-non">App views</span></a>
-                <ul class="submenu-angle" aria-expanded="false">
-                    <li><a title="Notifications" href="notifications.html"><span class="mini-sub-pro">Notifications</span></a></li>
-                    <li><a title="Alerts" href="alerts.html"><span class="mini-sub-pro">Alerts</span></a></li>
-                    <li><a title="Modals" href="modals.html"><span class="mini-sub-pro">Modals</span></a></li>
-                    <li><a title="Buttons" href="buttons.html"><span class="mini-sub-pro">Buttons</span></a></li>
-                    <li><a title="Tabs" href="tabs.html"><span class="mini-sub-pro">Tabs</span></a></li>
-                    <li><a title="Accordion" href="accordion.html"><span class="mini-sub-pro">Accordion</span></a></li>
-                </ul>
+                <a href="mailbox.html" aria-expanded="false"><i class="fa fa-wpforms icon-wrap"></i> <span class="mini-click-non">Data Kelas</span></a>
             </li>
-            <li id="removable">
-                <a class="has-arrow" href="#" aria-expanded="false"><i class="icon nalika-new-file icon-wrap"></i> <span class="mini-click-non">Pages</span></a>
+            <li>
+                <a href="mailbox.html" aria-expanded="false"><i class="fa fa-users icon-wrap"></i> <span class="mini-click-non">Data Guru</span></a>
+            </li>
+            <li>
+                <a href="mailbox.html" aria-expanded="false"><i class="fa fa-wpforms icon-wrap"></i> <span class="mini-click-non">Mata Pelajaran</span></a>
+            </li>
+            <li>
+                <a href="mailbox.html" aria-expanded="false"><i class="fa fa-calendar icon-wrap"></i> <span class="mini-click-non">Jadwal</span></a>
+            </li>
+            <li>
+                <a href="mailbox.html" aria-expanded="false"><i class="fa fa-gear icon-wrap"></i> <span class="mini-click-non">Pengaturan Aplikasi</span></a>
+            </li>
+            <center><h4>Data User</h4></center>
+            <li>
+                <a href="mailbox.html" aria-expanded="false"><i class="fa fa-gear icon-wrap"></i> <span class="mini-click-non">Admin</span></a>
+            </li>
+            <li>
+                <a href="mailbox.html" aria-expanded="false"><i class="fa fa-gear icon-wrap"></i> <span class="mini-click-non">Guru</span></a>
+            </li>
+            <li>
+                <a href="mailbox.html" aria-expanded="false"><i class="fa fa-gear icon-wrap"></i> <span class="mini-click-non">Siswa</span></a>
+            </li>
+            <li>
+                <a href="mailbox.html" aria-expanded="false"><i class="fa fa-gear icon-wrap"></i> <span class="mini-click-non"></span></a>
+            </li>
+            <li>
+                <a class="has-arrow" href="#" aria-expanded="false"><i class="fa fa-user icon-wrap"></i> <span class="mini-click-non"></span></a>
                 <ul class="submenu-angle" aria-expanded="false">
-                    <li><a title="Login" href="login.html"><span class="mini-sub-pro">Login</span></a></li>
-                    <li><a title="Register" href="register.html"><span class="mini-sub-pro">Register</span></a></li>
-                    <li><a title="Lock" href="lock.html"><span class="mini-sub-pro">Lock</span></a></li>
-                    <li><a title="Password Recovery" href="password-recovery.html"><span class="mini-sub-pro">Password Recovery</span></a></li>
+                    <li><a title="Login" href="login.html"><span class="mini-sub-pro"></span></a></li>
+                    <li><a title="Register" href="register.html"><span class="mini-sub-pro"></span></a></li>
+                    <li><a title="Lock" href="lock.html"><span class="mini-sub-pro"></span></a></li>
                 </ul>
             </li>
         </ul>
