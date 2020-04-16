@@ -12,29 +12,28 @@ class Api extends REST_Controller  {
         $cek = $this->db->get_where('pengguna', ['email' => $email, 'password' => $password])->row_array();
         if ($cek > 0) {
             $res = [
-                'code' => 200,
+                'status' => true,
                 'pesan' => 'Login Berhasil',
                 'data' => $cek
             ];
         } else {
             $res = [
-                'code' => 403,
-                'pesan' => 'Login Gagal',
+                'status' => false,
+                'pesan' => 'Login Gagal, Email / Password Salah',
                 'data' => null
             ];
         }
-        $this->response($res, $res['code']);
+        $this->response($res, 200);
     }
     public function register_post()
     {
         $nama = $this->input->post('nama', true);
         $email = $this->input->post('email', true);
         $password = md5($this->input->post('password', true));
-
         $cek = $this->db->get_where('pengguna', ['email' => $email])->row_array();
         if ($cek > 0) {
             $res = [
-                'code' => 403,
+                'status' => false,
                 'pesan' => 'Email Telah Di Gunakan',
             ];
         } else {
@@ -46,11 +45,20 @@ class Api extends REST_Controller  {
             ];
             $cek = $this->DataModel->insert('pengguna', $arr);
             $res = [
-                'code' => 200,
+                'status' => true,
                 'pesan' => 'Pendaftaran Akun Berhasil',
             ];
         }
-        $this->response($res, $res['code']);
+        $this->response($res, 200);
     }
-
+    public function datapengguna_get()
+    {
+        $cek = $this->db->get("pengguna")->result_array();
+        $res = [
+            'status' => true,
+            'pesan' => 'Berhasil',
+            'data' => $cek
+        ];
+        $this->response($res, 200);
+    }
 }
