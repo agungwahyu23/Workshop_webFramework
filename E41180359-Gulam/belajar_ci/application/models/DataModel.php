@@ -6,7 +6,7 @@ class DataModel extends CI_Model
         $data = array (
             'nama' => 'frengki',
             'status' => 'Mahasiswa',
-            'website'  => 'http://freng.ky'
+            'website'  => 'http://freng.com'
         );
         return $data;
     }
