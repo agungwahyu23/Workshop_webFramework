@@ -37,7 +37,7 @@ class Mapel extends CI_Controller
 
 			$kode = $this->Maksi->random_oke(16);
 			$arr = [
-                'kode_mapel' => $kode,
+				'kode_mapel' => $kode,
 				'nama_mapel' => $this->input->post('nama_mapel', TRUE),
 				'create_at' => date("Y-m-d H:i:s"),
 				'create_by' => $this->session->userdata('kode_pengguna')
