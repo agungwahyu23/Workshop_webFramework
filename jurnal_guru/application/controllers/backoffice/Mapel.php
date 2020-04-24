@@ -24,10 +24,11 @@ class Mapel extends CI_Controller
 	}
 	public function add()
 	{
-		$data['title'] = "Tambah Mata Pelajaran";
+		$data['title'] = "Tambah Mapel";
 		$data['action'] = "Tambah Data";
 		$data['content'] = "mapel/addmapel";
 		$data['data'] = null;
+		$data['datamapel'] = $this->Maksi->getData('getmapel');
 		$this->load->view('backend/index', $data);
 	}
 
@@ -36,9 +37,11 @@ class Mapel extends CI_Controller
 		try {
 
 			$kode = $this->Maksi->random_oke(16);
+
 			$arr = [
-				'kode_mapel' => $kode,
+                'kode_mapel' => $kode,
 				'nama_mapel' => $this->input->post('nama_mapel', TRUE),
+				'status' => $this->input->post('status', TRUE),
 				'create_at' => date("Y-m-d H:i:s"),
 				'create_by' => $this->session->userdata('kode_pengguna')
 			];
@@ -57,6 +60,7 @@ class Mapel extends CI_Controller
 		$data['action'] = "Edit Mata Pelajaran";
 		$data['content'] = "mapel/addmapel";
 		$data['data'] = $this->db->get_where("mapel", ['kode_mapel' => $id])->row_array();
+		$data['datamapel'] = $this->Maksi->getData('getmapel');
 		$this->load->view('backend/index', $data);
 	}
 
