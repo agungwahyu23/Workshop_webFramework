@@ -14,22 +14,52 @@ class Pengguna extends CI_Controller
 		} else if ($this->uri->segment(3) == "edit" && $_SERVER['REQUEST_METHOD'] == "POST") {
 			$this->update($this->uri->segment(4));
 		}
+
+		$this->load->model("mpengguna");
 	}
 	public function index()
 	{
 		$data['title'] = "Data Pengguna";
 		$data['content'] = "pengguna/indexpengguna";
 		$data['data'] = $this->Maksi->getData("getpengguna");
-
+		$data['level'] = '1';
 		$this->load->view('backend/index', $data);
 	}
+
+	public function admin()
+	{
+		$data['title'] = "Data Pengguna Admin";
+		$data['content'] = "pengguna/indexpengguna";
+		$data['data'] = $this->mpengguna->admin();
+        $data['level'] = '1';
+        $this->load->view("backend/index", $data);
+	}
+
+	public function guru()
+	{
+		$data['title'] = "Data Pengguna Guru";
+		$data['content'] = "pengguna/indexpengguna";
+		$data['data'] = $this->mpengguna->guru();
+        $data['level'] = '2';
+        $this->load->view("backend/index", $data);
+	}
+
+	public function siswa()
+	{
+		$data['title'] = "Data Pengguna Siswa";
+		$data['content'] = "pengguna/indexpengguna";
+		$data['data'] = $this->mpengguna->siswa();
+        $data['level'] = '3';
+        $this->load->view("backend/index", $data);
+	}
+	
 	public function add()
 	{
-		$data['title'] = "Tambah Kelas";
+		$data['title'] = "Tambah Pengguna Admin";
 		$data['action'] = "Tambah Data";
-		$data['content'] = "kelas/addkelas";
-        $data['data'] = null;
-        $data['datajurusan'] = $this->Maksi->getData('getjurusan');
+		$data['content'] = "pengguna/formpengguna";
+		$data['data'] = null;
+		$data['level'] = '';
 		$this->load->view('backend/index', $data);
 	}
 
