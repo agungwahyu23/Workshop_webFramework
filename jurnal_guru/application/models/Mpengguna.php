@@ -72,6 +72,18 @@ class Mpengguna extends CI_Model{
         return $result_object;
     }
 
+    public function pengguna($level)
+    {
+        $query = "SELECT a.*, b.no_kelas, b.rombel, c.nama_jurusan, c.nama_singkat, e.nama_guru from pengguna a 
+        left join kelas b on a.akses_data=b.kode_kelas
+        left join jurusan c on b.kode_jurusan=c.kode_jurusan
+        left join guru e on a.akses_data=e.kode_guru WHERE by level";
+
+        $db_result = $this->db->query($query);
+        $result_object = $db_result->result_array();
+        return $result_object;
+    }
+
     public function save(){
         $post = $this->input->post(); //membuat variabel post untuk menampung method $_POST
         $this->id_produk = uniqid(); //agar id menjadi acak

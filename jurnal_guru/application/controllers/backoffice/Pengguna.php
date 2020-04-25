@@ -59,7 +59,7 @@ class Pengguna extends CI_Controller
 		$data['action'] = "Tambah Data";
 		$data['content'] = "pengguna/formpengguna";
 		$data['data'] = null;
-		$data['level'] = '';
+		$data['level'] = ;
 		$this->load->view('backend/index', $data);
 	}
 
