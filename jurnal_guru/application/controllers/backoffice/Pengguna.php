@@ -53,13 +53,15 @@ class Pengguna extends CI_Controller
         $this->load->view("backend/index", $data);
 	}
 	
-	public function add()
+	public function add($level)
 	{
 		$data['title'] = "Tambah Pengguna Admin";
 		$data['action'] = "Tambah Data";
 		$data['content'] = "pengguna/formpengguna";
 		$data['data'] = null;
-		$data['level'] = $data;
+		$data['level'] = $level;
+		$data['dataguru'] = $this->Maksi->getData('getguru');
+		$data['datakelas'] = $this->Maksi->getData('getkelas');
 		$this->load->view('backend/index', $data);
 	}
 
@@ -70,18 +72,19 @@ class Pengguna extends CI_Controller
 			$kode = $this->Maksi->random_oke(16);
 
 			$arr = [
-				'kode_kelas' => $kode,
-				'kode_jurusan' => $this->input->post('jurusan', TRUE),
-                'no_kelas' => $this->input->post('no_kelas', TRUE),
-                'rombel' => $this->input->post('rombel', TRUE),
+				'kode_pengguna' => $kode,
+				'nama_pengguna' => $this->input->post('nama_pengguna', TRUE),
+                'password' => $this->input->post('password', TRUE),
+				'email' => $this->input->post('email', TRUE),
+				'level' => $this->input->post('akses', TRUE),
 				'create_at' => date("Y-m-d H:i:s"),
-				'create_by' => $this->session->userdata('kode_pengguna')
+				//'create_by' => $this->session->userdata('kode_pengguna')
 			];
-			$this->Maksi->insertData("kelas", $arr);
-			$this->session->set_flashdata("message", ['success', 'Berhasil Menambah Data Kelas', ' Berhasil']);
+			$this->Maksi->insertData("pengguna", $arr);
+			$this->session->set_flashdata("message", ['success', 'Berhasil Menambah Data Pengguna', ' Berhasil']);
 			redirect(base_url("backoffice/kelas"));
 		} catch (Exception $e) {
-			$this->session->set_flashdata("message", ['danger', 'Gagal Menambah Data Kelas', ' Gagal']);
+			$this->session->set_flashdata("message", ['danger', 'Gagal Menambah Data Pengguna', ' Gagal']);
 			$this->add();
 		}
 	}

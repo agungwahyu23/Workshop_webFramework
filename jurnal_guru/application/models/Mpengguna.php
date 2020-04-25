@@ -86,11 +86,11 @@ class Mpengguna extends CI_Model{
 
     public function save(){
         $post = $this->input->post(); //membuat variabel post untuk menampung method $_POST
-        $this->id_produk = uniqid(); //agar id menjadi acak
-        $this->nama = $post["nama"];
-        $this->harga = $post["harga"];
-        $this->gambar = $this->_uploadImage();
-        $this->deskripsi = $post["deskripsi"];
+        $this->kode_pengguna = uniqid(); //agar id menjadi acak
+        $this->nama_pengguna = $post["nama_pengguna"];
+        $this->password = $post["password"];
+        $this->email = $post["email"];
+        $this->level = $post["akses"];
         return $this->db->insert($this->_table, $this);
     }
 
