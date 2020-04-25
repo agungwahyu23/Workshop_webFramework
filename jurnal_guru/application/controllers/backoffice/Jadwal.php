@@ -45,9 +45,6 @@ class Jadwal extends CI_Controller
 
 			$arr = [
                 'kode_jadwal' => $kode,
-                'kode_kelas' => $this->input->post('kelas', TRUE),
-                'kode_guru' => $this->input->post('guru', TRUE),
-                'kode_mapel' => $this->input->post('mapel', TRUE),
                 'hari' => $this->input->post('hari', TRUE),
                 'jam_awal' => $this->input->post('jam_awal', TRUE),
                 'jam_akhir' => $this->input->post('jam_akhir', TRUE),

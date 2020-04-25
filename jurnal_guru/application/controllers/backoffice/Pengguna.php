@@ -132,3 +132,4 @@ class Pengguna extends CI_Controller
 	}
 
 }
+
