@@ -44,11 +44,13 @@ class Jadwal extends CI_Controller
 			$kode = $this->Maksi->random_oke(16);
 
 			$arr = [
-                'kode_jadwal' => $kode,
+				'kode_jadwal' => $kode,
+				'kode_guru' => $this->input->post('guru', TRUE),
+				'kode_kelas' => $this->input->post('kelas', TRUE),
+				'kode_mapel' => $this->input->post('mapel', TRUE),
                 'hari' => $this->input->post('hari', TRUE),
                 'jam_awal' => $this->input->post('jam_awal', TRUE),
                 'jam_akhir' => $this->input->post('jam_akhir', TRUE),
-				'kode_tahun' => $this->input->post('tahun_ajaran', TRUE),
 				'create_at' => date("Y-m-d H:i:s"),
 			];
 			$this->Maksi->insertData("jadwal", $arr);
@@ -64,13 +66,13 @@ class Jadwal extends CI_Controller
 	{
 		$data['title'] = "Edit jadwal";
 		$data['action'] = "Edit jadwal";
-        $data['content'] = "jadwal/addjadwal";
-        $data['datakelas'] = $this->Maksi->getData('getkelas');
+        $data['content'] = "jadwal/editjadwal";
+		$data['data'] = $this->db->get_where("jadwal", ['kode_jadwal' => $id])->row_array();
+		$data['datakelas'] = $this->Maksi->getData('getkelas');
         $data['datamapel'] = $this->Maksi->getData('getmapel');
         $data['dataguru'] = $this->Maksi->getData('getguru');
         $data['datatahun'] = $this->Maksi->getData('gettahun');
         $data['datahari'] = $this->Maksi->getData('gethari');
-		$data['data'] = $this->db->get_where("jadwal", ['kode_jadwal' => $id])->row_array();
 		$this->load->view('backend/index', $data);
 	}
 
@@ -79,11 +81,9 @@ class Jadwal extends CI_Controller
 	{
 		try {
 			$arr = [
-                'kode_kelas' => $this->input->post('kelas', TRUE),
-                'kode_mapel' => $this->input->post('mapel', TRUE),
-                'kode_guru' => $this->input->post('guru', TRUE),
-				'kode_tahun' => $this->input->post('tahun_ajaran', TRUE),
-                'semester' => $this->input->post('semester', TRUE),
+				'kode_guru' => $this->input->post('guru', TRUE),
+				'kode_kelas' => $this->input->post('kelas', TRUE),
+				'kode_mapel' => $this->input->post('mapel', TRUE),
                 'hari' => $this->input->post('hari', TRUE),
                 'jam_awal' => $this->input->post('jam_awal', TRUE),
                 'jam_akhir' => $this->input->post('jam_akhir', TRUE),
