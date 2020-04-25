@@ -30,7 +30,7 @@ class Pengguna extends CI_Controller
 	{
 		$data['title'] = "Data Pengguna Admin";
 		$data['content'] = "pengguna/indexpengguna";
-		$data['data'] = $this->mpengguna->admin();
+		$data['data'] = $this->mpengguna->pengguna(1);
         $data['level'] = '1';
         $this->load->view("backend/index", $data);
 	}
@@ -39,7 +39,7 @@ class Pengguna extends CI_Controller
 	{
 		$data['title'] = "Data Pengguna Guru";
 		$data['content'] = "pengguna/indexpengguna";
-		$data['data'] = $this->mpengguna->guru();
+		$data['data'] = $this->mpengguna->pengguna(2);
         $data['level'] = '2';
         $this->load->view("backend/index", $data);
 	}
@@ -48,7 +48,7 @@ class Pengguna extends CI_Controller
 	{
 		$data['title'] = "Data Pengguna Siswa";
 		$data['content'] = "pengguna/indexpengguna";
-		$data['data'] = $this->mpengguna->siswa();
+		$data['data'] = $this->mpengguna->pengguna(3);
         $data['level'] = '3';
         $this->load->view("backend/index", $data);
 	}
@@ -59,7 +59,7 @@ class Pengguna extends CI_Controller
 		$data['action'] = "Tambah Data";
 		$data['content'] = "pengguna/formpengguna";
 		$data['data'] = null;
-		$data['level'] = ;
+		$data['level'] = $data;
 		$this->load->view('backend/index', $data);
 	}
 
