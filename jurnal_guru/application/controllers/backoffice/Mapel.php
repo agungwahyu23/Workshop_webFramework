@@ -43,7 +43,7 @@ class Mapel extends CI_Controller
 				'nama_mapel' => $this->input->post('nama_mapel', TRUE),
 				'status' => $this->input->post('status', TRUE),
 				'create_at' => date("Y-m-d H:i:s"),
-				'create_by' => $this->session->userdata('kode_pengguna')
+				'create_by' => $this->session->userdata('kode_pengguna'),'status'=>1
 			];
 			$this->Maksi->insertData("mapel", $arr);
 			$this->session->set_flashdata("message", ['success', 'Berhasil Menambah Data Mata Pelajaran', ' Berhasil']);
