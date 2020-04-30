@@ -70,19 +70,19 @@ class Pengguna extends CI_Controller
 		try {
 
 			$kode = $this->Maksi->random_oke(16);
-
 			$arr = [
 				'kode_pengguna' => $kode,
 				'nama_pengguna' => $this->input->post('nama_pengguna', TRUE),
                 'password' => $this->input->post('password', TRUE),
 				'email' => $this->input->post('email', TRUE),
-				'level' => $this->input->post('akses', TRUE),
+				'level' => $this->uri->segment(4),
+				'akses_data' => $this->input->post('akses', TRUE),
 				'create_at' => date("Y-m-d H:i:s"),
 				//'create_by' => $this->session->userdata('kode_pengguna')
 			];
 			$this->Maksi->insertData("pengguna", $arr);
 			$this->session->set_flashdata("message", ['success', 'Berhasil Menambah Data Pengguna', ' Berhasil']);
-			redirect(base_url("backoffice/kelas"));
+			redirect(base_url("backoffice/pengguna/siswa"));
 		} catch (Exception $e) {
 			$this->session->set_flashdata("message", ['danger', 'Gagal Menambah Data Pengguna', ' Gagal']);
 			$this->add();
@@ -91,11 +91,14 @@ class Pengguna extends CI_Controller
 
 	public function edit($id)
 	{
-		$data['title'] = "Edit Kelas";
-		$data['action'] = "Edit Kelas";
-        $data['content'] = "kelas/addkelas";
-        $data['datajurusan'] = $this->Maksi->getData('getjurusan');
-		$data['data'] = $this->db->get_where("kelas", ['kode_kelas' => $id])->row_array();
+		$data['title'] = "Edit Data Pengguna";
+		$data['action'] = "Edit Data Pengguna";
+		$data['content'] = "pengguna/formpengguna";
+		//$data['level'] = '';
+        $data['dataguru'] = $this->Maksi->getData('getguru');
+		$data['datakelas'] = $this->Maksi->getData('getkelas');
+		$data['data'] = $this->db->get_where("pengguna", ['kode_pengguna' => $id])->row_array();
+		$data['level'] = $data['data']['level'];
 		$this->load->view('backend/index', $data);
 	}
 
@@ -104,16 +107,17 @@ class Pengguna extends CI_Controller
 	{
 		try {
 			$arr = [
-				'kode_jurusan' => $this->input->post('jurusan', TRUE),
-                'no_kelas' => $this->input->post('no_kelas', TRUE),
-                'rombel' => $this->input->post('rombel', TRUE),
+				'nama_pengguna' => $this->input->post('nama_pengguna', TRUE),
+                'email' => $this->input->post('email', TRUE),
+				'password' => $this->input->post('password', TRUE),
+				'akses_data' => $this->input->post('akses', TRUE),
 			];
-			$this->Maksi->updateData("kelas", $arr, $id, "kode_kelas");
+			$this->Maksi->updateData("pengguna", $arr, $id, "kode_pengguna");
 
-			$this->session->set_flashdata("message", ['success', 'Berhasil Mengedit Data Kelas', ' Berhasil']);
-			redirect(base_url("backoffice/kelas"));
+			$this->session->set_flashdata("message", ['success', 'Berhasil Mengedit Data Pengguna', ' Berhasil']);
+			redirect(base_url("backoffice/pengguna/siswa"));
 		} catch (Exception $e) {
-			$this->session->set_flashdata("message", ['danger', 'Gagal Mengedit Data Kelas', ' Gagal']);
+			$this->session->set_flashdata("message", ['danger', 'Gagal Mengedit Data Pengguna', ' Gagal']);
 			$this->edit($id);
 		}
 	}
@@ -124,13 +128,13 @@ class Pengguna extends CI_Controller
 			$arr = [
 				'status' => 0
 			];
-			$this->Maksi->updateData("kelas", $arr, $id, "kode_kelas");
+			$this->Maksi->deleteData("pengguna", "kode_pengguna", $id);
 
-			$this->session->set_flashdata("message", ['success', 'Berhasil Menghapus Data Kelas', ' Berhasil']);
-			redirect(base_url("backoffice/kelas"));
+			$this->session->set_flashdata("message", ['success', 'Berhasil Menghapus Data Pengguna', ' Berhasil']);
+			redirect(base_url("backoffice/pengguna/siswa"));
 		} catch (Exception $e) {
-			$this->session->set_flashdata("message", ['danger', 'Gagal Menghapus Data Kelas', ' Gagal']);
-			redirect(base_url("backoffice/kelas"));
+			$this->session->set_flashdata("message", ['danger', 'Gagal Menghapus Data Pengguna', ' Gagal']);
+			redirect(base_url("backoffice/pengguna/siswa"));
 		}
 	}
 
