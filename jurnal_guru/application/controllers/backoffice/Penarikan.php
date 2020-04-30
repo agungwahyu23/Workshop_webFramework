@@ -41,7 +41,8 @@ class Penarikan extends CI_Controller
 
 			$arr = [
 				'kode_reward' => $kode,
-				'kode_guru' => $this->input->post('kode_guru', TRUE),
+                'kode_guru' => $this->input->post('kode_guru', TRUE),
+                'keterangan' => "penarikan saldo",
                 'jumlah' => $this->input->post('jml_penarikan', TRUE),
                 'tipe' => '1',
 				'create_at' => date("Y-m-d H:i:s"),
