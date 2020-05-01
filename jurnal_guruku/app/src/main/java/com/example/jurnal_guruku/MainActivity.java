@@ -79,9 +79,9 @@ public class MainActivity extends AppCompatActivity {
         },
                 new Response.ErrorListener() {
                     @Override
-                    public void onErrorResponse(VolleyError error) {
+                    public void onErrorResponse(VolleyError volleyError) {
                         progressDialog.dismiss();
-                        Toast.makeText(MainActivity.this, "salah", Toast.LENGTH_LONG).show();
+                        Toast.makeText(MainActivity.this, volleyError.toString(), Toast.LENGTH_LONG).show();
                     }
                 }){
             protected Map<String, String> getParams(){
