@@ -75,10 +75,10 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'localhost',
-	'username' => '',
-	'password' => '',
-	'database' => '',
+	'hostname' => 'localhost', //isikan host website
+	'username' => 'root', //isikan username mysql
+	'password' => '', //isikan password mysql
+	'database' => 'belajar_ci', //isikan database yang kita buat
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
