@@ -70,6 +70,7 @@
                                     <h5>Akses Data <?= ($level != '1' ? '<span class="text-danger">*</span>' : '') ?></h5>
                                     <?php
                                     if ($level == "1") {
+                                        echo "<input type='hidden' name='akses' value='Admin' class='form-control'>";
                                         echo "<p>Admin</p>";
                                     } else if ($level == "2") { ?>
                                         <select class="form-control select2" required name="akses" id="defaultSelect">
