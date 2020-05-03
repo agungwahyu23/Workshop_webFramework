@@ -14,27 +14,7 @@ class Mengajar extends CI_Controller
 		} else if ($this->uri->segment(3) == "edit" && $_SERVER['REQUEST_METHOD'] == "POST") {
 			$this->update($this->uri->segment(4));
 		}
-
-		$this->load->model("Maksi");
-    }
-    public function index()
-    {
-        $data['title'] = "Data Mengajar";
-		$data['content'] = "mengajar/indexmengajar";
-		$data['data'] = $this->Maksi->getData("getmengajar");
-	
-		$this->load->view('backend/index', $data);
-	}
-	
-	public function getalldata()
-	{
-		$data['title'] = "Detai Mengajar";
-		$data['action'] = "Detail Data";
-        $data['content'] = "mengajar/indexmengajar";
-		$data['datamengajar'] = $this->Maksi->getData('getmengajar');
-		$data['datatahun'] = $this->Maksi->getData('tahunnya');
-		$data['data'] = null;
-		$this->load->view('backend/index', $data);
 	}
 
-}
+	
+	
