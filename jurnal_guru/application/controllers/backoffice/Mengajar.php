@@ -15,6 +15,6 @@ class Mengajar extends CI_Controller
 			$this->update($this->uri->segment(4));
 		}
 	}
-
+	
 	
 	

@@ -21,21 +21,23 @@ class Jadwal extends CI_Controller
 		$data['title'] = "Data Jadwal";
 		$data['content'] = "jadwal/indexjadwal";
 		$data['data'] = $this->Maksi->getData("getjadwal");
-
 		$this->load->view('backend/index', $data);
+		
 	}
 	public function add()
 	{
 		$data['title'] = "Tambah Jadwal";
 		$data['action'] = "Tambah Data";
 		$data['content'] = "jadwal/addjadwal";
-        $data['data'] = null;
+		$data['data'] = null;
+		$data['datajadwal'] = $this->Maksi->getData('getjadwal');
         $data['datakelas'] = $this->Maksi->getData('getkelas');
         $data['datamapel'] = $this->Maksi->getData('getmapel');
         $data['dataguru'] = $this->Maksi->getData('getguru');
         $data['datatahun'] = $this->Maksi->getData('gettahun');
         $data['datahari'] = $this->Maksi->getData('gethari');
 		$this->load->view('backend/index', $data);
+		
 	}
 
 	public function store()
@@ -49,6 +51,7 @@ class Jadwal extends CI_Controller
 				'kode_guru' => $this->input->post('guru', TRUE),
 				'kode_kelas' => $this->input->post('kelas', TRUE),
 				'kode_mapel' => $this->input->post('mapel', TRUE),
+				'kode_tahun' => $this->input->post('tahun_ajaran', TRUE),
                 'hari' => $this->input->post('hari', TRUE),
                 'jam_awal' => $this->input->post('jam_awal', TRUE),
                 'jam_akhir' => $this->input->post('jam_akhir', TRUE),

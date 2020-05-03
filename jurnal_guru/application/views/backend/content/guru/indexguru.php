@@ -74,9 +74,9 @@
                                         <td><?= Response_helper::waktu($p['create_at']) ?></td>
                                         <td>
 
-                                            <a href="<?= base_url('backoffice/guru/edit/' . $p['kode_guru']) ?>"><i class='fas fa-edit'></i></a>&nbsp;
+                                            <a href="<?= base_url('backoffice/guru/edit/' . $p['kode_guru']) ?>"><i class='fas fa-edit'></i>Edit</a>&nbsp;
 
-                                            <a href="#" onclick="confirm_modal('<?= base_url('backoffice/guru/delete/' . $p['kode_guru']); ?>')"><i class='fas fa-trash'></i></a>
+                                           <td> <a href="#" onclick="confirm_modal('<?= base_url('backoffice/guru/delete/' . $p['kode_guru']); ?>')"><i class='fas fa-trash'></i>Hapus</a></td>
 
                                         </td>
                                     </tr>

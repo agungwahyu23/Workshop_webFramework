@@ -111,7 +111,7 @@
                             </div>
                             <div class="col-md-4">
                                 <div class="text-xs-right">
-                                    <button type="reset" class="btn btn-inverse">Reset</button>
+                                    
                                     <button type="submit" class="btn btn-primary"> <?= $action ?></button>
                                 </div>
                             </div>
