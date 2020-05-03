@@ -31,7 +31,7 @@ class Ijin extends REST_Controller  {
 			];
 		}
 
-		$this->response($data, $data['respon']['code']);
+		$this->response($data, 200);
 	}
 	public function buat_post()
 	{
@@ -81,7 +81,7 @@ class Ijin extends REST_Controller  {
 			];
 		}
 
-		$this->response($data, $data['respon']['code']);
+		$this->response($data, 200);
 	}
 	public function detail_get($id)
 	{
@@ -115,7 +115,7 @@ class Ijin extends REST_Controller  {
 			];
 		}
 
-		$this->response($data, $data['respon']['code']);
+		$this->response($data, 200);
 	}
 
 	
@@ -150,7 +150,7 @@ class Ijin extends REST_Controller  {
 			];
 		}
 
-		$this->response($data, $data['respon']['code']);
+		$this->response($data, 200);
 	}
 
 		

@@ -67,7 +67,7 @@ class Auth extends REST_Controller
 			];			
 		}
 
-		$this->response($data, $data['respon']['code']);
+		$this->response($data, 200);
 	 }
      public function authlogout_put()
 	{
@@ -82,7 +82,7 @@ class Auth extends REST_Controller
 			'code' => 200
           ];
 
-		$this->response($data, $data['respon']['code']);
+		$this->response($data, 200);
 	}
 
 	public function detailakun_get()
@@ -119,7 +119,7 @@ class Auth extends REST_Controller
 			];
 		}
 
-		$this->response($data, $data['respon']['code']);
+		$this->response($data, 200);
 	}
 
 
@@ -171,7 +171,7 @@ class Auth extends REST_Controller
 			];
 		}
 
-		$this->response($data, $data['respon']['code']);
+		$this->response($data, 200);
 	}
 
 
@@ -199,6 +199,6 @@ class Auth extends REST_Controller
 			];
 		}
 
-		$this->response($data, $data['respon']['code']);
+		$this->response($data, 200);
 	}
 }

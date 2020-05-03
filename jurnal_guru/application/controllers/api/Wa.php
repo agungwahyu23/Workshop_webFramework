@@ -40,7 +40,7 @@ class Wa extends REST_Controller
 			];
 		}
 
-		$this->response($data, $data['respon']['code']);
+		$this->response($data, 200);
 	}
 
 	public function jadwalall_get($kode)
@@ -78,7 +78,7 @@ class Wa extends REST_Controller
 			];
 		}
 
-		$this->response($data, $data['respon']['code']);
+		$this->response($data, 200);
 	}
 
 	public function profil_get($kode)
@@ -114,7 +114,7 @@ class Wa extends REST_Controller
 			];
 		}
 
-		$this->response($data, $data['respon']['code']);
+		$this->response($data, 200);
 	}
 		
 }

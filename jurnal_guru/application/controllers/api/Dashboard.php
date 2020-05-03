@@ -41,7 +41,7 @@ class Dashboard extends REST_Controller  {
 			
 		}
 
-		$this->response($data, $data['respon']['code']);
+		$this->response($data, 200);
 	}
 
 	
@@ -74,7 +74,7 @@ class Dashboard extends REST_Controller  {
 			
 		}
 
-		$this->response($data, $data['respon']['code']);
+		$this->response($data, 200);
 	}
 
 	public function datahari_get()
@@ -98,7 +98,7 @@ class Dashboard extends REST_Controller  {
 			
 		}
 
-		$this->response($data, $data['respon']['code']);
+		$this->response($data, 200);
 	}
 	
 }

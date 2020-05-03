@@ -76,7 +76,7 @@ class Permintaan extends REST_Controller  {
 			];
 		}
 
-		$this->response($data, $data['respon']['code']);
+		$this->response($data, 200);
 	}
 	public function detail_get($id)
 	{
@@ -101,7 +101,7 @@ class Permintaan extends REST_Controller  {
 			];
 		}
 
-		$this->response($data, $data['respon']['code']);
+		$this->response($data, 200);
 	}
 
 
@@ -181,7 +181,7 @@ class Permintaan extends REST_Controller  {
 			];
 		}
 
-		$this->response($data, $data['respon']['code']);
+		$this->response($data, 200);
 	}
 		
 	
@@ -336,7 +336,7 @@ class Permintaan extends REST_Controller  {
 			];
 		}
 
-		$this->response($data, $data['respon']['code']);
+		$this->response($data, 200);
 	}
 		
 
@@ -447,7 +447,7 @@ class Permintaan extends REST_Controller  {
 			];
 		}
 
-		$this->response($data, $data['respon']['code']);
+		$this->response($data, 200);
 	}
 
 
@@ -502,7 +502,7 @@ class Permintaan extends REST_Controller  {
 			];
 		}
 
-		$this->response($data, $data['respon']['code']);
+		$this->response($data, 200);
 	}
 		
 	public function selesaikan_post($id)
@@ -595,7 +595,7 @@ class Permintaan extends REST_Controller  {
 			];
 		}
 
-		$this->response($data, $data['respon']['code']);
+		$this->response($data, 200);
 	}
 		
 }
