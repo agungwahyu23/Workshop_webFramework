@@ -58,7 +58,7 @@ class Mapel extends CI_Controller
 	{
 		$data['title'] = "Edit Mata Pelajaran";
 		$data['action'] = "Edit Mata Pelajaran";
-		$data['content'] = "mapel/addmapel";
+		$data['content'] = "mapel/editmapel";
 		$data['data'] = $this->db->get_where("mapel", ['kode_mapel' => $id])->row_array();
 		$data['datamapel'] = $this->Maksi->getData('getmapel');
 		$this->load->view('backend/index', $data);
