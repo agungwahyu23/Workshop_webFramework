@@ -21,9 +21,15 @@ class Mengajar extends CI_Controller
 		$data['title'] = "Data Mengajar";
 		$data['content'] = "mengajar/indexmengajar";
 		$data['data'] = $this->Maksi->getData("getmengajar");
-		$data['datatahun'] = $this->Maksi->getData("gettahun");
 		$this->load->view('backend/index', $data);	
+	}
+	public function detail()
+	{
+		$data['title'] = "Detail Mengajar";
+		$data['action'] = "Detail Data Mengajar";
+		$data['content'] = "mengajar/indexmengajar";
+		$data['data'] = null;
+		$this->load->view('backend/index', $data);
 	}
 }
 	
-}
