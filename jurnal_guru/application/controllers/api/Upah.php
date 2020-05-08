@@ -31,6 +31,6 @@ class upah extends REST_Controller  {
 			];
 		}
 
-		$this->response($data, $data['respon']['code']);
+		$this->response($data, 200);
 	}
 }
