@@ -84,6 +84,14 @@ class Mpengguna extends CI_Model{
         return $result_object;
     }
 
+    public function nonaktif()
+    {
+        $query = "update tahun_ajaran set aktif='0'";
+        $db_result = $this->db->query($query);
+        $result_object = $db_result->result_array();
+        return $result_object;
+    }
+
     public function save(){
         $post = $this->input->post(); //membuat variabel post untuk menampung method $_POST
         $this->kode_pengguna = uniqid(); //agar id menjadi acak
@@ -130,6 +138,7 @@ class Mpengguna extends CI_Model{
 
         return "default.jpg";
     }
+
 
     
 }

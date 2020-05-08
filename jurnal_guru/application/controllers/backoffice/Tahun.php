@@ -93,4 +93,46 @@ class Tahun extends CI_Controller
 		}
 	}
 
+
+	public function aktifkan($id){
+		if (['kode_tahun']!=$id) {
+			$this->mpengguna->nonaktif();
+		}else{
+			try {
+				$arr = [
+					'aktif' =>0
+				];
+				$this->Maksi->updateData("tahun_ajaran", $arr, $id, "kode_tahun");
+	
+				$this->session->set_flashdata("message", ['success', 'Berhasil Menghapus Data Tahun Ajaran', ' Berhasil']);
+				redirect(base_url("backoffice/tahun"));
+			} catch (Exception $e) {
+				$this->session->set_flashdata("message", ['danger', 'Gagal Menghapus Data Tahun Ajaran', ' Gagal']);
+				redirect(base_url("backoffice/tahun"));
+			}
+		}
+	}
+
+	// public function aktifkan($id)
+	// {
+	// 	try {
+	// 		if (['kode_tahun'=>$id]) {
+	// 			$arr = [
+	// 				'aktif' => 1
+	// 			];
+	// 		}else{
+	// 			$arr = [
+	// 				'aktif' => 0
+	// 			];
+	// 		}
+			
+	// 		$this->Maksi->updateData("tahun_ajaran", $arr, $id, "kode_tahun");
+	// 		$this->session->set_flashdata("message", ['success', 'Berhasil Mengedit Data Tahun Ajaran', ' Berhasil']);
+	// 		redirect(base_url("backoffice/tahun"));
+	// 	} catch (Exception $e) {
+	// 		$this->session->set_flashdata("message", ['danger', 'Gagal Mengedit Data Tahun Ajaran', ' Gagal']);
+	// 		redirect(base_url("backoffice/tahun"));
+	// 	}
+	// }
+
 }
