@@ -1,6 +1,7 @@
 package com.example.jurnal_guruku.guru.adapter;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -37,11 +38,14 @@ public class AdapterJadwal extends RecyclerView.Adapter<AdapterJadwal.HolderData
     @Override
     public void onBindViewHolder(@NonNull AdapterJadwal.HolderData holder, int position) {
         JadwalModel me = mItems.get(position);
+        String[] thiar = {"Belum Mengajar","Sudah", "Proses",};
+        String[] thiarcolor = {"#d35400","#f1c40f", "#2ecc71",};
         try{
             holder.namakelas.setText(me.getNama_kelas());
             holder.namamapel.setText(me.getNama_mapel());
-            holder.status.setText(me.getThis_week());
+            holder.status.setText(thiar[Integer.parseInt(me.getThis_week())]);
             holder.jam.setText(me.getJam_mulai() + " - " + me.getJam_akhir());
+            holder.panelstatus.setBackgroundColor(Color.parseColor(thiarcolor[Integer.parseInt(me.getThis_week())]));
             holder.kode = me.getKode();
         }catch (Exception ea){
             ea.printStackTrace();
