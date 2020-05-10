@@ -63,67 +63,70 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void UserLogin(){
-        progressDialog.setMessage("Please Wait");
-        progressDialog.show();
+    progressDialog.setMessage("Please Wait");
+    progressDialog.show();
 
-        StringRequest senddata = new StringRequest(Request.Method.POST, ServerApi.URL_LOGIN, new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-                try {
-                    progressDialog.dismiss();
-                    JSONObject res = new JSONObject(response);
-                    JSONObject respon = res.getJSONObject("respon");
-                    Log.e("testes" , String.valueOf(respon.getBoolean("status")));
-                    if (respon.getBoolean("status")) {
-                        Toast.makeText(MainActivity.this, respon.getString("pesan"), Toast.LENGTH_SHORT).show();
-                        JSONObject datalogin = res.getJSONObject("datauser");
+    StringRequest senddata = new StringRequest(Request.Method.POST, ServerApi.URL_LOGIN, new Response.Listener<String>() {
+        @Override
+        public void onResponse(String response) {
+            try {
+                progressDialog.dismiss();
+                JSONObject res = new JSONObject(response);
+                JSONObject respon = res.getJSONObject("respon");
+                Log.e("testes" , String.valueOf(respon.getBoolean("status")));
+                if (respon.getBoolean("status")) {
+                    Toast.makeText(MainActivity.this, respon.getString("pesan"), Toast.LENGTH_SHORT).show();
+                    JSONObject datalogin = res.getJSONObject("datauser");
 
-                        if(datalogin.getString("login_as").equals("2")){
-                            Toast.makeText(MainActivity.this, "Login Sebagai Guru", Toast.LENGTH_SHORT).show();
+                    if(datalogin.getString("login_as").equals("2")){
+                        Toast.makeText(MainActivity.this, "Login Sebagai Guru", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(MainActivity.this, HomeActivity.class);
+                        intent.putExtra("UserEmailTAG", EmailHolder);
+                        startActivity(intent);
 
-                        }else if(datalogin.getString("login_as").equals("3")){
-                            Toast.makeText(MainActivity.this, "Login Sebagai Siswa", Toast.LENGTH_SHORT).show();
+                    }else if(datalogin.getString("login_as").equals("3")){
+                        Toast.makeText(MainActivity.this, "Login Sebagai Siswa", Toast.LENGTH_SHORT).show();
 
-                        }else{
-                            Toast.makeText(MainActivity.this, "Invalid Akses", Toast.LENGTH_SHORT).show();
-
-                        }
-                    } else {
-                        Toast.makeText(MainActivity.this, respon.getString("pesan"), Toast.LENGTH_SHORT).show();
+                    }else{
+                        Toast.makeText(MainActivity.this, "Invalid Akses", Toast.LENGTH_SHORT).show();
 
                     }
+                } else {
+                    Toast.makeText(MainActivity.this, respon.getString("pesan"), Toast.LENGTH_SHORT).show();
+
+                }
 
 //                                pd.dismiss();
 
-                } catch (JSONException e) {
-                    progressDialog.dismiss();
-//                                e.printStackTrace();
-                    Log.e("errorgan", e.getMessage());
-                }
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-//                            pd.cancel();
+            } catch (JSONException e) {
                 progressDialog.dismiss();
-                Log.e("errornyaa ", "" + error);
-                Toast.makeText(MainActivity.this, "Gagal Login, " + error, Toast.LENGTH_SHORT).show();
-
-
+//                                e.printStackTrace();
+                Log.e("errorgan", e.getMessage());
             }
-        }) {
-            @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
-                Map<String, String> params = new HashMap<>();
-                params.put("emailnya", EmailHolder);
-                params.put("passwordnya", PasswordHolder);
+        }
+    }, new Response.ErrorListener() {
+        @Override
+        public void onErrorResponse(VolleyError error) {
+//                            pd.cancel();
+            progressDialog.dismiss();
+            Log.e("errornyaa ", "" + error);
+            Toast.makeText(MainActivity.this, "Gagal Login, " + error, Toast.LENGTH_SHORT).show();
 
-                return params;
-            }
-        };
 
-        AppController.getInstance().addToRequestQueue(senddata);
-    }
+        }
+    }) {
+        @Override
+        protected Map<String, String> getParams() throws AuthFailureError {
+            Map<String, String> params = new HashMap<>();
+            params.put("emailnya", EmailHolder);
+            params.put("passwordnya", PasswordHolder);
+
+            return params;
+        }
+    };
+
+    AppController.getInstance().addToRequestQueue(senddata);
+}
 
     public void CheckEditTextIsEmptyOrNot(){
         EmailHolder = Email.getText().toString().trim();
