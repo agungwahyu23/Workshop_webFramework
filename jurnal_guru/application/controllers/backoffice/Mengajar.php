@@ -26,4 +26,3 @@ class Mengajar extends CI_Controller
 	}
 }
 	
-}

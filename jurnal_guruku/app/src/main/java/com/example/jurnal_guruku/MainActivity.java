@@ -21,6 +21,8 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.jurnal_guruku.config.AppController;
 import com.example.jurnal_guruku.config.ServerApi;
+import com.example.jurnal_guruku.config.authdata;
+import com.example.jurnal_guruku.guru.BerandaGuru;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -34,10 +36,7 @@ public class MainActivity extends AppCompatActivity {
     RequestQueue requestQueue;
     String EmailHolder, PasswordHolder;
     ProgressDialog progressDialog;
-    String HttpUrl = "http://192.168.43.194:8080/Workshop_webFramework/volley/User-Login.php";
     Boolean CheckEditText;
-    String TempServerResponseMatchedValue  = "Data Matched";
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -66,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
     progressDialog.setMessage("Please Wait");
     progressDialog.show();
 
-    StringRequest senddata = new StringRequest(Request.Method.POST, ServerApi.URL_LOGIN, new Response.Listener<String>() {
+    StringRequest senddata = new StringRequest(Request.Method.POST, ServerApi.IPServer + "auth/authlogin", new Response.Listener<String>() {
         @Override
         public void onResponse(String response) {
             try {
@@ -78,10 +77,10 @@ public class MainActivity extends AppCompatActivity {
                     Toast.makeText(MainActivity.this, respon.getString("pesan"), Toast.LENGTH_SHORT).show();
                     JSONObject datalogin = res.getJSONObject("datauser");
 
+                    authdata.getInstance(getApplicationContext()).setdatauser(datalogin.getString("login_as"),datalogin.getString("token"),datalogin.getString("akses_data"),datalogin.getString("kode_pengguna"));
                     if(datalogin.getString("login_as").equals("2")){
                         Toast.makeText(MainActivity.this, "Login Sebagai Guru", Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(MainActivity.this, HomeActivity.class);
-                        intent.putExtra("UserEmailTAG", EmailHolder);
+                        Intent intent = new Intent(MainActivity.this, BerandaGuru.class);
                         startActivity(intent);
 
                     }else if(datalogin.getString("login_as").equals("3")){
