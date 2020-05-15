@@ -23,6 +23,16 @@ class Guru extends CI_Controller
 
 		$this->load->view('backend/index', $data);
 	}
+
+	public function izin()
+	{
+		$data['title'] = "Data Izin Guru";
+		$data['content'] = "guru/indexizin";
+		$data['data'] = $this->Maksi->getData("getijin");
+
+		$this->load->view('backend/index', $data);
+	}
+
 	public function add()
 	{
 		$data['title'] = "Tambah Guru";
