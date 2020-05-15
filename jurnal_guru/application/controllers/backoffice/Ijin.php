@@ -18,7 +18,7 @@ class Penarikan extends CI_Controller
 	public function index()
 	{
 		$data['title'] = "Data Izin Guru";
-		$data['content'] = "Ijin/indexIjin";
+		$data['content'] = "guru/addguru";
 		$data['data'] = $this->Maksi->getData("getijin");
 
 		$this->load->view('backend/index', $data);
