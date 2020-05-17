@@ -61,7 +61,7 @@ public class JadwalFragment extends Fragment {
         progressDialog.setMessage("Please Wait");
         progressDialog.show();
 
-        StringRequest senddata = new StringRequest(Request.Method.GET, ServerApi.IPServer + "jadwal/data", new Response.Listener<String>() {
+        StringRequest senddata = new StringRequest(Request.Method.GET, ServerApi.IPServer + "jadwal", new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 try {
@@ -71,7 +71,7 @@ public class JadwalFragment extends Fragment {
                         Toast.makeText(getContext(), respon.getString("pesan"), Toast.LENGTH_SHORT).show();
 
                         mItems = new ArrayList<>();
-                        JSONArray arr = res.getJSONArray("data");
+                        JSONArray arr = res.getJSONArray("jadwal");
                         for (int i = 0; i < arr.length(); i++) {
                             try {
                                 JSONObject datakom = arr.getJSONObject(i);
