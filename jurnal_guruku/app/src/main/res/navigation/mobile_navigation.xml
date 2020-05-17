@@ -21,15 +21,15 @@
         android:id="@+id/navigation_mengajar"
         android:name="com.example.jurnal_guruku.guru.ui.jadwal.JadwalFragment"
         android:label="@string/mengajar"
-        tools:layout="@layout/fragment_notifications" />
+        tools:layout="@layout/fragment_jadwal" />
     <fragment
         android:id="@+id/navigation_permintaan"
         android:name="com.example.jurnal_guruku.guru.ui.jadwal.JadwalFragment"
         android:label="@string/permintaan"
-        tools:layout="@layout/fragment_notifications" />
+        tools:layout="@layout/fragment_jadwal" />
     <fragment
         android:id="@+id/navigation_akun"
         android:name="com.example.jurnal_guruku.guru.ui.jadwal.JadwalFragment"
         android:label="@string/akun"
-        tools:layout="@layout/fragment_notifications" />
+        tools:layout="@layout/fragment_jadwal" />
 </navigation>

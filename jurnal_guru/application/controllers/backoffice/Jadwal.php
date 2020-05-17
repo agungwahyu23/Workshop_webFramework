@@ -51,7 +51,7 @@ class Jadwal extends CI_Controller
 				'kode_guru' => $this->input->post('guru', TRUE),
 				'kode_kelas' => $this->input->post('kelas', TRUE),
 				'kode_mapel' => $this->input->post('mapel', TRUE),
-				'kode_tahun' => $this->input->post('tahun_ajaran', TRUE),
+				'kode_tahun' => $this->Maksi->getData('gettahun'),
                 'hari' => $this->input->post('hari', TRUE),
                 'jam_awal' => $this->input->post('jam_awal', TRUE),
                 'jam_akhir' => $this->input->post('jam_akhir', TRUE),
