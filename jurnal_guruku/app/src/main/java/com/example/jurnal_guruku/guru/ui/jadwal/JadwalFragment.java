@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -36,15 +37,16 @@ import java.util.Map;
 
 public class JadwalFragment extends Fragment {
 
+
     RecyclerView.LayoutManager mManager;
     List<JadwalModel> mItems;
     RecyclerView tempatdatajadwal;
     AdapterJadwal mAdapter;
+
     private ProgressDialog progressDialog;
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_jadwal, container, false);
-
-        tempatdatajadwal = root.findViewById(R.id.tmpdatadua_);
+        tempatdatajadwal = root.findViewById(R.id.tmpdatadua);
         progressDialog = new ProgressDialog(getContext());
         mItems = new ArrayList<>();
 
@@ -61,7 +63,7 @@ public class JadwalFragment extends Fragment {
         progressDialog.setMessage("Please Wait");
         progressDialog.show();
 
-        StringRequest senddata = new StringRequest(Request.Method.GET, ServerApi.IPServer + "jadwal", new Response.Listener<String>() {
+        StringRequest senddata = new StringRequest(Request.Method.GET, ServerApi.IPServer + "jadwal/data", new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 try {
@@ -70,12 +72,13 @@ public class JadwalFragment extends Fragment {
                     if (respon.getBoolean("status")) {
                         Toast.makeText(getContext(), respon.getString("pesan"), Toast.LENGTH_SHORT).show();
 
-                        mItems = new ArrayList<>();
-                        JSONArray arr = res.getJSONArray("jadwal");
+
+                        JSONArray arr = res.getJSONArray("data");
                         for (int i = 0; i < arr.length(); i++) {
                             try {
                                 JSONObject datakom = arr.getJSONObject(i);
                                 JadwalModel md = new JadwalModel();
+                                md.setHari(datakom.getString("hari"));
                                 md.setNama_kelas(datakom.getString("no_kelas") + " " + datakom.getString("nama_singkat") + " " + datakom.getString("rombel"));
                                 md.setNama_mapel(datakom.getString("nama_mapel"));
                                 md.setThis_week(datakom.getString("this_week"));

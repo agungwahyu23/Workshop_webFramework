@@ -10,4 +10,5 @@
     <string name="akun">Akun</string>
     <string name="data_mengajar_aktif">Data Mengajar Aktif</string>
     <string name="jadwal_hari_ini">Jadwal Hari Ini</string>
+    <string name="jadwal_mengajar">Jadwal Mengajar Anda</string>
 </resources>

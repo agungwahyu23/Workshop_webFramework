@@ -12,7 +12,17 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:paddingHorizontal="10dp"
-        android:paddingVertical="10dp">
+        android:paddingVertical="10dp"
+        android:paddingTop="5dp">
+
+        <TextView
+            android:id="@+id/hari"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Hari"
+            android:textStyle="bold"
+            android:textSize="15sp"
+            android:textColor="@color/darkGrey" />
 
         <TextView
             android:id="@+id/nama_mapel"

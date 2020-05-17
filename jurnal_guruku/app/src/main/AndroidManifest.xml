@@ -13,7 +13,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".guru.BerandaGuru" />
-        <activity android:name=".guru.JadwalGuru"/>
         <activity
             android:name=".MainActivity"
             android:label="@string/title_activity_beranda_guru" />

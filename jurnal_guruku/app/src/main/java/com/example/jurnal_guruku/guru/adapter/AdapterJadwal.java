@@ -41,6 +41,7 @@ public class AdapterJadwal extends RecyclerView.Adapter<AdapterJadwal.HolderData
         String[] thiar = {"Belum Mengajar","Sudah", "Proses",};
         String[] thiarcolor = {"#d35400","#f1c40f", "#2ecc71",};
         try{
+            holder.jadwalhari.setText(me.getHari());
             holder.namakelas.setText(me.getNama_kelas());
             holder.namamapel.setText(me.getNama_mapel());
             holder.status.setText(thiar[Integer.parseInt(me.getThis_week())]);
@@ -60,12 +61,13 @@ public class AdapterJadwal extends RecyclerView.Adapter<AdapterJadwal.HolderData
 
     public class HolderData extends RecyclerView.ViewHolder {
         LinearLayout panelstatus;
-        TextView namakelas , namamapel , jam, status;
+        TextView namakelas , namamapel , jam, status, jadwalhari;
         CardView cardpanel;
         String kode;
         public HolderData(@NonNull View itemView) {
 
             super(itemView);
+            jadwalhari = itemView.findViewById(R.id.hari);
             namakelas = itemView.findViewById(R.id.nama_kelas);
             namamapel = itemView.findViewById(R.id.nama_mapel);
             jam = itemView.findViewById(R.id.jam);
