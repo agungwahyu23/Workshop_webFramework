@@ -47,6 +47,10 @@ class Jadwal extends CI_Controller
 
 			$kode = $this->Maksi->random_oke(16);
 
+			$cekset = Data_helper::getdatarow('tahun_ajaran', 'aktif', '1');
+			$wer = "$cekset[kode_tahun]";
+			//$thn = $this->Maksi->getData("gettahun", $wer);
+
 			$arr = [
 				'kode_jadwal' => $kode,
 				'kode_kelas' => $this->input->post('kelas', TRUE),
@@ -56,7 +60,7 @@ class Jadwal extends CI_Controller
                 'hari' => $this->input->post('hari', TRUE),
                 'jam_awal' => $this->input->post('jam_awal', TRUE),
                 'jam_akhir' => $this->input->post('jam_akhir', TRUE),
-				'create_at' => date("Y-m-d H:i:s"),
+				'create_at' => date("Y-m-d H:i:s")
 			];
 			$this->Maksi->insertData("jadwal", $arr);
 			$this->session->set_flashdata("message", ['success', 'Berhasil Menambah Data jadwal', ' Berhasil']);
