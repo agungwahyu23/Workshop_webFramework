@@ -33,9 +33,11 @@ class Jadwal extends CI_Controller
 		$data['datajadwal'] = $this->Maksi->getData('getjadwal');
         $data['datakelas'] = $this->Maksi->getData('getkelas');
         $data['datamapel'] = $this->Maksi->getData('getmapel');
-        $data['dataguru'] = $this->Maksi->getData('getguru');
-        $data['datatahun'] = $this->Maksi->getData('gettahun');
-        $data['datahari'] = $this->Maksi->getData('gethari');
+		$data['dataguru'] = $this->Maksi->getData('getguru');
+		$data['datahari'] = $this->Maksi->getData('gethari');
+		
+		
+
 		$this->load->view('backend/index', $data);
 		
 	}
@@ -46,16 +48,20 @@ class Jadwal extends CI_Controller
 
 			$kode = $this->Maksi->random_oke(16);
 
+			$cekset = Data_helper::getdatarow('tahun_ajaran', 'aktif', '1');
+			$wer = "$cekset[kode_tahun]";
+			//$thn = $this->Maksi->getData("gettahun", $wer);
+
 			$arr = [
 				'kode_jadwal' => $kode,
 				'kode_guru' => $this->input->post('guru', TRUE),
 				'kode_kelas' => $this->input->post('kelas', TRUE),
 				'kode_mapel' => $this->input->post('mapel', TRUE),
-				'kode_tahun' => $this->Maksi->getData('gettahun'),
+				'kode_tahun' => $wer,
                 'hari' => $this->input->post('hari', TRUE),
                 'jam_awal' => $this->input->post('jam_awal', TRUE),
                 'jam_akhir' => $this->input->post('jam_akhir', TRUE),
-				'create_at' => date("Y-m-d H:i:s"),
+				'create_at' => date("Y-m-d H:i:s")
 			];
 			$this->Maksi->insertData("jadwal", $arr);
 			$this->session->set_flashdata("message", ['success', 'Berhasil Menambah Data jadwal', ' Berhasil']);
@@ -108,7 +114,7 @@ class Jadwal extends CI_Controller
 			$arr = [
 				'status' => 0
 			];
-			$this->Maksi->updateData("jadwal", $arr, $id, "kode_jadwal");
+			$this->Maksi->deleteData("jadwal", "kode_jadwal", $id);
 
 			$this->session->set_flashdata("message", ['success', 'Berhasil Menghapus Data Jadwal', ' Berhasil']);
 			redirect(base_url("backoffice/jadwal"));

@@ -38,7 +38,7 @@
                                     <option value="">Pilih Tahun Ajaran</option>
                                     <?php
                                     $set = Data_helper::get_setting();
-                                    foreach ($tahun as $p) { ?>
+                                    foreach ($datatahun as $p) { ?>
                                         <option value="<?= $p['kode_tahun'] . '-1' ?>" <?= ($p['aktif'] == '1' && $set['semester'] == '1' ? 'selected' : '') ?>><?= $p['tahun'] . ' Ganjil' ?></option>
                                         <option value="<?= $p['kode_tahun'] . '-2' ?>" <?= ($p['aktif'] == '1' && $set['semester'] == '2' ? 'selected' : '') ?>><?= $p['tahun'] . ' Genap' ?></option>
                                     <?php  }
