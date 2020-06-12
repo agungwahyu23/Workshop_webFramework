@@ -81,6 +81,19 @@
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
+                                    <h5>Pilih Tahun Ajaran <span class="text-danger">*</span></h5>
+                                    <select class="form-control select2" required name="tahun_ajaran" id="defaultSelect">
+                                        <option value="">Pilih Tahun Ajaran</option>
+                                        <?php
+                                        foreach ($datatahun as $p) { ?>
+                                            <option value="<?= $p['kode_tahun'] ?>" <?= ($data['kode_tahun'] == $p['kode_tahun'] ? 'selected' : '') ?>><?= $p['tahun']  ?></option>
+                                        <?php  }
+                                        ?>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
                                     <h5>Hari <span class="text-danger">*</span></h5>
                                     <select class="form-control form-control" required name="hari" id="defaultSelect">
                                         <option value="">Pilih Hari</option>

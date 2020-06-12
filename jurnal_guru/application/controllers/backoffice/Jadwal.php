@@ -15,6 +15,7 @@ class Jadwal extends CI_Controller
 		} else if ($this->uri->segment(3) == "edit" && $_SERVER['REQUEST_METHOD'] == "POST") {
 			$this->update($this->uri->segment(4));
 		}
+
 	}
 	public function index()
 	{
@@ -32,9 +33,9 @@ class Jadwal extends CI_Controller
 		$data['data'] = null;
 		$data['datajadwal'] = $this->Maksi->getData('getjadwal');
         $data['datakelas'] = $this->Maksi->getData('getkelas');
-        $data['datamapel'] = $this->Maksi->getData('getmapel');
+		$data['datamapel'] = $this->Maksi->getData('getmapel');
+		$data['datatahun'] = $this->Maksi->getData('gettahun');
         $data['dataguru'] = $this->Maksi->getData('getguru');
-        $data['datatahun'] = $this->Maksi->getData('gettahun');
         $data['datahari'] = $this->Maksi->getData('gethari');
 		$this->load->view('backend/index', $data);
 		
@@ -48,10 +49,10 @@ class Jadwal extends CI_Controller
 
 			$arr = [
 				'kode_jadwal' => $kode,
-				'kode_guru' => $this->input->post('guru', TRUE),
 				'kode_kelas' => $this->input->post('kelas', TRUE),
+				'kode_guru' => $this->input->post('guru', TRUE),
 				'kode_mapel' => $this->input->post('mapel', TRUE),
-				'kode_tahun' => $this->input->post('tahun_ajaran', TRUE),
+				'kode_tahun' => $this->input->post('tahun_ajaran',TRUE),
                 'hari' => $this->input->post('hari', TRUE),
                 'jam_awal' => $this->input->post('jam_awal', TRUE),
                 'jam_akhir' => $this->input->post('jam_akhir', TRUE),
@@ -72,10 +73,11 @@ class Jadwal extends CI_Controller
 		$data['action'] = "Edit jadwal";
         $data['content'] = "jadwal/editjadwal";
 		$data['data'] = $this->db->get_where("jadwal", ['kode_jadwal' => $id])->row_array();
+		$data['datajadwal'] = $this->Maksi->getData('getjadwal');
 		$data['datakelas'] = $this->Maksi->getData('getkelas');
-        $data['datamapel'] = $this->Maksi->getData('getmapel');
+		$data['datamapel'] = $this->Maksi->getData('getmapel');
+		$data['datatahun'] = $this->Maksi->getData('gettahun');
         $data['dataguru'] = $this->Maksi->getData('getguru');
-        $data['datatahun'] = $this->Maksi->getData('gettahun');
         $data['datahari'] = $this->Maksi->getData('gethari');
 		$this->load->view('backend/index', $data);
 	}
@@ -85,9 +87,10 @@ class Jadwal extends CI_Controller
 	{
 		try {
 			$arr = [
-				'kode_guru' => $this->input->post('guru', TRUE),
 				'kode_kelas' => $this->input->post('kelas', TRUE),
+				'kode_guru' => $this->input->post('guru', TRUE),
 				'kode_mapel' => $this->input->post('mapel', TRUE),
+				'kode_tahun' => $this->input->post('tahun_ajaran',TRUE),
                 'hari' => $this->input->post('hari', TRUE),
                 'jam_awal' => $this->input->post('jam_awal', TRUE),
                 'jam_akhir' => $this->input->post('jam_akhir', TRUE),
@@ -109,11 +112,11 @@ class Jadwal extends CI_Controller
 				'status' => 0
 			];
 			$this->Maksi->updateData("jadwal", $arr, $id, "kode_jadwal");
-
-			$this->session->set_flashdata("message", ['success', 'Berhasil Menghapus Data Jadwal', ' Berhasil']);
-			redirect(base_url("backoffice/jadwal"));
-		}catch (Exception $e) {
 			$this->session->set_flashdata("message", ['danger', 'Gagal Menghapus Data Jadwal', ' Gagal']);
+			redirect(base_url("backoffice/jadwal"));
+			
+		}catch (Exception $e) {
+			$this->session->set_flashdata("message", ['success', 'Berhasil Menghapus Data Jadwal', ' Berhasil']);
 			redirect(base_url("backoffice/jadwal"));
 		}
 	}

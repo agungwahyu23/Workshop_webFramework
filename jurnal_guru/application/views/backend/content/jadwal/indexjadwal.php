@@ -63,6 +63,7 @@
                                     <th>Kelas</th>
                                     <th>Nama Guru</th>
                                     <th>Mata Pelajaran</th>
+                                    <th>Tahun Ajaran</th>
                                     <th>Hari</th>
                                     <th>Jam Mulai</th>
                                     <th>Jam Selesai</th>
@@ -80,6 +81,7 @@
                                         <td><?= $p['no_kelas'] . ' ' . $p['nama_singkat'] . ' ' . $p['rombel'] ?></td>
                                         <td><?= $p['nama_guru'] ?></td>
                                         <td><?= $p['nama_mapel'] ?></td>
+                                        <td><?= $p['tahun'] ?></td>
                                         <td><?= $p['hari'] ?></td>
                                         <td><?= $p['jam_awal'] ?></td>
                                         <td><?= $p['jam_akhir'] ?></td>
@@ -88,8 +90,7 @@
 
                                             <a href="<?= base_url('backoffice/jadwal/edit/' . $p['kode_jadwal']) ?>"><i class='fas fa-edit'></i>Edit</a>&nbsp;
                                             
-                                          <td>  <a href="#" onclick="confirm_modal('<?= base_url('backoffice/jadwal/delete/' . $p['kode_jadwal']); ?>')"><i class='fas fa-trash'></i>Hapus</a></td>
-
+                                            <td> <a href="#" onclick="confirm_modal('<?= base_url('backoffice/jadwal/delete/' . $p['kode_jadwal']); ?>')"><i class='fas fa-trash'></i>Hapus</a></td>
                                         </td>
                                     </tr>
                                 <?php

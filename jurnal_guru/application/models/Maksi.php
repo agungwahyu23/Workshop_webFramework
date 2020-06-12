@@ -42,12 +42,13 @@ class Maksi extends CI_Model
       where a.tipe = 1
       order by a.create_at desc";
     } else if ($tabel == "getjadwal") {
-      $query = "SELECT a.*, b.no_kelas, b.rombel, c.nama_jurusan, c.nama_singkat, d.nama_mapel, e.nama_guru from jadwal a 
+      $query = "SELECT a.*, b.no_kelas, b.rombel, c.nama_jurusan, c.nama_singkat, d.nama_mapel, e.nama_guru, f.tahun from jadwal a 
       left join kelas b on a.kode_kelas=b.kode_kelas
       left join jurusan c on b.kode_jurusan=c.kode_jurusan
       left join mapel d on a.kode_mapel=d.kode_mapel
       left join guru e on a.kode_guru=e.kode_guru
-      left join hari g on a.hari=g.kode_hari
+      left join tahun_ajaran f on a.kode_tahun=f.kode_tahun
+      left join hari g on a.hari=g.kode_hari  
       $key
       ";
     } else if ($tabel == "getjadwalforcron") {
@@ -131,6 +132,7 @@ class Maksi extends CI_Model
       left join jurusan c on b.kode_jurusan=c.kode_jurusan
       left join mapel d on a.kode_mapel=d.kode_mapel
       left join guru e on a.kode_guru=e.kode_guru
+      left join tahun_ajaran f on a.kode_tahun=f.kode_tahun
       left join hari g on a.hari=g.kode_hari
       $key
       ";
