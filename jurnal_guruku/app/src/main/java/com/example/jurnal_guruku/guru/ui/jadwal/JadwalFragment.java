@@ -1,6 +1,7 @@
 package com.example.jurnal_guruku.guru.ui.jadwal;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -19,6 +20,7 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
+import com.example.jurnal_guruku.MainActivity;
 import com.example.jurnal_guruku.R;
 import com.example.jurnal_guruku.config.AppController;
 import com.example.jurnal_guruku.config.ServerApi;
@@ -57,6 +59,15 @@ public class JadwalFragment extends Fragment {
         tempatdatajadwal.setHasFixedSize(true);
         tempatdatajadwal.setAdapter(mAdapter);
         return root;
+
+
+        tempatdatajadwal.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent detail = new Intent(JadwalFragment.this, DetailJadwalFragment.class);
+                startActivity(detail);
+            }
+        });
     }
 
     void loaddata(){
