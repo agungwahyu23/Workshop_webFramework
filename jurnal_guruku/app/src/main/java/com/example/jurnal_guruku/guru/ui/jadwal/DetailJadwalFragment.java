@@ -8,7 +8,6 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import com.example.jurnal_guruku.R;
@@ -19,8 +18,8 @@ public class DetailJadwalFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View root = inflater.inflate(R.layout.detail_jadwal, container, false);
-        teks = root.findViewById(R.id.teks);
+        View root = inflater.inflate(R.layout.fragment_detail_jadwal, container, false);
+        teks = root.findViewById(R.id.lv);
         return root;
     }
 }

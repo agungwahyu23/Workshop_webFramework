@@ -61,13 +61,14 @@ public class JadwalFragment extends Fragment {
         return root;
 
 
-        tempatdatajadwal.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent detail = new Intent(JadwalFragment.this, DetailJadwalFragment.class);
-                startActivity(detail);
-            }
-        });
+
+//        tempatdatajadwal.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent detail = new Intent(JadwalFragment.this, DetailJadwalFragment.class);
+//                startActivity(detail);
+//            }
+//        });
     }
 
     void loaddata(){
