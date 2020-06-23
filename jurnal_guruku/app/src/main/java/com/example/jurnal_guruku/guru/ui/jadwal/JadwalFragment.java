@@ -90,6 +90,7 @@ public class JadwalFragment extends Fragment {
                             try {
                                 JSONObject datakom = arr.getJSONObject(i);
                                 JadwalModel md = new JadwalModel();
+                                md.setKode(datakom.getString("kode_jadwal"));
                                 md.setHari(datakom.getString("hari"));
                                 md.setNama_kelas(datakom.getString("no_kelas") + " " + datakom.getString("nama_singkat") + " " + datakom.getString("rombel"));
                                 md.setNama_mapel(datakom.getString("nama_mapel"));

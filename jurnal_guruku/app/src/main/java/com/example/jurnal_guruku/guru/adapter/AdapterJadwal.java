@@ -20,6 +20,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.jurnal_guruku.R;
 import com.example.jurnal_guruku.guru.model.JadwalModel;
 import com.example.jurnal_guruku.guru.ui.jadwal.DetailJadwalFragment;
+import com.example.jurnal_guruku.guru.ui.jadwal.DetailJadwalGuru;
 import com.example.jurnal_guruku.guru.ui.jadwal.JadwalFragment;
 
 import java.util.List;
@@ -85,6 +86,14 @@ public class AdapterJadwal extends RecyclerView.Adapter<AdapterJadwal.HolderData
             panelstatus = itemView.findViewById(R.id.panelstatus);
             cardpanel = itemView.findViewById(R.id.cardjadwal);
 
+            cardpanel.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(context, DetailJadwalGuru.class);
+                    intent.putExtra("putkode", kode);
+                    context.startActivity(intent);
+                }
+            });
 //            cardpanel.setOnClickListener(new View.OnClickListener() {
 //                @Override
 //                public void onClick(View v) {
@@ -110,13 +119,13 @@ public class AdapterJadwal extends RecyclerView.Adapter<AdapterJadwal.HolderData
 //                }
 //            });
 
-            cardpanel.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent detail = new Intent(context, DetailJadwalFragment.class);
-                    context.startActivity(detail);
-                }
-            });
+//            cardpanel.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View v) {
+//                    Intent detail = new Intent(context, DetailJadwalFragment.class);
+//                    context.startActivity(detail);
+//                }
+//            });
 
         }
     }
