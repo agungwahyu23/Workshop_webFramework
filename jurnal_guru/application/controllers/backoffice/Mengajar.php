@@ -15,7 +15,6 @@ class Mengajar extends CI_Controller
 			$this->update($this->uri->segment(4));
 		}
 	}
-
 	public function index()
 	{
 		$data['title'] = "Data Mengajar";
@@ -31,4 +30,4 @@ class Mengajar extends CI_Controller
 		$this->load->view('backend/index', $data);
 	}
 }
-	
+}
