@@ -1,34 +1,26 @@
 package com.example.jurnal_guruku.guru.adapter;
 
 import android.content.Context;
-import android.content.Intent;
 import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.view.menu.MenuView;
 import androidx.cardview.widget.CardView;
-import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.jurnal_guruku.R;
 import com.example.jurnal_guruku.guru.model.JadwalModel;
-import com.example.jurnal_guruku.guru.ui.jadwal.DetailJadwalFragment;
-import com.example.jurnal_guruku.guru.ui.jadwal.DetailJadwalGuru;
-import com.example.jurnal_guruku.guru.ui.jadwal.JadwalFragment;
 
 import java.util.List;
 
 public class AdapterJadwal extends RecyclerView.Adapter<AdapterJadwal.HolderData> {
     private List<JadwalModel> mItems;
     private Context context;
-
 
     public AdapterJadwal(Context context, List<JadwalModel> mItems){
         this.mItems = mItems;
@@ -42,8 +34,6 @@ public class AdapterJadwal extends RecyclerView.Adapter<AdapterJadwal.HolderData
         AdapterJadwal.HolderData holderData = new AdapterJadwal.HolderData((layout));
         return holderData;
     }
-
-
 
     @Override
     public void onBindViewHolder(@NonNull AdapterJadwal.HolderData holder, int position) {
@@ -70,7 +60,6 @@ public class AdapterJadwal extends RecyclerView.Adapter<AdapterJadwal.HolderData
     }
 
     public class HolderData extends RecyclerView.ViewHolder {
-        //RelativeLayout cardjadwal;
         LinearLayout panelstatus;
         TextView namakelas , namamapel , jam, status, jadwalhari;
         CardView cardpanel;
@@ -85,48 +74,6 @@ public class AdapterJadwal extends RecyclerView.Adapter<AdapterJadwal.HolderData
             status = itemView.findViewById(R.id.status);
             panelstatus = itemView.findViewById(R.id.panelstatus);
             cardpanel = itemView.findViewById(R.id.cardjadwal);
-
-            cardpanel.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent intent = new Intent(context, DetailJadwalGuru.class);
-                    intent.putExtra("putkode", kode);
-                    context.startActivity(intent);
-                }
-            });
-//            cardpanel.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
-//                    Fragment fragment = null;
-//
-//                    switch (v.getId()){
-//                        case R.id.cardjadwal:
-//                        fragment = new DetailJadwalFragment();
-//                    }
-//                }
-//            });
-
-//            cardpanel.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
-//                    Intent detail = new Intent();
-//                    switch (getAdapterPosition()){
-//                        case 0 :
-//                            detail = new Intent(context, DetailJadwalFragment.class);
-//                            break;
-//                    }
-//                    context.startActivity(detail);
-//                }
-//            });
-
-//            cardpanel.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
-//                    Intent detail = new Intent(context, DetailJadwalFragment.class);
-//                    context.startActivity(detail);
-//                }
-//            });
-
         }
     }
 }
