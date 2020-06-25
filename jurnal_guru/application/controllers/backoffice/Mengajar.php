@@ -9,11 +9,11 @@ class Mengajar extends CI_Controller
 		if (!$this->session->has_userdata('kode_pengguna') || $this->session->userdata('level')  != '1') {
 			redirect(base_url());
 		}
-		// if ($this->uri->segment(3) == "add" && $_SERVER['REQUEST_METHOD'] == "POST") {
-		// 	$this->store();
-		// } else if ($this->uri->segment(3) == "edit" && $_SERVER['REQUEST_METHOD'] == "POST") {
-		// 	$this->update($this->uri->segment(4));
-		// }
+		if ($this->uri->segment(3) == "add" && $_SERVER['REQUEST_METHOD'] == "POST") {
+			$this->store();
+		} else if ($this->uri->segment(3) == "edit" && $_SERVER['REQUEST_METHOD'] == "POST") {
+			$this->update($this->uri->segment(4));
+		}
 	}
 
 	public function index()
@@ -23,12 +23,11 @@ class Mengajar extends CI_Controller
 		$data['data'] = $this->Maksi->getData("getmengajar");
 		$this->load->view('backend/index', $data);	
 	}
-	public function detail()
+	public function statistik()
 	{
-		$data['title'] = "Detail Mengajar";
-		$data['action'] = "Detail Data Mengajar";
+		$data['title'] = "Statistik Guru";
 		$data['content'] = "mengajar/indexmengajar";
-		$data['data'] = null;
+		$data['data'] = $this->Maksi->getData("getstatistika");
 		$this->load->view('backend/index', $data);
 	}
 }

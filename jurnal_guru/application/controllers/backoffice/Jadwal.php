@@ -116,11 +116,12 @@ class Jadwal extends CI_Controller
 				'status' => 0
 			];
 			$this->Maksi->updateData("jadwal", $arr, $id, "kode_jadwal");
-			$this->session->set_flashdata("message", ['danger', 'Gagal Menghapus Data Jadwal', ' Gagal']);
+
+			$this->session->set_flashdata("message", ['success', 'Berhasil Menghapus Data Guru', ' Berhasil']);
 			redirect(base_url("backoffice/jadwal"));
 			
 		}catch (Exception $e) {
-			$this->session->set_flashdata("message", ['success', 'Berhasil Menghapus Data Jadwal', ' Berhasil']);
+			$this->session->set_flashdata("message", ['success', 'Gagal Menghapus Data Jadwal', ' Gagal']);
 			redirect(base_url("backoffice/jadwal"));
 		}
 	}
