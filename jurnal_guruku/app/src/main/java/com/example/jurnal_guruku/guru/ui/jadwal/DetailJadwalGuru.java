@@ -30,12 +30,17 @@ import java.util.Map;
 public class DetailJadwalGuru extends AppCompatActivity {
     String kode="";
     ProgressDialog progressDialog;
-    TextView txkelas;
+    TextView txkelas, txnama, txhari, txjamawal, txjamakhir, txstatus;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail_jadwal_guru);
         txkelas = findViewById(R.id.txkelas);
+        txnama = findViewById(R.id.txtnama);
+        txhari = findViewById(R.id.txthari);
+        txjamawal = findViewById(R.id.txtjamawal);
+        txjamakhir = findViewById(R.id.txtjamakhir);
+        txstatus = findViewById(R.id.txtstatus);
         Intent data = getIntent();
         kode = data.getStringExtra("putkode");
         progressDialog = new ProgressDialog(DetailJadwalGuru.this);
@@ -54,9 +59,16 @@ public class DetailJadwalGuru extends AppCompatActivity {
                     JSONObject res = new JSONObject(response);
                     JSONObject respon = res.getJSONObject("respon");
                     JSONObject datanya = res.getJSONObject("data");
+                    JadwalModel md = new JadwalModel();
                     if (respon.getBoolean("status")) {
                         Toast.makeText(DetailJadwalGuru.this, respon.getString("pesan"), Toast.LENGTH_SHORT).show();
                         txkelas.setText(datanya.getString("no_kelas") + ' '+ datanya.getString("nama_singkat") + ' ' + datanya.getString("rombel"));
+                        txnama.setText(datanya.getString("nama_guru"));
+                        txhari.setText(datanya.getString("hari"));
+                        txjamawal.setText(datanya.getString("jam_awal"));
+                        txjamakhir.setText(datanya.getString("jam_akhir"));
+                        txstatus.setText(datanya.getString("status"));
+
 
                     } else {
                         Toast.makeText(DetailJadwalGuru.this, respon.getString("pesan"), Toast.LENGTH_SHORT).show();

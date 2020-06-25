@@ -7,20 +7,156 @@
     android:orientation="vertical"
     tools:context=".guru.ui.jadwal.DetailJadwalGuru">
 
+<!-- Tampilan menu atas -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:background="@android:color/holo_blue_dark"
+        android:gravity="right"
+        android:padding="2dp">
+
         <TextView
-            android:layout_width="150dp"
-            android:textSize="20sp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Kelas"/>
-        <TextView
-            android:id="@+id/txkelas"
-            android:layout_width="150dp"
-            android:textSize="20sp"
+            android:text="@string/jadwal_mengajar"
+            android:layout_marginRight="110dp"
+            android:paddingHorizontal="10dp"
+            android:textSize="17sp"
+            android:layout_marginVertical="20dp"
+            />
+
+        <ImageButton
+            android:id="@+id/refresh"
+            android:layout_width="59dp"
+            android:layout_height="59dp"
+            android:background="@android:color/transparent"
+            android:padding="10dp"
+            app:srcCompat="@drawable/ic_refresh"
+            tools:ignore="VectorDrawableCompat" />
+    </LinearLayout>     <!-- Tutup menu atas-->
+
+<!-- isi konten -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Kelas"/>
+            android:orientation="horizontal"
+            android:paddingTop="20dp">
+            <TextView
+                android:layout_width="150dp"
+                android:textSize="14sp"
+                android:layout_height="wrap_content"
+                android:text="Kelas"
+                android:textColor="#000"/>
+            <TextView
+                android:id="@+id/txkelas"
+                android:layout_width="150dp"
+                android:textSize="14sp"
+                android:layout_height="wrap_content"
+                android:textColor="#000"
+                android:text="Kelas"
+                />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingTop="20dp">
+            <TextView
+                android:layout_width="150dp"
+                android:textSize="14sp"
+                android:layout_height="wrap_content"
+                android:text="Nama Guru"
+                android:textColor="#000"/>
+            <TextView
+                android:id="@+id/txtnama"
+                android:layout_width="150dp"
+                android:textSize="14sp"
+                android:textColor="#000"
+                android:layout_height="wrap_content"
+                android:text="Nama Guru"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingTop="20dp">
+            <TextView
+                android:layout_width="150dp"
+                android:textSize="14sp"
+                android:textColor="#000"
+                android:layout_height="wrap_content"
+                android:text="Hari"/>
+            <TextView
+                android:id="@+id/txthari"
+                android:layout_width="150dp"
+                android:textSize="14sp"
+                android:textColor="#000"
+                android:layout_height="wrap_content"
+                android:text="Hari"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingTop="20dp">
+            <TextView
+                android:layout_width="150dp"
+                android:textSize="14sp"
+                android:textColor="#000"
+                android:layout_height="wrap_content"
+                android:text="Jam Mulai"/>
+            <TextView
+                android:id="@+id/txtjamawal"
+                android:layout_width="150dp"
+                android:textSize="14sp"
+                android:textColor="#000"
+                android:layout_height="wrap_content"
+                android:text="Jam Mulai"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingTop="20dp">
+            <TextView
+                android:layout_width="150dp"
+                android:textSize="14sp"
+                android:textColor="#000"
+                android:layout_height="wrap_content"
+                android:text="Jam Selesai"/>
+            <TextView
+                android:id="@+id/txtjamakhir"
+                android:layout_width="150dp"
+                android:textSize="14sp"
+                android:textColor="#000"
+                android:layout_height="wrap_content"
+                android:text="Jam Selesai"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingTop="20dp">
+            <TextView
+                android:layout_width="150dp"
+                android:textSize="14sp"
+                android:textColor="#000"
+                android:layout_height="wrap_content"
+                android:text="Status Mengajar"/>
+            <TextView
+                android:id="@+id/txtstatus"
+                android:layout_width="150dp"
+                android:textSize="14sp"
+                android:textColor="#000"
+                android:layout_height="wrap_content"
+                android:text="Status Mengajar"/>
+        </LinearLayout>
+
+
     </LinearLayout>
 </LinearLayout>
