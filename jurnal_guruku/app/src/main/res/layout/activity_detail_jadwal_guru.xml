@@ -156,6 +156,29 @@
                 android:layout_height="wrap_content"
                 android:text="Status Mengajar"/>
         </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingTop="20dp">
+            <Button
+                android:id="@+id/btn_checkin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Check in Kelas"
+                android:background="#3D6AFF"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingTop="20dp">
+            <TextView
+                android:id="@+id/txtdone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Sudah mengajar"/>
+        </LinearLayout>
 
 
     </LinearLayout>

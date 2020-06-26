@@ -1,6 +1,7 @@
 package com.example.jurnal_guruku.guru.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.jurnal_guruku.R;
 import com.example.jurnal_guruku.guru.model.JadwalModel;
+import com.example.jurnal_guruku.guru.ui.jadwal.DetailJadwalGuru;
 
 import java.util.List;
 
@@ -74,6 +76,15 @@ public class AdapterJadwal extends RecyclerView.Adapter<AdapterJadwal.HolderData
             status = itemView.findViewById(R.id.status);
             panelstatus = itemView.findViewById(R.id.panelstatus);
             cardpanel = itemView.findViewById(R.id.cardjadwal);
+
+            cardpanel.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(context, DetailJadwalGuru.class);
+                    intent.putExtra("putkode", kode);
+                    context.startActivity(intent);
+                }
+            });
         }
     }
 }
