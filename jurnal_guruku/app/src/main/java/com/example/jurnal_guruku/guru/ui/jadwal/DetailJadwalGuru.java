@@ -30,7 +30,7 @@ import java.util.Map;
 public class DetailJadwalGuru extends AppCompatActivity {
     String kode="";
     ProgressDialog progressDialog;
-    TextView txkelas, txnama, txhari, txjamawal, txjamakhir, txstatus;
+    TextView txkelas, txnama, txhari, txjamawal, txjamakhir, txstatus, bt_chekin, txdone;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,6 +41,7 @@ public class DetailJadwalGuru extends AppCompatActivity {
         txjamawal = findViewById(R.id.txtjamawal);
         txjamakhir = findViewById(R.id.txtjamakhir);
         txstatus = findViewById(R.id.txtstatus);
+
         Intent data = getIntent();
         kode = data.getStringExtra("putkode");
         progressDialog = new ProgressDialog(DetailJadwalGuru.this);
@@ -55,6 +56,7 @@ public class DetailJadwalGuru extends AppCompatActivity {
         StringRequest senddata = new StringRequest(Request.Method.GET, ServerApi.IPServer + "jadwal/detail/" +kode, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
+                String[] thiar = {"Belum Mengajar","Sudah", "Proses",};
                 try {
                     JSONObject res = new JSONObject(response);
                     JSONObject respon = res.getJSONObject("respon");
@@ -67,8 +69,22 @@ public class DetailJadwalGuru extends AppCompatActivity {
                         txhari.setText(datanya.getString("hari"));
                         txjamawal.setText(datanya.getString("jam_awal"));
                         txjamakhir.setText(datanya.getString("jam_akhir"));
-                        txstatus.setText(datanya.getString("status"));
+                        //txstatus.setText(datanya.getString("status"));
+                        txstatus.setText(thiar[Integer.parseInt(datanya.getString("status"))]);
 
+                        if (datanya.getBoolean("status")){
+                            bt_chekin = findViewById(R.id.btn_checkin);
+                        }else{
+                            txdone.findViewById(R.id.txtdone);
+                        }
+
+//                        JSONObject re = new JSONObject(response);
+//                        JSONObject resp = re.getJSONObject("data");
+//                        if (resp.getBoolean("status")){
+//                            bt_chekin = findViewById(R.id.btn_checkin);
+//                        } else{
+//                            txdone.findViewById(R.id.txtdone);
+//                        }
 
                     } else {
                         Toast.makeText(DetailJadwalGuru.this, respon.getString("pesan"), Toast.LENGTH_SHORT).show();
