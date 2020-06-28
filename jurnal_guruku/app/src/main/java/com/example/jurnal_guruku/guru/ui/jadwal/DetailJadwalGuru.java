@@ -3,9 +3,14 @@ package com.example.jurnal_guruku.guru.ui.jadwal;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -19,6 +24,8 @@ import com.example.jurnal_guruku.config.AppController;
 import com.example.jurnal_guruku.config.ServerApi;
 import com.example.jurnal_guruku.config.authdata;
 import com.example.jurnal_guruku.guru.model.JadwalModel;
+import com.google.android.material.bottomsheet.BottomSheetBehavior;
+import com.google.android.material.bottomsheet.BottomSheetDialog;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -30,7 +37,12 @@ import java.util.Map;
 public class DetailJadwalGuru extends AppCompatActivity {
     String kode="";
     ProgressDialog progressDialog;
-    TextView txkelas, txnama, txhari, txjamawal, txjamakhir, txstatus, bt_chekin, txdone;
+    TextView txkelas, txnama, txhari, txjamawal, txjamakhir, txstatus, txdone;
+    Button bt_chekin, bt_check_in;
+    BottomSheetBehavior sheetBehavior;
+    BottomSheetDialog sheetDialog;
+    View bottom_sheet;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,12 +53,64 @@ public class DetailJadwalGuru extends AppCompatActivity {
         txjamawal = findViewById(R.id.txtjamawal);
         txjamakhir = findViewById(R.id.txtjamakhir);
         txstatus = findViewById(R.id.txtstatus);
+        bt_chekin = (Button) findViewById(R.id.btn_checkin);
+        txdone = findViewById(R.id.txtdone);
+        bt_check_in = findViewById(R.id.btn_check_in);
 
         Intent data = getIntent();
         kode = data.getStringExtra("putkode");
         progressDialog = new ProgressDialog(DetailJadwalGuru.this);
         loaddata();
+
+        bottom_sheet = findViewById(R.id.bottom_sheet);
+        sheetBehavior = BottomSheetBehavior.from(bottom_sheet);
+
+
+        bt_chekin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showBottomSheetDialog();
+
+            }
+        });
     }
+
+    private void showBottomSheetDialog() {
+        View view = getLayoutInflater().inflate(R.layout.activity_bottomsheet_guru_checkin, null);
+
+        if (sheetBehavior.getState() == BottomSheetBehavior.STATE_EXPANDED) {
+            sheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
+        }
+
+        (view.findViewById(R.id.bt_close)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                sheetDialog.dismiss();
+            }
+        });
+
+        (view.findViewById(R.id.btn_check_in)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getApplicationContext(), "Makasih ya sudah subscribe", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        sheetDialog = new BottomSheetDialog(this);
+        sheetDialog.setContentView(view);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            sheetDialog.getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+        }
+
+        sheetDialog.show();
+        sheetDialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
+            @Override
+            public void onDismiss(DialogInterface dialog) {
+                sheetDialog = null;
+            }
+        });
+    }
+
 
     void loaddata(){
 
@@ -70,12 +134,17 @@ public class DetailJadwalGuru extends AppCompatActivity {
                         txjamawal.setText(datanya.getString("jam_awal"));
                         txjamakhir.setText(datanya.getString("jam_akhir"));
                         //txstatus.setText(datanya.getString("status"));
-                        txstatus.setText(thiar[Integer.parseInt(datanya.getString("status"))]);
+                        txstatus.setText(thiar[Integer.parseInt(datanya.getString("this_week"))]);
 
-                        if (datanya.getBoolean("status")){
-                            bt_chekin = findViewById(R.id.btn_checkin);
+                        if (datanya.getString("this_week").equals("0")){
+                            bt_chekin.setVisibility(View.VISIBLE);
+                            txdone.setVisibility(View.INVISIBLE);
+                        }else if (datanya.getString("this_week").equals("1")){
+                            bt_chekin.setVisibility(View.INVISIBLE);
+                            txdone.setVisibility(View.VISIBLE);
                         }else{
-                            txdone.findViewById(R.id.txtdone);
+                            bt_chekin.setVisibility(View.INVISIBLE);
+                            txdone.setVisibility(View.VISIBLE);
                         }
 
 //                        JSONObject re = new JSONObject(response);
