@@ -32,6 +32,14 @@ class Guru extends CI_Controller
 
 		$this->load->view('backend/index', $data);
 	}
+	public function statistik()
+	{
+		$data['title'] = "Statistik Guru";
+		$data['content'] = "guru/statistikguru";
+		$data['data'] = $this->Maksi->getData("getguru");
+		$this->load->view('backend/index', $data);	
+	}
+	
 
 	public function add()
 	{
@@ -117,3 +125,5 @@ class Guru extends CI_Controller
 	}
 
 }
+
+	

@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Penarikan extends CI_Controller
+class Izin extends CI_Controller
 {
 	function __construct()
 	{
@@ -53,3 +53,4 @@ class Penarikan extends CI_Controller
 			];
 		}
 	}
+}
