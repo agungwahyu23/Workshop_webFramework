@@ -7,10 +7,12 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -42,6 +44,9 @@ public class DetailJadwalGuru extends AppCompatActivity {
     BottomSheetBehavior sheetBehavior;
     BottomSheetDialog sheetDialog;
     View bottom_sheet;
+    EditText materi;
+    String MateriHolder;
+    Boolean CheckEditText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +61,7 @@ public class DetailJadwalGuru extends AppCompatActivity {
         bt_chekin = (Button) findViewById(R.id.btn_checkin);
         txdone = findViewById(R.id.txtdone);
         bt_check_in = findViewById(R.id.btn_check_in);
+        materi = (EditText) findViewById(R.id.txt_materi);
 
         Intent data = getIntent();
         kode = data.getStringExtra("putkode");
@@ -70,29 +76,32 @@ public class DetailJadwalGuru extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 showBottomSheetDialog();
-
             }
         });
     }
 
+    //method buat nampilin bottomsheet
     private void showBottomSheetDialog() {
         View view = getLayoutInflater().inflate(R.layout.activity_bottomsheet_guru_checkin, null);
 
         if (sheetBehavior.getState() == BottomSheetBehavior.STATE_EXPANDED) {
             sheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
         }
-
         (view.findViewById(R.id.bt_close)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 sheetDialog.dismiss();
             }
         });
-
         (view.findViewById(R.id.btn_check_in)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getApplicationContext(), "Makasih ya sudah subscribe", Toast.LENGTH_SHORT).show();
+                CheckEditTextIsEmptyOrNot();
+                if (CheckEditText){
+                    CheckIn();
+                }else{
+                    Toast.makeText(DetailJadwalGuru.this, "Please fill all form fields.", Toast.LENGTH_LONG).show();
+                }
             }
         });
 
@@ -109,6 +118,21 @@ public class DetailJadwalGuru extends AppCompatActivity {
                 sheetDialog = null;
             }
         });
+    }
+
+    //methode buat save materi yg dikasih
+    public void CheckIn(){
+
+    }
+
+    //Method untuk mengecek apakah kolom udah terisi apa belum
+    public void CheckEditTextIsEmptyOrNot(){
+        MateriHolder = materi.getText().toString().trim();
+        if (TextUtils.isEmpty(MateriHolder)){
+            CheckEditText = false;
+        }else{
+            CheckEditText = true;
+        }
     }
 
 
