@@ -13,7 +13,11 @@
     <string name="jadwal_mengajar">Jadwal Mengajar Anda</string>
     <string name="jadwal_hari_ini_siswa">Jadwal Anda Hari Ini </string>
     <string name="data_mengajar_aktif_siswa">Data Mengajar Aktif/ Menunggu Rating</string>
+
     <string name="satu_jurusan">Satu Jurusan</string>
     <string name="semua_jurusan">Semua Jurusan</string>
     <string name="riwayat_anda">Riwayat Anda</string>
+
+    <string name="detail_jadwal">Detail Jadwal</string>
+
 </resources>

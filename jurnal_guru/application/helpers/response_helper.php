@@ -73,7 +73,7 @@ class Response_helper
 		$qq = '';
 		$k = explode("-", $tgl);
 		$bln = array('', 'Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember');
-		$qq = $bln[(int) $k[1]] . ' ' . $k[0];
+		$qq = $bln[$k[1]] . ' ' . $k[0];
 		return $qq;
 	}
 	public static function tanggalbulan($tgl)
@@ -81,7 +81,7 @@ class Response_helper
 		$qq = '';
 		$k = explode("-", $tgl);
 		$bln = array('', 'Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember');
-		$qq = $bln[(int) $k[0]] . ' ' . $k[1];
+		$qq = $bln[$k[0]] . ' ' . $k[1];
 		return $qq;
 	}
 
@@ -90,7 +90,7 @@ class Response_helper
 		$qq = '';
 		$k = explode("-", $tgl);
 		$bln = array('', 'Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember');
-		$qq = $bln[(int) $k[1]] . ' ' . $k[0];
+		$qq = $bln[$k[1]] . ' ' . $k[0];
 		return $qq;
 	}
 
@@ -135,25 +135,41 @@ class Response_helper
 
 		return $hari_ini;
 	}
-	
-	public static function rentangwaktu($mulai, $akhir, $tipe = 1){
+
+	public static function rentangwaktu($mulai, $akhir, $tipe = 1)
+	{
 		$lama = '';
 		$date1 = new DateTime($mulai);
 		$date2 = new DateTime($akhir);
 		$interval = $date2->diff($date1);
-		if($tipe == 1){	
+		if ($tipe == 1) {
 			$lama = $interval->format('%Y Tahun, %m Bulan, %d Hari');
-		}else if($tipe == 2){	
+		} else if ($tipe == 2) {
 			$lama = $interval->format('%m Bulan, %d Hari');
-		}else if($tipe == 3){	
+		} else if ($tipe == 3) {
 			$lama = $interval->format('%d Hari');
-		}else if($tipe == 4){	
+		} else if ($tipe == 4) {
 			$lama = $interval->format('%d Hari %h Jam');
-		}else if($tipe == 5){	
+		} else if ($tipe == 5) {
 			$lama = $interval->format('%i');
 		}
 
 		return $lama;
+	}
+	public static function bandingkanWaktu($mulai, $akhir, $timenow)
+	{
+		$mulaitmp = explode(":", $mulai);
+		$akhirtmp = explode(":", $akhir);
+		$timenowtmp = explode(":", $timenow);
+		$mulaicek = ''. $mulaitmp[0] . $mulaitmp[1] .  $mulaitmp[2];
+		$akhircek = $akhirtmp[0]. $akhirtmp[1]. $akhirtmp[2];
+		$timenowcek = $timenowtmp[0] . $timenowtmp[1] . $timenowtmp[2];
+		// return $mulaicek;
+		if ((int)$mulaicek <= (int)$timenowcek && (int)$akhircek >= (int)$timenowcek) {
+			return true;
+		} else{
+			return false;
+		}
 	}
 
 }

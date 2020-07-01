@@ -92,6 +92,8 @@ public class HomeFragment extends Fragment {
                                 md.setThis_week(datakom.getString("this_week"));
                                 md.setJam_mulai(datakom.getString("jam_awal"));
                                 md.setJam_akhir(datakom.getString("jam_akhir"));
+                                md.setHari(datakom.getString("hari"));
+                                md.setKode(datakom.getString("kode_jadwal"));
                                 mItems.add(md);
                             } catch (Exception ea) {
                                 Log.e("erronya atas", "" + ea);
