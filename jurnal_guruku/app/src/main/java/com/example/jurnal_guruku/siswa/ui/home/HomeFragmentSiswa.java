@@ -26,7 +26,9 @@ import com.example.jurnal_guruku.config.ServerApi;
 import com.example.jurnal_guruku.config.authdata;
 import com.example.jurnal_guruku.guru.adapter.AdapterJadwal;
 import com.example.jurnal_guruku.guru.model.JadwalModel;
+import com.example.jurnal_guruku.guru.model.PermintaanModel;
 import com.example.jurnal_guruku.siswa.adapter.AdapterJadwalSiswa;
+import com.example.jurnal_guruku.siswa.adapter.AdapterPermintaanSiswa;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -42,16 +44,21 @@ public class HomeFragmentSiswa extends Fragment {
     private TextView txusername;
     RecyclerView.LayoutManager mManager;
     List<JadwalModel> mItems;
-    RecyclerView tempatdatajadwal;
+    RecyclerView tempatdatajadwal, tempatdatamengajar;
     AdapterJadwalSiswa mAdapter;
 
+    RecyclerView.LayoutManager mManagerReq;
+    List<PermintaanModel> mItemsReq;
+    AdapterPermintaanSiswa mAdapterReq;
     private ProgressDialog progressDialog;
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_home_siswa, container, false);
         txusername = root.findViewById(R.id.username);
         tempatdatajadwal = root.findViewById(R.id.tmpdatadua);
+        tempatdatamengajar = root.findViewById(R.id.tmpdatasatu);
         progressDialog = new ProgressDialog(getContext());
         mItems = new ArrayList<>();
+        mItemsReq = new ArrayList<>();
 
         loaddata();
         mAdapter = new AdapterJadwalSiswa(getContext(), mItems);
@@ -59,6 +66,13 @@ public class HomeFragmentSiswa extends Fragment {
         tempatdatajadwal.setLayoutManager(mManager);
         tempatdatajadwal.setHasFixedSize(true);
         tempatdatajadwal.setAdapter(mAdapter);
+
+        mAdapterReq = new AdapterPermintaanSiswa(getContext(), mItemsReq);
+        mManagerReq = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
+        tempatdatamengajar.setLayoutManager(mManagerReq);
+        tempatdatamengajar.setHasFixedSize(true);
+        tempatdatamengajar.setAdapter(mAdapterReq);
+
         return root;
     }
 
@@ -99,6 +113,27 @@ public class HomeFragmentSiswa extends Fragment {
                             }
                         }
                         mAdapter.notifyDataSetChanged();
+
+
+                        JSONArray arrReq = res.getJSONArray("mengajar");
+                        for (int i = 0; i < arrReq.length(); i++) {
+                            try {
+                                JSONObject datakom = arrReq.getJSONObject(i);
+                                PermintaanModel md = new PermintaanModel();
+                                md.setCreate_at(datakom.getString("create_at"));
+                                md.setKode(datakom.getString("kode_req"));
+                                md.setNama_mapel(datakom.getString("nama_mapel"));
+                                md.setJam_awal(datakom.getString("jam_awal"));
+                                md.setJam_akhir(datakom.getString("jam_akhir"));
+                                md.setDeskripsi(datakom.getString("deskripsi"));
+                                md.setStatus(datakom.getString("status"));
+                                mItemsReq.add(md);
+                            } catch (Exception ea) {
+                                Log.e("erronya atas", "" + ea);
+                                ea.printStackTrace();
+                            }
+                        }
+                        mAdapterReq.notifyDataSetChanged();
                         progressDialog.dismiss();
                     } else {
                         Toast.makeText(getContext(), respon.getString("pesan"), Toast.LENGTH_SHORT).show();

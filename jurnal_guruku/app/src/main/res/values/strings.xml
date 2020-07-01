@@ -7,7 +7,6 @@
     <string name="jadwal">Jadwal</string>
     <string name="mengajar">Mengajar</string>
     <string name="permintaan">Permintaan</string>
-    <string name="akun">Akun</string>
     <string name="data_mengajar_aktif">Data Mengajar Aktif</string>
     <string name="jadwal_hari_ini">Jadwal Hari Ini</string>
     <string name="jadwal_mengajar">Jadwal Mengajar Anda</string>
@@ -25,5 +24,13 @@
     <string name="login">Login</string>
     <string name="jadwal_kelas_anda">Jadwal Kelas Anda</string>
     <string name="detail_jadwal_kelas">Detail Jadwal Kelas</string>
+    <string name="permintaan_guru_pengganti">Permintaan Guru Pengganti</string>
+    <string name="detail_permintaan">Detail Permintaan</string>
+    <string name="detail_permintaan_guru_pengganti">Detail Permintaan Guru Pengganti</string>
+    <string name="detail_mengajar">Detail Mengajar</string>
+    <string name="data_hasil_mengajar">Data Hasil Mengajar</string>
+    <string name="catatan_siswa">Catatan Siswa</string>
+    <string name="tipe_guru">Tipe Guru</string>
+    <string name="akun">Akun</string>
 
 </resources>

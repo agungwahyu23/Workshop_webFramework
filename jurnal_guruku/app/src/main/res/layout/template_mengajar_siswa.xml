@@ -53,6 +53,26 @@
             <ImageView
                 android:layout_width="20dp"
                 android:layout_height="20dp"
+                android:src="@drawable/ic_baseline_person_24"/>
+            <TextView
+                android:id="@+id/namaguru"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.7"
+                android:text="Nama Guru"
+                android:layout_marginHorizontal="8dp"
+                android:textSize="14sp"
+                android:textColor="@color/darkGrey" />
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
                 android:src="@drawable/ic_timer_707070"/>
             <TextView
                 android:id="@+id/jam_p"
@@ -71,12 +91,16 @@
             android:layout_marginVertical="5dp"
             android:orientation="horizontal">
 
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/ic_baseline_star_24"/>
             <TextView
-                android:id="@+id/deskripsi"
+                android:id="@+id/ratingnya"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.7"
-                android:text="Deskripsi"
+                android:text="Rating"
                 android:layout_marginHorizontal="8dp"
                 android:textSize="14sp"
                 android:textColor="@color/darkGrey" />

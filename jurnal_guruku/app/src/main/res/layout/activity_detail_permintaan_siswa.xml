@@ -19,7 +19,7 @@
             android:layout_width="0dp"
             android:layout_weight="0.7"
             android:layout_height="wrap_content"
-            android:text="@string/detail_jadwal_kelas"
+            android:text="@string/detail_permintaan_guru_pengganti"
             android:paddingHorizontal="10dp"
             android:textSize="17sp"
             android:textColor="@color/white"
@@ -42,8 +42,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:paddingTop="100dp"
-        android:paddingHorizontal="15dp">
+        android:paddingHorizontal="15dp"
+        android:paddingTop="100dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -64,7 +64,7 @@
                 android:text="Kelas"
                 />
         </LinearLayout>
-       <View
+        <View
             android:layout_width="match_parent"
             android:layout_height="0.5dp"
             android:layout_marginVertical="10dp"
@@ -77,17 +77,17 @@
                 android:layout_width="150dp"
                 android:textSize="14sp"
                 android:layout_height="wrap_content"
-                android:text="Nama Guru"
+                android:text="Mata Pelajaran"
                 android:textColor="#000"/>
             <TextView
-                android:id="@+id/txtnama"
+                android:id="@+id/txmapel"
                 android:layout_width="150dp"
                 android:textSize="14sp"
                 android:textColor="#000"
                 android:layout_height="wrap_content"
-                android:text="Nama Guru"/>
+                android:text="-"/>
         </LinearLayout>
-       <View
+        <View
             android:layout_width="match_parent"
             android:layout_height="0.5dp"
             android:layout_marginVertical="10dp"
@@ -99,18 +99,18 @@
             <TextView
                 android:layout_width="150dp"
                 android:textSize="14sp"
-                android:textColor="#000"
                 android:layout_height="wrap_content"
-                android:text="Hari"/>
+                android:text="Deskripsi"
+                android:textColor="#000"/>
             <TextView
-                android:id="@+id/txthari"
+                android:id="@+id/deskripsi"
                 android:layout_width="150dp"
                 android:textSize="14sp"
                 android:textColor="#000"
                 android:layout_height="wrap_content"
-                android:text="Hari"/>
+                android:text="-"/>
         </LinearLayout>
-       <View
+        <View
             android:layout_width="match_parent"
             android:layout_height="0.5dp"
             android:layout_marginVertical="10dp"
@@ -122,18 +122,18 @@
             <TextView
                 android:layout_width="150dp"
                 android:textSize="14sp"
-                android:textColor="#000"
                 android:layout_height="wrap_content"
-                android:text="Jam Mulai"/>
+                android:text="Hari"
+                android:textColor="#000"/>
             <TextView
-                android:id="@+id/txtjamawal"
+                android:id="@+id/txhari"
                 android:layout_width="150dp"
                 android:textSize="14sp"
                 android:textColor="#000"
                 android:layout_height="wrap_content"
-                android:text="Jam Mulai"/>
+                android:text="-"/>
         </LinearLayout>
-       <View
+        <View
             android:layout_width="match_parent"
             android:layout_height="0.5dp"
             android:layout_marginVertical="10dp"
@@ -145,18 +145,18 @@
             <TextView
                 android:layout_width="150dp"
                 android:textSize="14sp"
-                android:textColor="#000"
                 android:layout_height="wrap_content"
-                android:text="Jam Selesai"/>
+                android:text="Jam Pelaksanaan"
+                android:textColor="#000"/>
             <TextView
-                android:id="@+id/txtjamakhir"
+                android:id="@+id/txjam"
                 android:layout_width="150dp"
                 android:textSize="14sp"
                 android:textColor="#000"
                 android:layout_height="wrap_content"
-                android:text="Jam Selesai"/>
+                android:text="-"/>
         </LinearLayout>
-       <View
+        <View
             android:layout_width="match_parent"
             android:layout_height="0.5dp"
             android:layout_marginVertical="10dp"
@@ -168,75 +168,92 @@
             <TextView
                 android:layout_width="150dp"
                 android:textSize="14sp"
-                android:textColor="#000"
                 android:layout_height="wrap_content"
-                android:text="Status Mengajar"/>
+                android:text="Tipe Permintaan"
+                android:textColor="#000"/>
             <TextView
-                android:id="@+id/txtstatus"
+                android:id="@+id/txtipe"
                 android:layout_width="150dp"
                 android:textSize="14sp"
                 android:textColor="#000"
                 android:layout_height="wrap_content"
-                android:text="Status Mengajar"/>
-        </LinearLayout>
-        <LinearLayout
-            android:visibility="gone"
-            android:id="@+id/pnl_btn_ingatkan"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:paddingTop="20dp">
-            <Button
-                android:id="@+id/btn_ingatkan"
-                android:layout_width="0dp"
-                android:layout_weight="0.3"
-                android:textColor="@color/white"
-                android:textAllCaps="false"
-                android:layout_marginRight="15dp"
-                android:layout_height="wrap_content"
-                android:text="Ingatkan Guru"
-                android:background="@color/colorPrimaryDark"/>
-            <Button
-                android:id="@+id/btn_req_guru"
-                android:layout_width="0dp"
-                android:layout_weight="0.4"
-                android:textColor="@color/white"
-                android:textAllCaps="false"
-                android:layout_height="wrap_content"
-                android:text="Permintaan Guru Pengganti"
-                android:background="@color/colorPrimaryDark"/>
-        </LinearLayout>
-        <LinearLayout
-            android:visibility="gone"
-            android:id="@+id/pnl_btn_rating"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:paddingTop="20dp">
-            <Button
-                android:id="@+id/btn_rating"
-                android:layout_width="match_parent"
-                android:textColor="@color/white"
-                android:layout_height="wrap_content"
-                android:text="Beri Rating"
-                android:background="@color/colorPrimaryDark"/>
-        </LinearLayout>
-       <View
-            android:layout_width="match_parent"
-            android:layout_height="0.5dp"
-            android:layout_marginVertical="10dp"
-            android:background="@color/lightGrey" />
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-            <TextView
-                android:id="@+id/txtdone"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Sudah mengajar"/>
+                android:text="-"/>
         </LinearLayout>
 
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_marginVertical="10dp"
+            android:background="@color/lightGrey" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="150dp"
+                android:textSize="14sp"
+                android:layout_height="wrap_content"
+                android:text="Diambil Oleh"
+                android:textColor="#000"/>
+            <TextView
+                android:id="@+id/txdiambil"
+                android:layout_width="150dp"
+                android:textSize="14sp"
+                android:textColor="#000"
+                android:layout_height="wrap_content"
+                android:text="-"/>
+        </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_marginVertical="10dp"
+            android:background="@color/lightGrey" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="150dp"
+                android:textSize="14sp"
+                android:layout_height="wrap_content"
+                android:text="Dibuat Pada"
+                android:textColor="#000"/>
+            <TextView
+                android:id="@+id/txcreateat"
+                android:layout_width="150dp"
+                android:textSize="14sp"
+                android:textColor="#000"
+                android:layout_height="wrap_content"
+                android:text="-"/>
+        </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_marginVertical="10dp"
+            android:background="@color/lightGrey" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="150dp"
+                android:textSize="14sp"
+                android:layout_height="wrap_content"
+                android:text="Status Permintaan"
+                android:textColor="#000"/>
+            <TextView
+                android:id="@+id/txstatus"
+                android:layout_width="150dp"
+                android:textSize="14sp"
+                android:textColor="#000"
+                android:layout_height="wrap_content"
+                android:text="-"/>
+        </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_marginVertical="10dp"
+            android:background="@color/lightGrey" />
     </LinearLayout>
 
     <FrameLayout

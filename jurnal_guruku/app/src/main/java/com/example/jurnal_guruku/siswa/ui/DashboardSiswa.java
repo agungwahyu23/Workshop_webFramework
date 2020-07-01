@@ -16,8 +16,11 @@ import com.example.jurnal_guruku.guru.ui.akun.Akun;
 import com.example.jurnal_guruku.guru.ui.home.HomeFragment;
 import com.example.jurnal_guruku.guru.ui.jadwal.JadwalFragment;
 import com.example.jurnal_guruku.guru.ui.permintaan.PermintaanMain;
+import com.example.jurnal_guruku.siswa.ui.akun.AkunSiswa;
 import com.example.jurnal_guruku.siswa.ui.home.HomeFragmentSiswa;
 import com.example.jurnal_guruku.siswa.ui.jadwal.JadwalFragmentSiswa;
+import com.example.jurnal_guruku.siswa.ui.mengajar.MengajarFragmentSiswa;
+import com.example.jurnal_guruku.siswa.ui.permintaan.PermintaanFragmentSiswa;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class DashboardSiswa extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener{
@@ -52,14 +55,14 @@ public class DashboardSiswa extends AppCompatActivity implements BottomNavigatio
                 fragment = new JadwalFragmentSiswa();
                 break;
             case R.id.navigation_mengajar:
-                fragment = new JadwalFragment();
+                fragment = new MengajarFragmentSiswa();
                 break;
             case R.id.navigation_permintaan:
-                fragment = new PermintaanMain();
+                fragment = new PermintaanFragmentSiswa();
                 break;
 
             case R.id.navigation_akun:
-                fragment = new Akun();
+                fragment = new AkunSiswa();
                 break;
         }
         return loadFragment(fragment);

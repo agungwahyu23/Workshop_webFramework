@@ -16,10 +16,10 @@ import com.example.jurnal_guruku.MainActivity;
 import com.example.jurnal_guruku.R;
 import com.example.jurnal_guruku.config.authdata;
 
-public class Akun extends Fragment {
+public class AkunSiswa extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View root = inflater.inflate(R.layout.activity_akun, container, false);
+        View root = inflater.inflate(R.layout.activity_akun_siswa, container, false);
         RelativeLayout rtkeluar = root.findViewById(R.id.rtkeluarakun);
 
         rtkeluar.setOnClickListener(new View.OnClickListener() {

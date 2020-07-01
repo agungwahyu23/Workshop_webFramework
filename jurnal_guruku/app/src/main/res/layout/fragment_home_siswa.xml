@@ -56,9 +56,9 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/data_mengajar_aktif"
+        android:text="Data Mengajar Aktif / Menunggu Rating"
         android:paddingHorizontal="10dp"
-        android:textSize="17sp"
+        android:textSize="16sp"
         android:layout_marginVertical="20dp"
         />
     <androidx.recyclerview.widget.RecyclerView
@@ -71,7 +71,7 @@
         android:layout_height="wrap_content"
         android:text="@string/jadwal_hari_ini"
         android:paddingHorizontal="10dp"
-        android:textSize="17sp"
+        android:textSize="16sp"
         android:layout_marginVertical="20dp"
         />
     <androidx.recyclerview.widget.RecyclerView

@@ -8,6 +8,26 @@ public class PermintaanModel {
     String jam_akhir;
     String deskripsi;
 
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public PermintaanModel() {
+        this.kode = kode;
+        this.create_at = create_at;
+        this.nama_mapel = nama_mapel;
+        this.jam_awal = jam_awal;
+        this.jam_akhir = jam_akhir;
+        this.deskripsi = deskripsi;
+        this.status = status;
+    }
+
+    String status;
+
     public String getKode(){
         return kode;
     }
@@ -56,13 +76,6 @@ public class PermintaanModel {
         this.deskripsi = deskripsi;
     }
 
-    public PermintaanModel(){
-        this.kode = kode;
-        this.create_at = create_at;
-        this.nama_mapel = nama_mapel;
-        this.jam_awal = jam_awal;
-        this.jam_akhir = jam_akhir;
-        this.deskripsi = deskripsi;
-    }
+
 
 }
