@@ -62,6 +62,8 @@ class Jadwal extends REST_Controller  {
 			$end = date("Y-m-d",$end_week).' 23:59:59';  
 			$data['timenow'] = date('H:i:s');
 			$data['tdynow'] = Response_helper::hari_ini();
+			// $data['bisacheckin'] = Response_helper::bandingkanWaktu($data['data']['jam_awal'], $data['data']['jam_akhir'], $data['timenow']);
+			$data['bisacheckin'] = ($data['data']['hari'] == $data['tdynow'] && Response_helper::bandingkanWaktu($data['data']['jam_awal'], $data['data']['jam_akhir'], $data['timenow']));
 			$data['mengajar'] = $this->Maksi->getDataSingle("getmengajar", " WHERE h.kode_jadwal='$id' and h.mulai >= '$start' and h.akhir <= '$end' and (h.status != 4 and h.status != 5)");
 			$data['cekaksesguru'] = ($cek['akses_data'] == $data['mengajar']['kode_guru'] ? '1' : '0');
 			$data['respon'] = [

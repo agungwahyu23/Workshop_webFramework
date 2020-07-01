@@ -28,6 +28,7 @@ import com.example.jurnal_guruku.config.authdata;
 import com.example.jurnal_guruku.guru.model.JadwalModel;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
+import com.google.android.material.textfield.TextInputEditText;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -82,7 +83,7 @@ public class DetailJadwalGuru extends AppCompatActivity {
 
     //method buat nampilin bottomsheet
     private void showBottomSheetDialog() {
-        View view = getLayoutInflater().inflate(R.layout.activity_bottomsheet_guru_checkin, null);
+        final View view = getLayoutInflater().inflate(R.layout.activity_bottomsheet_guru_checkin, null);
 
         if (sheetBehavior.getState() == BottomSheetBehavior.STATE_EXPANDED) {
             sheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
@@ -96,11 +97,11 @@ public class DetailJadwalGuru extends AppCompatActivity {
         (view.findViewById(R.id.btn_check_in)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                CheckEditTextIsEmptyOrNot();
-                if (CheckEditText){
-                    CheckIn();
+                EditText txt_materi = view.findViewById(R.id.txt_materi);
+                if (!txt_materi.getText().toString().isEmpty()){
+                    CheckIn(txt_materi.getText().toString());
                 }else{
-                    Toast.makeText(DetailJadwalGuru.this, "Please fill all form fields.", Toast.LENGTH_LONG).show();
+                    Toast.makeText(DetailJadwalGuru.this, "Materi Tidak Boleh Kosong.", Toast.LENGTH_LONG).show();
                 }
             }
         });
@@ -121,8 +122,58 @@ public class DetailJadwalGuru extends AppCompatActivity {
     }
 
     //methode buat save materi yg dikasih
-    public void CheckIn(){
+    public void CheckIn(final String isimateri){
+        progressDialog.setMessage("Proses . . .");
+        progressDialog.show();
 
+        StringRequest senddata = new StringRequest(Request.Method.POST, ServerApi.IPServer + "mengajar/cekin/" +kode, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                try {
+                    JSONObject res = new JSONObject(response);
+                    JSONObject respon = res.getJSONObject("respon");
+                    if (respon.getBoolean("status")) {
+                        Toast.makeText(DetailJadwalGuru.this, respon.getString("pesan"), Toast.LENGTH_SHORT).show();
+                        loaddata();
+
+                    } else {
+                        Toast.makeText(DetailJadwalGuru.this, respon.getString("pesan"), Toast.LENGTH_SHORT).show();
+
+                    }
+                    progressDialog.dismiss();
+
+                } catch (JSONException e) {
+                    progressDialog.dismiss();
+                    Log.e("errorgan", e.getMessage());
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                progressDialog.dismiss();
+                Log.e("errornyaa ", "" + error);
+                Toast.makeText(DetailJadwalGuru.this, "Terjadi Kesalahan " + error, Toast.LENGTH_SHORT).show();
+
+
+            }
+        }){
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                Map<String, String> params = new HashMap<String, String>();
+                params.put("token", authdata.getInstance(getApplicationContext()).getToken());
+
+                return params;
+            }
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<>();
+                params.put("materi", isimateri);
+                return params;
+            }
+
+        };
+
+        AppController.getInstance().addToRequestQueue(senddata);
+        sheetDialog.dismiss();
     }
 
     //Method untuk mengecek apakah kolom udah terisi apa belum
@@ -161,8 +212,15 @@ public class DetailJadwalGuru extends AppCompatActivity {
                         txstatus.setText(thiar[Integer.parseInt(datanya.getString("this_week"))]);
 
                         if (datanya.getString("this_week").equals("0")){
-                            bt_chekin.setVisibility(View.VISIBLE);
-                            txdone.setVisibility(View.INVISIBLE);
+                            if (!res.getBoolean("bisacheckin")){
+                                bt_chekin.setVisibility(View.INVISIBLE);
+                                txdone.setVisibility(View.VISIBLE);
+                                txdone.setText("Belum Waktunya Mengajar");
+                            }else{
+
+                                bt_chekin.setVisibility(View.VISIBLE);
+                                txdone.setVisibility(View.INVISIBLE);
+                            }
                         }else if (datanya.getString("this_week").equals("1")){
                             bt_chekin.setVisibility(View.INVISIBLE);
                             txdone.setVisibility(View.VISIBLE);
