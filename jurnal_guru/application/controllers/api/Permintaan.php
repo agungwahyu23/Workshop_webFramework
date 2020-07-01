@@ -16,8 +16,8 @@ class Permintaan extends REST_Controller  {
 		if ($cek > 1) {
 			$as = 1;
 			$cekset = Data_helper::getdatarow('tahun_ajaran', 'aktif', '1');
-			$tipe = $this->get('tipe'); // guru kelas
-			$subtipe = $this->get('subtipe'); // sama jurusan / semua guru
+			$tipe = $this->get('tipe'); // 1 = guru (user guru) 2 = kelas (user siswa) 3 = ambil riwayat anda
+			$subtipe = $this->get('subtipe'); // sama jurusan / semua guru/semua jurusan
 			$wer = "";
 			$set = Data_helper::get_setting();
 			if($tipe == 1) {
