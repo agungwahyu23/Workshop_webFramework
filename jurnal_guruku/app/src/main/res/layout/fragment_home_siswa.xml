@@ -8,9 +8,9 @@
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="120dp"
+        android:layout_height="100dp"
         android:layout_marginTop="-20dp"
-        app:cardBackgroundColor="#3F51B5"
+        app:cardBackgroundColor="@color/colorPrimary"
         app:cardCornerRadius="22dp"
         app:cardPreventCornerOverlap="false"
         app:cardUseCompatPadding="false">
@@ -18,137 +18,67 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:paddingHorizontal="20dp"
             android:paddingTop="30dp">
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
+                android:layout_weight="0.8"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
-
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:paddingLeft="10dp"
-                    android:text="Hello Siswa,"
+                    android:text="Hello"
                     android:textColor="#FFF"
-                    android:textSize="14pt" />
+                    android:textSize="6pt"/>
 
                 <TextView
                     android:id="@+id/username"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:paddingLeft="10dp"
-                    android:text="Gulam"
+                    android:text="-"
                     android:textColor="#FFF"
-                    android:textSize="9pt"
+                    android:textSize="8pt"
                     android:textStyle="bold" />
             </LinearLayout>
 
-           <Button
-               android:layout_width="35dp"
-               android:layout_height="36dp"
-               android:layout_marginLeft="170dp"
-               android:background="@drawable/ic_refresh"/>
+            <Button
+                android:layout_width="35dp"
+                android:layout_height="36dp"
+                android:layout_marginRight="25dp"
+                android:background="@drawable/ic_refresh" />
 
         </LinearLayout>
+
     </androidx.cardview.widget.CardView>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/data_mengajar_aktif_siswa"
+        android:text="@string/data_mengajar_aktif"
         android:paddingHorizontal="10dp"
         android:textSize="17sp"
-        android:layout_marginVertical="20dp" />
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:paddingHorizontal="10dp"
-        android:paddingVertical="10dp"
-        android:paddingTop="5dp">
-        <TextView
-            android:id="@+id/mpl"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Matematika"
-            android:textStyle="bold"
-            android:textSize="15sp"
-            android:textColor="@color/darkGrey" />
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginVertical="5dp"
-            android:orientation="horizontal">
-
-            <ImageView
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:src="@drawable/ic_home_707070"/>
-            <TextView
-                android:id="@+id/nama_siswa"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="11 TKJD"
-                android:layout_marginHorizontal="8dp"
-                android:textSize="14sp"
-                android:textColor="@color/darkGrey" />
-
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginVertical="5dp"
-            android:orientation="horizontal">
-
-            <ImageView
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:src="@drawable/ic_library_books_black_24dp"/>
-            <TextView
-                android:id="@+id/tgsindividu"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.7"
-                android:text="Tugas Individu"
-                android:layout_marginHorizontal="8dp"
-                android:textSize="14sp"
-                android:textColor="@color/darkGrey" />
-
-            <LinearLayout
-                android:id="@+id/panelrating"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="#3F51B5"
-                android:gravity="end"
-                android:layout_gravity="end"
-                android:paddingVertical="2dp"
-                android:paddingHorizontal="7dp"
-                >
-                <TextView
-                    android:id="@+id/rating"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Menunggu Rating"
-                    android:layout_marginHorizontal="8dp"
-                    android:textSize="12sp"
-                    android:textColor="#ffff" />
-            </LinearLayout>
-        </LinearLayout>
-    </LinearLayout>
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/jadwal_hari_ini_siswa"
-        android:paddingHorizontal="10dp"
-        android:textSize="17dp"
-        android:layout_marginVertical="20dp"/>
+        android:layout_marginVertical="20dp"
+        />
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingHorizontal="10dp"
-        android:layout_marginBottom="60dp"
+        android:id="@+id/tmpdatasatu"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/jadwal_hari_ini"
+        android:paddingHorizontal="10dp"
+        android:textSize="17sp"
+        android:layout_marginVertical="20dp"
+        />
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="10dp"
+        android:paddingBottom="60dp"
         android:id="@+id/tmpdatadua"/>
 
 

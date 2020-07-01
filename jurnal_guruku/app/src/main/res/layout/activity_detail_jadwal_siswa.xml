@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".guru.ui.jadwal.DetailJadwalGuru">
+
+<!-- Tampilan menu atas -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:gravity="left"
+        android:padding="2dp">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="0.7"
+            android:layout_height="wrap_content"
+            android:text="@string/detail_jadwal_kelas"
+            android:paddingHorizontal="10dp"
+            android:textSize="17sp"
+            android:textColor="@color/white"
+            android:layout_marginVertical="20dp"
+            />
+
+        <ImageButton
+            android:id="@+id/imgrefresh"
+            android:layout_width="59dp"
+            android:layout_height="59dp"
+            android:background="@android:color/transparent"
+            android:padding="10dp"
+            app:srcCompat="@drawable/ic_refresh"
+            tools:ignore="VectorDrawableCompat" />
+
+    </LinearLayout>
+
+<!-- isi konten -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingHorizontal="15dp"
+        android:layout_marginTop="70dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingTop="20dp">
+            <TextView
+                android:layout_width="150dp"
+                android:textSize="14sp"
+                android:layout_height="wrap_content"
+                android:text="Kelas"
+                android:textColor="#000"/>
+            <TextView
+                android:id="@+id/txkelas"
+                android:layout_width="150dp"
+                android:textSize="14sp"
+                android:layout_height="wrap_content"
+                android:textColor="#000"
+                android:text="Kelas"
+                />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingTop="20dp">
+            <TextView
+                android:layout_width="150dp"
+                android:textSize="14sp"
+                android:layout_height="wrap_content"
+                android:text="Nama Guru"
+                android:textColor="#000"/>
+            <TextView
+                android:id="@+id/txtnama"
+                android:layout_width="150dp"
+                android:textSize="14sp"
+                android:textColor="#000"
+                android:layout_height="wrap_content"
+                android:text="Nama Guru"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingTop="20dp">
+            <TextView
+                android:layout_width="150dp"
+                android:textSize="14sp"
+                android:textColor="#000"
+                android:layout_height="wrap_content"
+                android:text="Hari"/>
+            <TextView
+                android:id="@+id/txthari"
+                android:layout_width="150dp"
+                android:textSize="14sp"
+                android:textColor="#000"
+                android:layout_height="wrap_content"
+                android:text="Hari"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingTop="20dp">
+            <TextView
+                android:layout_width="150dp"
+                android:textSize="14sp"
+                android:textColor="#000"
+                android:layout_height="wrap_content"
+                android:text="Jam Mulai"/>
+            <TextView
+                android:id="@+id/txtjamawal"
+                android:layout_width="150dp"
+                android:textSize="14sp"
+                android:textColor="#000"
+                android:layout_height="wrap_content"
+                android:text="Jam Mulai"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingTop="20dp">
+            <TextView
+                android:layout_width="150dp"
+                android:textSize="14sp"
+                android:textColor="#000"
+                android:layout_height="wrap_content"
+                android:text="Jam Selesai"/>
+            <TextView
+                android:id="@+id/txtjamakhir"
+                android:layout_width="150dp"
+                android:textSize="14sp"
+                android:textColor="#000"
+                android:layout_height="wrap_content"
+                android:text="Jam Selesai"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingTop="20dp">
+            <TextView
+                android:layout_width="150dp"
+                android:textSize="14sp"
+                android:textColor="#000"
+                android:layout_height="wrap_content"
+                android:text="Status Mengajar"/>
+            <TextView
+                android:id="@+id/txtstatus"
+                android:layout_width="150dp"
+                android:textSize="14sp"
+                android:textColor="#000"
+                android:layout_height="wrap_content"
+                android:text="Status Mengajar"/>
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/pnl_btn_ingatkan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingTop="20dp">
+            <Button
+                android:id="@+id/btn_ingatkan"
+                android:layout_width="0dp"
+                android:layout_weight="0.3"
+                android:textColor="@color/white"
+                android:textAllCaps="false"
+                android:layout_marginRight="15dp"
+                android:layout_height="wrap_content"
+                android:text="Ingatkan Guru"
+                android:background="@color/colorPrimaryDark"/>
+            <Button
+                android:id="@+id/btn_req_guru"
+                android:layout_width="0dp"
+                android:layout_weight="0.4"
+                android:textColor="@color/white"
+                android:textAllCaps="false"
+                android:layout_height="wrap_content"
+                android:text="Permintaan Guru Pengganti"
+                android:background="@color/colorPrimaryDark"/>
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/pnl_btn_rating"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingTop="20dp">
+            <Button
+                android:id="@+id/btn_rating"
+                android:layout_width="match_parent"
+                android:textColor="@color/white"
+                android:layout_height="wrap_content"
+                android:text="Beri Rating"
+                android:background="@color/colorPrimaryDark"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingTop="20dp">
+            <TextView
+                android:id="@+id/txtdone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Sudah mengajar"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/bottom_sheet"
+        android:paddingTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior" />
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

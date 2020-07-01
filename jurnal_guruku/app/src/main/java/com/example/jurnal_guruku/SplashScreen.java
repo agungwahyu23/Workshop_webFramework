@@ -8,6 +8,7 @@ import android.os.Handler;
 
 import com.example.jurnal_guruku.config.authdata;
 import com.example.jurnal_guruku.guru.BerandaGuru;
+import com.example.jurnal_guruku.siswa.ui.DashboardSiswa;
 
 import static java.lang.Thread.sleep;
 
@@ -29,7 +30,7 @@ public class SplashScreen extends AppCompatActivity {
                            Intent home = new Intent(SplashScreen.this, BerandaGuru.class);
                            startActivity(home);
                         } else{
-                            Intent home = new Intent(SplashScreen.this, BerandaGuru.class);
+                            Intent home = new Intent(SplashScreen.this, DashboardSiswa.class);
                             startActivity(home);
                         }
                     }
