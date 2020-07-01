@@ -42,17 +42,16 @@ class Maksi extends CI_Model
       where a.tipe = 1
       order by a.create_at desc";
     } else if ($tabel == "getjadwal") {
-      $query = "SELECT a.*, b.no_kelas, b.rombel, c.nama_jurusan, c.nama_singkat, d.nama_mapel, e.nama_guru, f.tahun from jadwal a 
+      $query = "SELECT a.*, b.no_kelas, b.rombel, c.nama_jurusan, c.nama_singkat, d.nama_mapel, e.nama_guru from jadwal a 
       left join kelas b on a.kode_kelas=b.kode_kelas
       left join jurusan c on b.kode_jurusan=c.kode_jurusan
       left join mapel d on a.kode_mapel=d.kode_mapel
       left join guru e on a.kode_guru=e.kode_guru
-      left join tahun_ajaran f on a.kode_tahun=f.kode_tahun
-      left join hari g on a.hari=g.kode_hari  
+      left join hari g on a.hari=g.kode_hari
       $key
       ";
     } else if ($tabel == "getjadwalforcron") {
-      $query = "SELECT a.*, b.no_kelas, b.rombel, c.nama_jurusan, c.nama_singkat, d.nama_mapel, e.nama_guru, f.last_token from jadwal a 
+      $query = "SELECT a.*, b.no_kelas, b.rombel, c.nama_jurusan, c.nama_singkat, d.nama_mapel, e.nama_guru, e.no_wa, f.last_token from jadwal a 
       left join kelas b on a.kode_kelas=b.kode_kelas
       left join jurusan c on b.kode_jurusan=c.kode_jurusan
       left join mapel d on a.kode_mapel=d.kode_mapel
@@ -132,7 +131,6 @@ class Maksi extends CI_Model
       left join jurusan c on b.kode_jurusan=c.kode_jurusan
       left join mapel d on a.kode_mapel=d.kode_mapel
       left join guru e on a.kode_guru=e.kode_guru
-      left join tahun_ajaran f on a.kode_tahun=f.kode_tahun
       left join hari g on a.hari=g.kode_hari
       $key
       ";
@@ -166,7 +164,15 @@ class Maksi extends CI_Model
       left join hari g on a.hari=g.kode_hari
       $key
       ";
-    }   else{
+    } else if ($tabel == "detailguru") {
+      $query = "SELECT a.*, b.nama_jurusan, b.nama_singkat, c.nama_pengguna, AVG(d.rating) as avgrating from guru a 
+      left join jurusan b on a.kode_jurusan=b.kode_jurusan
+      left join pengguna c on a.create_by=c.kode_pengguna
+      left join mengajar d on a.kode_guru=d.kode_guru
+      where a.status = 1 and (a.kode_guru='$key' or a.no_wa='$key')
+      group by a.kode_guru
+      order by a.nama_guru asc";
+    }    else{
       $query = "SELECT * FROM ".$tabel." WHERE status != '0'";
     }
       $db_result = $this->db->query($query);
@@ -308,9 +314,7 @@ class Maksi extends CI_Model
   {
     $set = $this->db->get_where("pengaturan_app", ['kode' => 1])->row_array();
     $url = 'https://fcm.googleapis.com/fcm/send';
-
     $fields = array();
-
     $fields['notification'] = array(
       "title" => $title,
       "body" => $body
@@ -325,10 +329,41 @@ class Maksi extends CI_Model
       $fields['registration_ids'] = $tokens;
     } else {
       $fields['to'] = $tokens;
-    }
-    
+    }   
     $headers = array(
       'Authorization: key='.$set['key_fcm'],
+      'Content-Type: application/json'
+    );
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_URL, $url);
+    curl_setopt($ch, CURLOPT_POST, true);
+    curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
+    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+    curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($fields));
+    $result = curl_exec($ch);
+    if ($result === FALSE) {
+      die('Curl failed: ' . curl_error($ch));
+    }
+    curl_close($ch);
+    return $result;
+  }
+
+
+  public function send_wa($nowa, $pesannya)
+  {
+    $set = $this->db->get_where("pengaturan_app", ['kode' => 1])->row_array();
+    $url = 'localhost:8082/sendText';
+
+    $fields = array();
+
+    $fields = array(
+      "to" => $nowa,
+      "msg" => $pesannya
+    );
+
+    $headers = array(
       'Content-Type: application/json'
     );
     $ch = curl_init();

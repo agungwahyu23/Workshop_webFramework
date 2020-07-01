@@ -69,24 +69,11 @@
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <h5>Pilih Mata Pelajaran <span class="text-danger">*</span></h5>
-                                    <select class="form-control select2" required name="mapel" id="defaultSelect">
+                                    <select class="form-control select2" required name="kode_mapel" id="defaultSelect">
                                         <option value="">Pilih Mata Pelajaran</option>
                                         <?php
                                         foreach ($datamapel as $p) { ?>
                                             <option value="<?= $p['kode_mapel'] ?>" <?= ($data['kode_mapel'] == $p['kode_mapel'] ? 'selected' : '') ?>><?= $p['nama_mapel']  ?></option>
-                                        <?php  }
-                                        ?>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <h5>Pilih Tahun Ajaran <span class="text-danger">*</span></h5>
-                                    <select class="form-control select2" required name="tahun_ajaran" id="defaultSelect">
-                                        <option value="">Pilih Tahun Ajaran</option>
-                                        <?php
-                                        foreach ($datatahun as $p) { ?>
-                                            <option value="<?= $p['kode_tahun'] ?>" <?= ($data['kode_tahun'] == $p['kode_tahun'] ? 'selected' : '') ?>><?= $p['tahun']  ?></option>
                                         <?php  }
                                         ?>
                                     </select>

@@ -48,15 +48,6 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="row">
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <h5>Upah Guru <span class="text-danger">*</span></h5>
-                                    <div class="controls">
-                                        <input type="text" name="upah" value="<?= Input_helper::postOrOr('upah', $data['upah']) ?>" class="form-control" required placeholder="Masukkan Upah Guru">
-                                    </div>
-                                </div>
-                            </div>
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <h5>Pilih Jurusan </h5>
@@ -111,7 +102,7 @@
                             </div>
                             <div class="col-md-4">
                                 <div class="text-xs-right">
-                                    
+                                    <button type="reset" class="btn btn-inverse">Reset</button>
                                     <button type="submit" class="btn btn-primary"> <?= $action ?></button>
                                 </div>
                             </div>

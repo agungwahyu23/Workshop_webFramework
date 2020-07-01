@@ -75,8 +75,8 @@
                                         <td><?= Response_helper::waktu($p['last_login']) ?></td>
                                         <td><?= Response_helper::waktu($p['create_at']) ?></td>
                                         <td>
-                                            <a href="<?= base_url('backoffice/pengguna/edit/' . $p['kode_pengguna']) ?>"><i class='fa fa-edit'></i>Edit</a>&nbsp;
-                                            <td><a href="#" onclick="confirm_modal('<?= base_url('backoffice/pengguna/delete/' . $p['kode_pengguna']) ?>')"><i class='fa fa-trash'></i>Hapus</a></td>
+                                            <a href="<?= base_url('backoffice/pengguna/edit/' . $p['kode_pengguna']) ?>"><i class='fa fa-edit'></i></a>&nbsp;
+                                            <a href="#" onclick="confirm_modal('<?= base_url('backoffice/pengguna/delete/' . $p['kode_pengguna']) ?>')"><i class='fa fa-trash'></i></a>
                                         </td>
                                     </tr>
                                 <?php

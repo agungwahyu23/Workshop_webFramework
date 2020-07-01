@@ -11,8 +11,6 @@ class Penarikan extends CI_Controller
 		}
 		if ($this->uri->segment(3) == "add" && $_SERVER['REQUEST_METHOD'] == "POST") {
 			$this->store();
-		} else if ($this->uri->segment(3) == "edit" && $_SERVER['REQUEST_METHOD'] == "POST") {
-			$this->update($this->uri->segment(4));
 		}
 	}
 	public function index()
@@ -27,8 +25,8 @@ class Penarikan extends CI_Controller
 	{
 		$data['title'] = "Tambah Penarikan";
 		$data['action'] = "Tambah Data";
-        $data['content'] = "penarikan/addpenarikan";
-        $data['dataguru'] = $this->Maksi->getData('getguru');
+		$data['content'] = "penarikan/addpenarikan";
+		$data['dataguru'] = $this->Maksi->getData("getguru");
 		$data['data'] = null;
 		$this->load->view('backend/index', $data);
 	}
@@ -37,20 +35,31 @@ class Penarikan extends CI_Controller
 	{
 		try {
 
-			$kode = $this->Maksi->random_oke(16);
+			$kode_guru = $this->input->post('kode_guru', TRUE);
+			$jml = Input_helper::bersihkanangka($this->input->post('jml_penarikan', TRUE));
+			$cekData = $this->db->get_where("guru", ['kode_guru' => $kode_guru])->row_array();
+			if((int)$cekData['upah'] < $jml ){
 
-			$arr = [
-				'kode_reward' => $kode,
-                'kode_guru' => $this->input->post('kode_guru', TRUE),
-                'keterangan' => "penarikan saldo",
-                'jumlah' => $this->input->post('jml_penarikan', TRUE),
-                'tipe' => '1',
-				'create_at' => date("Y-m-d H:i:s"),
-				'create_by' => $this->session->userdata('kode_pengguna')
-			];
-			$this->Maksi->insertData("rw_reward", $arr);
-			$this->session->set_flashdata("message", ['success', 'Berhasil Menambah Data Penarikan', ' Berhasil']);
-			redirect(base_url("backoffice/penarikan"));
+				$this->session->set_flashdata("message", ['danger', 'Saldo Tidak Mencukupi', ' Gagal']);
+				$this->add();
+			}else {
+				$kode = $this->Maksi->random_oke(16);
+				$nonya = $this->Maksi->random_number(6);
+
+				$arr = [
+					'kode_reward' => $kode,
+					'kode_guru' => $kode_guru,
+					'keterangan' => "Penarikan Saldo #".$nonya,
+					'jumlah' => $jml,
+					'tipe' => 1,
+					'create_at' => $this->input->post('tgl', TRUE).' '. $this->input->post('waktu', TRUE).':00',
+					'create_by' => $this->session->userdata('kode_pengguna')
+				];
+				$this->Maksi->insertData("rw_reward", $arr);
+				$this->session->set_flashdata("message", ['success', 'Berhasil Membuat Penarikan', ' Berhasil']);
+				redirect(base_url("backoffice/penarikan"));
+
+			}
 		} catch (Exception $e) {
 			$this->session->set_flashdata("message", ['danger', 'Gagal Menambah Data Penarikan', ' Gagal']);
 			$this->add();
@@ -59,10 +68,11 @@ class Penarikan extends CI_Controller
 
 	public function edit($id)
 	{
-		$data['title'] = "Edit Jurusan";
-		$data['action'] = "Edit Jurusan";
-		$data['content'] = "jurusan/addjurusan";
-		$data['data'] = $this->db->get_where("jurusan", ['kode_jurusan' => $id])->row_array();
+		$data['title'] = "Edit Kelas";
+		$data['action'] = "Edit Kelas";
+		$data['content'] = "kelas/addkelas";
+		$data['datajurusan'] = $this->Maksi->getData("getjurusan");
+		$data['data'] = $this->db->get_where("kelas", ['kode_kelas' => $id])->row_array();
 		$this->load->view('backend/index', $data);
 	}
 
@@ -71,15 +81,16 @@ class Penarikan extends CI_Controller
 	{
 		try {
 			$arr = [
-				'nama_jurusan' => $this->input->post('nama_jurusan', TRUE),
-				'nama_singkat' => $this->input->post('nama_singkat', TRUE),
+				'kode_jurusan' => $this->input->post('jurusan', TRUE),
+				'no_kelas' => $this->input->post('no_kelas', TRUE),
+				'rombel' => $this->input->post('rombel', TRUE),
 			];
-			$this->Maksi->updateData("jurusan", $arr, $id, "kode_jurusan");
+			$this->Maksi->updateData("kelas", $arr, $id, "kode_kelas");
 
-			$this->session->set_flashdata("message", ['success', 'Berhasil Mengedit Data Jurusan', ' Berhasil']);
-			redirect(base_url("backoffice/jurusan"));
+			$this->session->set_flashdata("message", ['success', 'Berhasil Mengedit Data Kelas', ' Berhasil']);
+			redirect(base_url("backoffice/kelas"));
 		} catch (Exception $e) {
-			$this->session->set_flashdata("message", ['danger', 'Gagal Mengedit Data Jurusan', ' Gagal']);
+			$this->session->set_flashdata("message", ['danger', 'Gagal Mengedit Data Kelas', ' Gagal']);
 			$this->edit($id);
 		}
 	}
@@ -90,13 +101,13 @@ class Penarikan extends CI_Controller
 			$arr = [
 				'status' => 0
 			];
-			$this->Maksi->updateData("jurusan", $arr, $id, "kode_jurusan");
+			$this->Maksi->updateData("kelas", $arr, $id, "kode_kelas");
 
-			$this->session->set_flashdata("message", ['success', 'Berhasil Menghapus Data Jurusan', ' Berhasil']);
-			redirect(base_url("backoffice/jurusan"));
+			$this->session->set_flashdata("message", ['success', 'Berhasil Menghapus Data Kelas', ' Berhasil']);
+			redirect(base_url("backoffice/kelas"));
 		} catch (Exception $e) {
-			$this->session->set_flashdata("message", ['danger', 'Gagal Menghapus Data Jurusan', ' Gagal']);
-			redirect(base_url("backoffice/jurusan"));
+			$this->session->set_flashdata("message", ['danger', 'Gagal Menghapus Data Kelas', ' Gagal']);
+			redirect(base_url("backoffice/kelas"));
 		}
 	}
 

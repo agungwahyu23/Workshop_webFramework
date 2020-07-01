@@ -78,9 +78,9 @@
                                         <td><?= $p['nama_pengguna'] ?></td>
                                         <td>
 
-                                            <a href="<?= base_url('backoffice/tahun/edit/' . $p['kode_tahun']) ?>"><i class='fas fa-edit'></i>Edit</a>&nbsp;
+                                            <a href="<?= base_url('backoffice/tahun/edit/' . $p['kode_tahun']) ?>"><i class='fas fa-edit'></i></a>&nbsp;
 
-                                            <td><a href="#" onclick="confirm_modal('<?= base_url('backoffice/tahun/delete/' . $p['kode_tahun']); ?>')"><i class='fas fa-trash'></i>Hapus</a></td>
+                                            <a href="#" onclick="confirm_modal('<?= base_url('backoffice/tahun/delete/' . $p['kode_tahun']); ?>')"><i class='fas fa-trash'></i></a>
 
                                         </td>
                                     </tr>

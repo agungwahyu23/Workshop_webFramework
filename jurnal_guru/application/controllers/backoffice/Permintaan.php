@@ -1,7 +1,6 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-
 class Permintaan extends CI_Controller
 {
 	function __construct()
@@ -10,34 +9,29 @@ class Permintaan extends CI_Controller
 		if (!$this->session->has_userdata('kode_pengguna') || $this->session->userdata('level')  != '1') {
 			redirect(base_url());
 		}
-		if ($this->uri->segment(3) == "add" && $_SERVER['REQUEST_METHOD'] == "POST") {
-			$this->store();
-		} else if ($this->uri->segment(3) == "edit" && $_SERVER['REQUEST_METHOD'] == "POST") {
-			$this->update($this->uri->segment(4));
-		}
-
 	}
 	public function index()
 	{
 		$data['title'] = "Data Permintaan Mengajar";
 		$data['content'] = "permintaan/indexpermintaan";
-        $data['data'] = $this->Maksi->getData("getpermintaan");
+		$cekset = Data_helper::getdatarow('tahun_ajaran', 'aktif', '1');
+		$wer = " WHERE a.kode_tahun='$cekset[kode_tahun]' order by h.create_at desc";
+		$data['data'] = $this->Maksi->getData("getpermintaan", $wer);
 
-        $this->load->view('backend/index', $data);
-    }
-    public function delete($id)
+		$this->load->view('backend/index', $data);
+	}
+
+	public function delete($id)
 	{
 		try {
-			$arr = [
-				'status' => 0
-			];
-			$this->Maksi->updateData("permintaan", $arr, $id, "kode_req");
+			$this->Maksi->deleteData("req_guru","kode_req", $id);
 
-			$this->session->set_flashdata("message", ['success', 'Berhasil Menonaktifkan', ' Berhasil']);
+			$this->session->set_flashdata("message", ['success', 'Berhasil Menghapus Permintaan Mengajar', ' Berhasil']);
 			redirect(base_url("backoffice/permintaan"));
 		} catch (Exception $e) {
-			$this->session->set_flashdata("message", ['danger', 'Gagal Menonaktifkan', ' Gagal']);
+			$this->session->set_flashdata("message", ['danger', 'Gagal Menghapus Permintaan Mengajar', ' Gagal']);
 			redirect(base_url("backoffice/permintaan"));
 		}
 	}
+
 }

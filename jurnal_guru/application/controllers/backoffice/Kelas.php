@@ -28,8 +28,8 @@ class Kelas extends CI_Controller
 		$data['title'] = "Tambah Kelas";
 		$data['action'] = "Tambah Data";
 		$data['content'] = "kelas/addkelas";
-        $data['data'] = null;
-        $data['datajurusan'] = $this->Maksi->getData('getjurusan');
+		$data['datajurusan'] = $this->Maksi->getData("getjurusan");
+		$data['data'] = null;
 		$this->load->view('backend/index', $data);
 	}
 
@@ -37,21 +37,44 @@ class Kelas extends CI_Controller
 	{
 		try {
 
-			$kode = $this->Maksi->random_oke(16);
+			$username = $this->input->post('username', TRUE);
+			$cekData = $this->db->get_where("pengguna", ['email' => $username,'status' => 1])->row_array();
+			if($cekData > 1 ){
 
-			$arr = [
-				'kode_kelas' => $kode,
-				'kode_jurusan' => $this->input->post('jurusan', TRUE),
-                'no_kelas' => $this->input->post('no_kelas', TRUE),
-                'rombel' => $this->input->post('rombel', TRUE),
-				'create_at' => date("Y-m-d H:i:s"),
-				'create_by' => $this->session->userdata('kode_pengguna')
-			];
-			$this->Maksi->insertData("kelas", $arr);
-			$this->session->set_flashdata("message", ['success', 'Berhasil Menambah Data Kelas', ' Berhasil']);
-			redirect(base_url("backoffice/kelas"));
+				$this->session->set_flashdata("message", ['danger', 'Username Telah Di Gunakan', ' Gagal']);
+				$this->add();
+			}else {
+				$kode = $this->Maksi->random_oke(16);
+
+				$arr = [
+					'kode_kelas' => $kode,
+					'kode_jurusan' => $this->input->post('jurusan', TRUE),
+					'no_kelas' => $this->input->post('no_kelas', TRUE),
+					'rombel' => $this->input->post('rombel', TRUE),
+					'create_at' => date("Y-m-d H:i:s"),
+					'create_by' => $this->session->userdata('kode_pengguna')
+				];
+
+				$getjurusan = $this->db->get_where("jurusan", ['kode_jurusan' => $arr['kode_jurusan']])->row_array();
+				$kodeuser = $this->Maksi->random_oke(32);
+				$arruser =
+					[
+						'kode_pengguna' => $kodeuser,
+						'akses_data' => $arr['kode_kelas'],
+						'nama_pengguna' => "Siswa Kelas ". $arr['no_kelas'].' '. $getjurusan['nama_singkat'].' '. $arr['rombel'],
+						'email' => $username,
+						'password' => password_hash($username, PASSWORD_BCRYPT),
+						'level' => 3,
+						'create_at' => date('Y-m-d H:i:s')
+					];
+				$this->Maksi->insertData("pengguna", $arruser);
+				$this->Maksi->insertData("kelas", $arr);
+				$this->session->set_flashdata("message", ['success', 'Berhasil Menambah Data kelas', ' Berhasil']);
+				redirect(base_url("backoffice/kelas"));
+
+			}
 		} catch (Exception $e) {
-			$this->session->set_flashdata("message", ['danger', 'Gagal Menambah Data Kelas', ' Gagal']);
+			$this->session->set_flashdata("message", ['danger', 'Gagal Menambah Data kelas', ' Gagal']);
 			$this->add();
 		}
 	}
@@ -60,8 +83,8 @@ class Kelas extends CI_Controller
 	{
 		$data['title'] = "Edit Kelas";
 		$data['action'] = "Edit Kelas";
-        $data['content'] = "kelas/addkelas";
-        $data['datajurusan'] = $this->Maksi->getData('getjurusan');
+		$data['content'] = "kelas/addkelas";
+		$data['datajurusan'] = $this->Maksi->getData("getjurusan");
 		$data['data'] = $this->db->get_where("kelas", ['kode_kelas' => $id])->row_array();
 		$this->load->view('backend/index', $data);
 	}
@@ -72,8 +95,8 @@ class Kelas extends CI_Controller
 		try {
 			$arr = [
 				'kode_jurusan' => $this->input->post('jurusan', TRUE),
-                'no_kelas' => $this->input->post('no_kelas', TRUE),
-                'rombel' => $this->input->post('rombel', TRUE),
+				'no_kelas' => $this->input->post('no_kelas', TRUE),
+				'rombel' => $this->input->post('rombel', TRUE),
 			];
 			$this->Maksi->updateData("kelas", $arr, $id, "kode_kelas");
 
