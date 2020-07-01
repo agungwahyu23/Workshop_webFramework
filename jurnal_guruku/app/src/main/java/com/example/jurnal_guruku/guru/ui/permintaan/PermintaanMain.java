@@ -33,7 +33,6 @@ public class PermintaanMain extends Fragment {
 
         //Memasang Adapter pada ViewPager
         viewPager.setAdapter(pagerAdapter);
-
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
 
         //Callback Interface dipanggil saat status pilihan tab berubah.
@@ -43,12 +42,10 @@ public class PermintaanMain extends Fragment {
                 //Dipanggil ketika tab memasuki state/keadaan yang dipilih.
                 viewPager.setCurrentItem(tab.getPosition());
             }
-
             @Override
             public void onTabUnselected(TabLayout.Tab tab) {
                 //Dipanggil saat tab keluar dari keadaan yang dipilih.
             }
-
             @Override
             public void onTabReselected(TabLayout.Tab tab) {
                 //Dipanggil ketika tab yang sudah dipilih, dipilih lagi oleh user.
