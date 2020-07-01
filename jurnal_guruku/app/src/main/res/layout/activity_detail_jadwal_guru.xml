@@ -10,17 +10,18 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@android:color/holo_blue_dark"
-        android:gravity="right"
+        android:background="@color/colorPrimary"
+        android:gravity="left"
         android:padding="2dp">
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
+            android:layout_weight="0.7"
             android:layout_height="wrap_content"
-            android:text="@string/jadwal_mengajar"
-            android:layout_marginRight="110dp"
+            android:text="@string/detail_jadwal"
             android:paddingHorizontal="10dp"
             android:textSize="17sp"
+            android:textColor="@color/white"
             android:layout_marginVertical="20dp"
             />
 
@@ -32,13 +33,15 @@
             android:padding="10dp"
             app:srcCompat="@drawable/ic_refresh"
             tools:ignore="VectorDrawableCompat" />
-    </LinearLayout>     <!-- Tutup menu atas-->
+
+    </LinearLayout>
 
 <!-- isi konten -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
+        android:paddingHorizontal="15dp"
         android:layout_marginTop="70dp">
 
         <LinearLayout
@@ -164,9 +167,10 @@
             <Button
                 android:id="@+id/btn_checkin"
                 android:layout_width="match_parent"
+                android:textColor="@color/white"
                 android:layout_height="wrap_content"
                 android:text="Check in Kelas"
-                android:background="#3D6AFF"/>
+                android:background="@color/colorPrimaryDark"/>
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"

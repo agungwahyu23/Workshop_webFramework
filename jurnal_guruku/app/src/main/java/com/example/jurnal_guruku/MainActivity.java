@@ -1,8 +1,11 @@
 package com.example.jurnal_guruku;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -127,6 +130,23 @@ public class MainActivity extends AppCompatActivity {
     AppController.getInstance().addToRequestQueue(senddata);
 }
 
+    public void onBackPressed() {
+        new AlertDialog.Builder(this)
+                .setIcon(R.drawable.logosmea)
+                .setTitle("Keluar Aplikasi")
+                .setMessage("Apakah Anda Ingin Keluar Dari Aplikasi?")
+                .setPositiveButton("Ya", new DialogInterface.OnClickListener()
+                {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        ActivityCompat.finishAffinity(MainActivity.this);
+                        finish();
+                    }
+
+                })
+                .setNegativeButton("Tidak", null)
+                .show();
+    }
     public void CheckEditTextIsEmptyOrNot(){
         EmailHolder = Email.getText().toString().trim();
         PasswordHolder = Password.getText().toString().trim();
