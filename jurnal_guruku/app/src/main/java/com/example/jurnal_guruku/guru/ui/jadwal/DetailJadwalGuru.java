@@ -226,7 +226,7 @@ public class DetailJadwalGuru extends AppCompatActivity {
                             txdone.setVisibility(View.VISIBLE);
                         }else{
                             bt_chekin.setVisibility(View.INVISIBLE);
-                            txdone.setVisibility(View.VISIBLE);
+                            txdone.setVisibility(View.INVISIBLE);
                         }
 
 //                        JSONObject re = new JSONObject(response);
