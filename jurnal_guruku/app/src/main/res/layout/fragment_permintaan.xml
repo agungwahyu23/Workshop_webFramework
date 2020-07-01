@@ -1,13 +1,98 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.viewpager.widget.ViewPager
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/pager"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    tools:context=".guru.ui.permintaan.PermintaanMain">
 
-    <com.google.android.material.tabs.TabLayout
-        android:id="@+id/tab_layout"
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:background="@color/colorAccent"
+        android:minHeight="?attr/actionBarSize">
 
-</androidx.viewpager.widget.ViewPager>
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimary"
+            android:minHeight="?attr/actionBarSize"
+            app:theme="@style/AppTheme"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorPrimary"
+                android:gravity="left"
+                android:padding="2dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="0.7"
+                    android:layout_height="wrap_content"
+                    android:text="@string/jadwal_mengajar"
+                    android:paddingHorizontal="10dp"
+                    android:textSize="17sp"
+                    android:textColor="@color/white"
+                    android:layout_marginVertical="20dp"
+                    />
+
+                <ImageButton
+                    android:id="@+id/refresh"
+                    android:layout_width="59dp"
+                    android:layout_height="59dp"
+                    android:background="@android:color/transparent"
+                    android:padding="10dp"
+                    app:srcCompat="@drawable/ic_refresh"
+                    tools:ignore="VectorDrawableCompat" />
+
+            </LinearLayout>
+
+        </androidx.appcompat.widget.Toolbar>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+<!--    Menerapkan Tab layout-->
+    <com.google.android.material.tabs.TabLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tab_layout"
+        android:layout_below="@id/appBar"
+        android:background="@color/colorPrimary"
+        app:tabTextColor="#FFFFFF"
+        app:tabMode="fixed"
+        app:tabSelectedTextColor="#FFFFFF">
+
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/tab_kontak"
+            android:text="Satu Jurusan" />
+
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/tab_pesan"
+            android:text="Semua Jurusan" />
+
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/tab_riwayat"
+            android:text="Riwayat anda" />
+
+    </com.google.android.material.tabs.TabLayout>
+
+    <androidx.viewpager.widget.ViewPager
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/pager"
+        android:layout_below="@id/tab_layout">
+
+    </androidx.viewpager.widget.ViewPager>
+
+</RelativeLayout>

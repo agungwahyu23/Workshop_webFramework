@@ -7,7 +7,7 @@ import android.view.MenuItem;
 import com.example.jurnal_guruku.R;
 import com.example.jurnal_guruku.guru.ui.home.HomeFragment;
 import com.example.jurnal_guruku.guru.ui.jadwal.JadwalFragment;
-import com.example.jurnal_guruku.guru.ui.jadwal.PermintaanFragment;
+import com.example.jurnal_guruku.guru.ui.permintaan.PermintaanMain;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import androidx.annotation.NonNull;
@@ -53,7 +53,7 @@ public class BerandaGuru  extends AppCompatActivity implements BottomNavigationV
                 fragment = new JadwalFragment();
                 break;
             case R.id.navigation_permintaan:
-                fragment = new PermintaanFragment();
+                fragment = new PermintaanMain();
                 break;
 
             case R.id.navigation_akun:
