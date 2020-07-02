@@ -44,7 +44,7 @@
                     <form class="m-t-10" method="post" action="">
                         <div class="row tmpinput" id="tmpinput">
                             <div class="col-md-12" style="margin-top: 10px;">
-                                <input type="text" name="nama_mapel" class="form-control col-md-6" placeholder="Masukkan Nama Mata Pelajaran">
+                                <input type="text" name="nama_mapel[]" class="form-control col-md-6" placeholder="Masukkan Nama Mata Pelajaran">
                             </div>
                         </div>
                         <div class="row m-t-10" style="margin-top: 20px;">

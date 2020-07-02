@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".guru.ui.jadwal.DetailJadwalGuru">
+
+<!-- Tampilan menu atas -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:gravity="left"
+        android:padding="2dp">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="0.7"
+            android:layout_height="wrap_content"
+            android:text="@string/detail_permintaan_guru_pengganti"
+            android:paddingHorizontal="10dp"
+            android:textSize="17sp"
+            android:textColor="@color/white"
+            android:layout_marginVertical="20dp"
+            />
+
+        <ImageButton
+            android:id="@+id/imgrefresh"
+            android:layout_width="59dp"
+            android:layout_height="59dp"
+            android:background="@android:color/transparent"
+            android:padding="10dp"
+            app:srcCompat="@drawable/ic_refresh"
+            tools:ignore="VectorDrawableCompat" />
+
+    </LinearLayout>
+
+<!-- isi konten -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingHorizontal="15dp"
+        android:paddingTop="100dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="150dp"
+                android:textSize="14sp"
+                android:layout_height="wrap_content"
+                android:text="Kelas"
+                android:textColor="#000"/>
+            <TextView
+                android:id="@+id/txkelas"
+                android:layout_width="150dp"
+                android:textSize="14sp"
+                android:layout_height="wrap_content"
+                android:textColor="#000"
+                android:text="Kelas"
+                />
+        </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_marginVertical="10dp"
+            android:background="@color/lightGrey" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="150dp"
+                android:textSize="14sp"
+                android:layout_height="wrap_content"
+                android:text="Mata Pelajaran"
+                android:textColor="#000"/>
+            <TextView
+                android:id="@+id/txmapel"
+                android:layout_width="150dp"
+                android:textSize="14sp"
+                android:textColor="#000"
+                android:layout_height="wrap_content"
+                android:text="-"/>
+        </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_marginVertical="10dp"
+            android:background="@color/lightGrey" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="150dp"
+                android:textSize="14sp"
+                android:layout_height="wrap_content"
+                android:text="Deskripsi"
+                android:textColor="#000"/>
+            <TextView
+                android:id="@+id/deskripsi"
+                android:layout_width="150dp"
+                android:textSize="14sp"
+                android:textColor="#000"
+                android:layout_height="wrap_content"
+                android:text="-"/>
+        </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_marginVertical="10dp"
+            android:background="@color/lightGrey" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="150dp"
+                android:textSize="14sp"
+                android:layout_height="wrap_content"
+                android:text="Hari"
+                android:textColor="#000"/>
+            <TextView
+                android:id="@+id/txhari"
+                android:layout_width="150dp"
+                android:textSize="14sp"
+                android:textColor="#000"
+                android:layout_height="wrap_content"
+                android:text="-"/>
+        </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_marginVertical="10dp"
+            android:background="@color/lightGrey" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="150dp"
+                android:textSize="14sp"
+                android:layout_height="wrap_content"
+                android:text="Jam Pelaksanaan"
+                android:textColor="#000"/>
+            <TextView
+                android:id="@+id/txjam"
+                android:layout_width="150dp"
+                android:textSize="14sp"
+                android:textColor="#000"
+                android:layout_height="wrap_content"
+                android:text="-"/>
+        </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_marginVertical="10dp"
+            android:background="@color/lightGrey" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="150dp"
+                android:textSize="14sp"
+                android:layout_height="wrap_content"
+                android:text="Tipe Permintaan"
+                android:textColor="#000"/>
+            <TextView
+                android:id="@+id/txtipe"
+                android:layout_width="150dp"
+                android:textSize="14sp"
+                android:textColor="#000"
+                android:layout_height="wrap_content"
+                android:text="-"/>
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_marginVertical="10dp"
+            android:background="@color/lightGrey" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="150dp"
+                android:textSize="14sp"
+                android:layout_height="wrap_content"
+                android:text="Diambil Oleh"
+                android:textColor="#000"/>
+            <TextView
+                android:id="@+id/txdiambil"
+                android:layout_width="150dp"
+                android:textSize="14sp"
+                android:textColor="#000"
+                android:layout_height="wrap_content"
+                android:text="-"/>
+        </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_marginVertical="10dp"
+            android:background="@color/lightGrey" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="150dp"
+                android:textSize="14sp"
+                android:layout_height="wrap_content"
+                android:text="Dibuat Pada"
+                android:textColor="#000"/>
+            <TextView
+                android:id="@+id/txcreateat"
+                android:layout_width="150dp"
+                android:textSize="14sp"
+                android:textColor="#000"
+                android:layout_height="wrap_content"
+                android:text="-"/>
+        </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_marginVertical="10dp"
+            android:background="@color/lightGrey" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="150dp"
+                android:textSize="14sp"
+                android:layout_height="wrap_content"
+                android:text="Status Permintaan"
+                android:textColor="#000"/>
+            <TextView
+                android:id="@+id/txstatus"
+                android:layout_width="150dp"
+                android:textSize="14sp"
+                android:textColor="#000"
+                android:layout_height="wrap_content"
+                android:text="-"/>
+        </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_marginVertical="10dp"
+            android:background="@color/lightGrey" />
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/bottom_sheet"
+        android:paddingTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior" />
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

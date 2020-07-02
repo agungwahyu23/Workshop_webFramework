@@ -20,15 +20,15 @@ class Mapel extends CI_Controller
 		$data['title'] = "Data Mata Pelajaran";
 		$data['content'] = "mapel/indexmapel";
 		$data['data'] = $this->Maksi->getData("getmapel");
+
 		$this->load->view('backend/index', $data);
 	}
 	public function add()
 	{
-		$data['title'] = "Tambah Mapel";
+		$data['title'] = "Tambah Mata Pelajaran";
 		$data['action'] = "Tambah Data";
 		$data['content'] = "mapel/addmapel";
 		$data['data'] = null;
-		$data['datamapel'] = $this->Maksi->getData('getmapel');
 		$this->load->view('backend/index', $data);
 	}
 
@@ -36,16 +36,20 @@ class Mapel extends CI_Controller
 	{
 		try {
 
-			$kode = $this->Maksi->random_oke(16);
-
-			$arr = [
-                'kode_mapel' => $kode,
-				'nama_mapel' => $this->input->post('nama_mapel', TRUE),
-				'status' => $this->input->post('status', TRUE),
-				'create_at' => date("Y-m-d H:i:s"),
-				'create_by' => $this->session->userdata('kode_pengguna'),'status'=>1
-			];
-			$this->Maksi->insertData("mapel", $arr);
+			$nama = $this->input->post('nama_mapel', TRUE);
+			$arr = [];
+			foreach ($nama as $value) {
+				if ($value != "") {
+					$kode = $this->Maksi->random_oke(16);
+					$arr[] = [
+						'kode_mapel' => $kode,
+						'nama_mapel' => $value,
+						'create_at' => date("Y-m-d H:i:s"),
+						'create_by' => $this->session->userdata('kode_pengguna')
+					];
+				}
+			}
+			$this->db->insert_batch("mapel", $arr);
 			$this->session->set_flashdata("message", ['success', 'Berhasil Menambah Data Mata Pelajaran', ' Berhasil']);
 			redirect(base_url("backoffice/mapel"));
 		} catch (Exception $e) {
@@ -57,10 +61,9 @@ class Mapel extends CI_Controller
 	public function edit($id)
 	{
 		$data['title'] = "Edit Mata Pelajaran";
-		$data['action'] = "Edit Mata Pelajaran";
+		$data['action'] = "Edit Data";
 		$data['content'] = "mapel/editmapel";
 		$data['data'] = $this->db->get_where("mapel", ['kode_mapel' => $id])->row_array();
-		$data['datamapel'] = $this->Maksi->getData('getmapel');
 		$this->load->view('backend/index', $data);
 	}
 
@@ -72,6 +75,7 @@ class Mapel extends CI_Controller
 				'nama_mapel' => $this->input->post('nama_mapel', TRUE),
 			];
 			$this->Maksi->updateData("mapel", $arr, $id, "kode_mapel");
+
 			$this->session->set_flashdata("message", ['success', 'Berhasil Mengedit Data Mata Pelajaran', ' Berhasil']);
 			redirect(base_url("backoffice/mapel"));
 		} catch (Exception $e) {
@@ -95,5 +99,4 @@ class Mapel extends CI_Controller
 			redirect(base_url("backoffice/mapel"));
 		}
 	}
-
 }

@@ -78,7 +78,7 @@
 
                 $.ajax({
 
-                    url: "<?php echo base_url('backoffice/jadwal/import') ?>",
+                    url: "<?php echo base_url('backoffice/jadwal/getdataexcel') ?>",
 
                     method: "POST",
 

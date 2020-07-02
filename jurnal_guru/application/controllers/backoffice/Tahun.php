@@ -20,6 +20,7 @@ class Tahun extends CI_Controller
 		$data['title'] = "Data Tahun Ajaran";
 		$data['content'] = "tahun/indextahun";
 		$data['data'] = $this->Maksi->getData("gettahun");
+
 		$this->load->view('backend/index', $data);
 	}
 	public function add()
@@ -38,10 +39,10 @@ class Tahun extends CI_Controller
 			$kode = $this->Maksi->random_oke(16);
 
 			$arr = [
-                'kode_tahun' => $kode,
+				'kode_tahun' => $kode,
 				'tahun' => $this->input->post('tahun', TRUE),
 				'create_at' => date("Y-m-d H:i:s"),
-				'create_by' => $this->session->userdata('kode_pengguna'),'status'=>1
+				'create_by' => $this->session->userdata('kode_pengguna')
 			];
 			$this->Maksi->insertData("tahun_ajaran", $arr);
 			$this->session->set_flashdata("message", ['success', 'Berhasil Menambah Data Tahun Ajaran', ' Berhasil']);
@@ -55,7 +56,7 @@ class Tahun extends CI_Controller
 	public function edit($id)
 	{
 		$data['title'] = "Edit Tahun Ajaran";
-		$data['action'] = "Edit Tahun Ajaran";
+		$data['action'] = "Edit tahun";
 		$data['content'] = "tahun/addtahun";
 		$data['data'] = $this->db->get_where("tahun_ajaran", ['kode_tahun' => $id])->row_array();
 		$this->load->view('backend/index', $data);
@@ -69,6 +70,7 @@ class Tahun extends CI_Controller
 				'tahun' => $this->input->post('tahun', TRUE),
 			];
 			$this->Maksi->updateData("tahun_ajaran", $arr, $id, "kode_tahun");
+
 			$this->session->set_flashdata("message", ['success', 'Berhasil Mengedit Data Tahun Ajaran', ' Berhasil']);
 			redirect(base_url("backoffice/tahun"));
 		} catch (Exception $e) {
@@ -92,47 +94,24 @@ class Tahun extends CI_Controller
 			redirect(base_url("backoffice/tahun"));
 		}
 	}
+	public function aktifkan($id)
+	{
+		try {
+			$arrlama = [
+				'aktif' => 0
+			];
+			$this->Maksi->updateData("tahun_ajaran", $arrlama, $id, "kode_tahun !=");
+			$arr = [
+				'aktif' => 1
+			];
+			$this->Maksi->updateData("tahun_ajaran", $arr, $id, "kode_tahun");
 
-
-	public function aktifkan($id){
-		if (['kode_tahun']!=$id) {
-			$this->mpengguna->nonaktif();
-		}else{
-			try {
-				$arr = [
-					'aktif' =>0
-				];
-				$this->Maksi->updateData("tahun_ajaran", $arr, $id, "kode_tahun");
-	
-				$this->session->set_flashdata("message", ['success', 'Berhasil Menghapus Data Tahun Ajaran', ' Berhasil']);
-				redirect(base_url("backoffice/tahun"));
-			} catch (Exception $e) {
-				$this->session->set_flashdata("message", ['danger', 'Gagal Menghapus Data Tahun Ajaran', ' Gagal']);
-				redirect(base_url("backoffice/tahun"));
-			}
+			$this->session->set_flashdata("message", ['success', 'Berhasil Menghapus Data Tahun Ajaran', ' Berhasil']);
+			redirect(base_url("backoffice/tahun"));
+		} catch (Exception $e) {
+			$this->session->set_flashdata("message", ['danger', 'Gagal Menghapus Data Tahun Ajaran', ' Gagal']);
+			redirect(base_url("backoffice/tahun"));
 		}
 	}
-
-	// public function aktifkan($id)
-	// {
-	// 	try {
-	// 		if (['kode_tahun'=>$id]) {
-	// 			$arr = [
-	// 				'aktif' => 1
-	// 			];
-	// 		}else{
-	// 			$arr = [
-	// 				'aktif' => 0
-	// 			];
-	// 		}
-			
-	// 		$this->Maksi->updateData("tahun_ajaran", $arr, $id, "kode_tahun");
-	// 		$this->session->set_flashdata("message", ['success', 'Berhasil Mengedit Data Tahun Ajaran', ' Berhasil']);
-	// 		redirect(base_url("backoffice/tahun"));
-	// 	} catch (Exception $e) {
-	// 		$this->session->set_flashdata("message", ['danger', 'Gagal Mengedit Data Tahun Ajaran', ' Gagal']);
-	// 		redirect(base_url("backoffice/tahun"));
-	// 	}
-	// }
 
 }

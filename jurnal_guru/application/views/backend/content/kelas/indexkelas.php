@@ -70,9 +70,9 @@
                                         <td><?= $p['nama_pengguna'] ?></td>
                                         <td>
 
-                                            <a href="<?= base_url('backoffice/kelas/edit/' . $p['kode_kelas']) ?>"><i class='fas fa-edit'></i>Edit</a>&nbsp;
+                                            <a href="<?= base_url('backoffice/kelas/edit/' . $p['kode_kelas']) ?>"><i class='fas fa-edit'></i></a>&nbsp;
 
-                                            <td><a href="#" onclick="confirm_modal('<?= base_url('backoffice/kelas/delete/' . $p['kode_kelas']); ?>')"><i class='fas fa-trash'></i>Hapus</a></td>
+                                            <a href="#" onclick="confirm_modal('<?= base_url('backoffice/kelas/delete/' . $p['kode_kelas']); ?>')"><i class='fas fa-trash'></i></a>
 
                                         </td>
                                     </tr>

@@ -60,7 +60,7 @@
                                 <div class="form-group">
                                     <h5>Jumlah Penarikan <span class="text-danger">*</span></h5>
                                     <div class="controls">
-                                        <input type="text" name="jml_penarikan" class="form-control"  required placeholder="Masukkan Jumlah Penarikan">
+                                        <input type="text" name="jml_penarikan" class="form-control duit" required placeholder="Masukkan Jumlah Penarikan">
                                     </div>
                                 </div>
                             </div>
@@ -80,7 +80,7 @@
                             <div class="col-md-4">
                                 <div class="text-xs-right">
                                     <button type="reset" class="btn btn-inverse">Reset</button>
-                                    <button type="submit" class="btn btn-primary"> simpan</button>
+                                    <button type="submit" class="btn btn-primary"> <?= $action ?></button>
                                 </div>
                             </div>
                         </div>

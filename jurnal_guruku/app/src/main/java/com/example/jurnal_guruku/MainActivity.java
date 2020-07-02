@@ -26,6 +26,7 @@ import com.example.jurnal_guruku.config.AppController;
 import com.example.jurnal_guruku.config.ServerApi;
 import com.example.jurnal_guruku.config.authdata;
 import com.example.jurnal_guruku.guru.BerandaGuru;
+import com.example.jurnal_guruku.siswa.ui.DashboardSiswa;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -45,9 +46,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Email = (EditText) findViewById(R.id.editText_Email);
-        Password = (EditText) findViewById(R.id.editText_Password);
-        LoginButton = (Button) findViewById(R.id.button_login);
+        Email = (EditText) findViewById(R.id.txt_username);
+        Password = (EditText) findViewById(R.id.txt_password);
+        LoginButton = (Button) findViewById(R.id.btn_login);
         requestQueue = Volley.newRequestQueue(MainActivity.this);
         progressDialog = new ProgressDialog(MainActivity.this);
 
@@ -88,6 +89,8 @@ public class MainActivity extends AppCompatActivity {
 
                     }else if(datalogin.getString("login_as").equals("3")){
                         Toast.makeText(MainActivity.this, "Login Sebagai Siswa", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(MainActivity.this, DashboardSiswa.class);
+                        startActivity(intent);
 
                     }else{
                         Toast.makeText(MainActivity.this, "Invalid Akses", Toast.LENGTH_SHORT).show();
