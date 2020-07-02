@@ -1,0 +1,381 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".guru.ui.jadwal.DetailJadwalGuru">
+
+    <!-- Tampilan menu atas -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:gravity="left"
+        android:padding="2dp">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="0.7"
+            android:layout_height="wrap_content"
+            android:text="@string/detail_mengajar"
+            android:paddingHorizontal="10dp"
+            android:textSize="17sp"
+            android:textColor="@color/white"
+            android:layout_marginVertical="20dp"
+            />
+
+        <ImageButton
+            android:id="@+id/imgrefresh"
+            android:layout_width="59dp"
+            android:layout_height="59dp"
+            android:background="@android:color/transparent"
+            android:padding="10dp"
+            app:srcCompat="@drawable/ic_refresh"
+            tools:ignore="VectorDrawableCompat" />
+
+    </LinearLayout>
+
+    <!-- isi konten -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingHorizontal="15dp"
+        android:layout_marginTop="70dp">
+
+        <TextView
+            android:id="@+id/judulpage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/data_hasil_mengajar"
+            android:textSize="17sp"
+            android:textColor="#000"
+            android:layout_marginTop="10dp"
+            />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingTop="10dp">
+            <TextView
+                android:layout_width="150dp"
+                android:textSize="14sp"
+                android:layout_height="wrap_content"
+                android:text="Materi"
+                android:textColor="#000"/>
+            <TextView
+                android:id="@+id/txmateri"
+                android:layout_width="150dp"
+                android:textSize="14sp"
+                android:layout_height="wrap_content"
+                android:textColor="#000"
+                android:text="Materi"
+                />
+        </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_marginVertical="10dp"
+            android:background="@color/lightGrey" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="150dp"
+                android:textSize="14sp"
+                android:textColor="#000"
+                android:layout_height="wrap_content"
+                android:text="Status"/>
+            <TextView
+                android:id="@+id/txstatusajar"
+                android:layout_width="150dp"
+                android:textSize="14sp"
+                android:textColor="#000"
+                android:layout_height="wrap_content"
+                android:text="Status"/>
+        </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_marginVertical="10dp"
+            android:background="@color/lightGrey" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="150dp"
+                android:textSize="14sp"
+                android:textColor="#000"
+                android:layout_height="wrap_content"
+                android:text="Jam Mulai"/>
+            <TextView
+                android:id="@+id/txtjamawalajar"
+                android:layout_width="150dp"
+                android:textSize="14sp"
+                android:textColor="#000"
+                android:layout_height="wrap_content"
+                android:text="Jam Mulai"/>
+        </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_marginVertical="10dp"
+            android:background="@color/lightGrey" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="150dp"
+                android:textSize="14sp"
+                android:textColor="#000"
+                android:layout_height="wrap_content"
+                android:text="Jam Selesai"/>
+            <TextView
+                android:id="@+id/txtjamakhirajar"
+                android:layout_width="150dp"
+                android:textSize="14sp"
+                android:textColor="#000"
+                android:layout_height="wrap_content"
+                android:text="Jam Selesai"/>
+        </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_marginVertical="10dp"
+            android:background="@color/lightGrey" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="150dp"
+                android:textSize="14sp"
+                android:textColor="#000"
+                android:layout_height="wrap_content"
+                android:text="Rating"/>
+            <TextView
+                android:id="@+id/txrating"
+                android:layout_width="150dp"
+                android:textSize="14sp"
+                android:textColor="#000"
+                android:layout_height="wrap_content"
+                android:text="Rating"/>
+        </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_marginVertical="10dp"
+            android:background="@color/lightGrey" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="150dp"
+                android:textSize="14sp"
+                android:textColor="#000"
+                android:layout_height="wrap_content"
+                android:text="@string/catatan_siswa"/>
+            <TextView
+                android:id="@+id/txcatatansiswa"
+                android:layout_width="150dp"
+                android:textSize="14sp"
+                android:textColor="#000"
+                android:layout_height="wrap_content"
+                android:text="@string/catatan_siswa"/>
+        </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_marginVertical="10dp"
+            android:background="@color/lightGrey" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="150dp"
+                android:textSize="14sp"
+                android:textColor="#000"
+                android:layout_height="wrap_content"
+                android:text="@string/tipe_guru"/>
+            <TextView
+                android:id="@+id/txtipeguru"
+                android:layout_width="150dp"
+                android:textSize="14sp"
+                android:textColor="#000"
+                android:layout_height="wrap_content"
+                android:text="@string/tipe_guru"/>
+        </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_marginVertical="10dp"
+            android:background="@color/lightGrey" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Data Jadwal"
+            android:textSize="17sp"
+            android:textColor="#000"
+            android:layout_marginTop="10dp"
+            />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_marginVertical="10dp"
+            android:background="@color/lightGrey" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="150dp"
+                android:textSize="14sp"
+                android:layout_height="wrap_content"
+                android:text="Kelas"
+                android:textColor="#000"/>
+            <TextView
+                android:id="@+id/txkelas"
+                android:layout_width="150dp"
+                android:textSize="14sp"
+                android:layout_height="wrap_content"
+                android:textColor="#000"
+                android:text="Kelas"
+                />
+        </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_marginVertical="10dp"
+            android:background="@color/lightGrey" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="150dp"
+                android:textSize="14sp"
+                android:layout_height="wrap_content"
+                android:text="Nama Guru"
+                android:textColor="#000"/>
+            <TextView
+                android:id="@+id/txtnama"
+                android:layout_width="150dp"
+                android:textSize="14sp"
+                android:textColor="#000"
+                android:layout_height="wrap_content"
+                android:text="Nama Guru"/>
+        </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_marginVertical="10dp"
+            android:background="@color/lightGrey" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="150dp"
+                android:textSize="14sp"
+                android:textColor="#000"
+                android:layout_height="wrap_content"
+                android:text="Hari"/>
+            <TextView
+                android:id="@+id/txthari"
+                android:layout_width="150dp"
+                android:textSize="14sp"
+                android:textColor="#000"
+                android:layout_height="wrap_content"
+                android:text="Hari"/>
+        </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_marginVertical="10dp"
+            android:background="@color/lightGrey" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="150dp"
+                android:textSize="14sp"
+                android:textColor="#000"
+                android:layout_height="wrap_content"
+                android:text="Jam Mulai"/>
+            <TextView
+                android:id="@+id/txtjamawal"
+                android:layout_width="150dp"
+                android:textSize="14sp"
+                android:textColor="#000"
+                android:layout_height="wrap_content"
+                android:text="Jam Mulai"/>
+        </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_marginVertical="10dp"
+            android:background="@color/lightGrey" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="150dp"
+                android:textSize="14sp"
+                android:textColor="#000"
+                android:layout_height="wrap_content"
+                android:text="Jam Selesai"/>
+            <TextView
+                android:id="@+id/txtjamakhir"
+                android:layout_width="150dp"
+                android:textSize="14sp"
+                android:textColor="#000"
+                android:layout_height="wrap_content"
+                android:text="Jam Selesai"/>
+        </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_marginVertical="10dp"
+            android:background="@color/lightGrey" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="150dp"
+                android:textSize="14sp"
+                android:textColor="#000"
+                android:layout_height="wrap_content"
+                android:text="Status Mengajar"/>
+            <TextView
+                android:id="@+id/txtstatus"
+                android:layout_width="150dp"
+                android:textSize="14sp"
+                android:textColor="#000"
+                android:layout_height="wrap_content"
+                android:text="Status Mengajar"/>
+        </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_marginVertical="10dp"
+            android:background="@color/lightGrey" />
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/bottom_sheet"
+        android:paddingTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior" />
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
