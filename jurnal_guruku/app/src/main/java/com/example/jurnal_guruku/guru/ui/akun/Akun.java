@@ -18,7 +18,10 @@ import android.widget.RelativeLayout;
 import com.example.jurnal_guruku.MainActivity;
 import com.example.jurnal_guruku.R;
 import com.example.jurnal_guruku.config.authdata;
+import com.example.jurnal_guruku.guru.BerandaGuru;
 import com.example.jurnal_guruku.guru.adapter.AdapterJadwal;
+import com.example.jurnal_guruku.guru.ui.akun.izin.IzinFragment;
+import com.example.jurnal_guruku.guru.ui.akun.izin.IzinGuru;
 
 import java.util.ArrayList;
 
@@ -27,6 +30,15 @@ public class Akun extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.activity_akun, container, false);
         RelativeLayout rtkeluar = root.findViewById(R.id.rtkeluarakun);
+        RelativeLayout rtizin = root.findViewById(R.id.rtdataizin);
+
+        rtizin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), IzinGuru.class);
+                startActivity(intent);
+            }
+        });
 
         rtkeluar.setOnClickListener(new View.OnClickListener() {
             @Override
