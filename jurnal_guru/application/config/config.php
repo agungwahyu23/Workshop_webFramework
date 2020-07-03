@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 $config['base_url'] = 'http://localhost/Workshop_webFramework/jurnal_guru/';
 // $config['base_url'] = 'http://192.168.1.15/guruku/';
-// $config['base_url'] = 'http://guruku.evoindo.com/';
+$config['base_url'] = 'http://guruku.wsjti.com/';
 
 $config['index_page'] = 'index.php';
 
