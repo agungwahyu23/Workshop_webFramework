@@ -20,6 +20,7 @@
         <activity android:name=".guru.ui.jadwal.DetailJadwalGuru" />
         <activity android:name=".guru.BerandaGuru" />
         <activity android:name=".guru.ui.akun.izin.IzinGuru"/>
+        <activity android:name=".guru.ui.akun.saldo.Saldo"/>
         <activity
             android:name=".MainActivity"
             android:label="@string/title_activity_beranda_guru" />

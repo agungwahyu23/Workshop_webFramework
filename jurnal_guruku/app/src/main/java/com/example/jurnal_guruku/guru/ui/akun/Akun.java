@@ -22,6 +22,7 @@ import com.example.jurnal_guruku.guru.BerandaGuru;
 import com.example.jurnal_guruku.guru.adapter.AdapterJadwal;
 import com.example.jurnal_guruku.guru.ui.akun.izin.IzinFragment;
 import com.example.jurnal_guruku.guru.ui.akun.izin.IzinGuru;
+import com.example.jurnal_guruku.guru.ui.akun.saldo.Saldo;
 
 import java.util.ArrayList;
 
@@ -31,11 +32,20 @@ public class Akun extends Fragment {
         View root = inflater.inflate(R.layout.activity_akun, container, false);
         RelativeLayout rtkeluar = root.findViewById(R.id.rtkeluarakun);
         RelativeLayout rtizin = root.findViewById(R.id.rtdataizin);
+        RelativeLayout rtsaldo = root.findViewById(R.id.rtdatasaldo);
 
         rtizin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), IzinGuru.class);
+                startActivity(intent);
+            }
+        });
+
+        rtsaldo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), Saldo.class);
                 startActivity(intent);
             }
         });

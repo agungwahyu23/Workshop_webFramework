@@ -63,7 +63,7 @@ public class MengajarFragment extends AppCompatActivity {
         btnPicker = root.findViewById(R.id.btndatepicker);
         btnRefresh = root.findViewById(R.id.refresh);
         judulpage = root.findViewById(R.id.judulpage);
-        progressDialog = new ProgressDialog(getContext());
+        progressDialog = new ProgressDialog(getApplicationContext());
         SimpleDateFormat formatter= new SimpleDateFormat("yyyy-MM-dd");
         Date date = new Date(System.currentTimeMillis());
         mDateStart = formatter.format(date);
@@ -71,8 +71,8 @@ public class MengajarFragment extends AppCompatActivity {
         mItems = new ArrayList<>();
 
         loaddata();
-        mAdapter = new AdapterMengajar(getContext(), mItems);
-        mManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
+        mAdapter = new AdapterMengajar(getApplicationContext(), mItems);
+        mManager = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false);
         tempatdatajadwal.setLayoutManager(mManager);
         tempatdatajadwal.setHasFixedSize(true);
         tempatdatajadwal.setAdapter(mAdapter);
@@ -99,7 +99,7 @@ public class MengajarFragment extends AppCompatActivity {
         pickerFrag.setCallback(new SumblimePickerFragment.Callback() {
             @Override
             public void onCancelled() {
-                Toast.makeText(getActivity(), "User cancel",
+                Toast.makeText(getApplicationContext(), "User cancel",
                         Toast.LENGTH_SHORT).show();
             }
 
@@ -128,7 +128,7 @@ public class MengajarFragment extends AppCompatActivity {
         pickerFrag.setArguments(bundle);
 
         pickerFrag.setStyle(DialogFragment.STYLE_NO_TITLE, 0);
-        pickerFrag.show(getChildFragmentManager(), "SUBLIME_PICKER");
+        pickerFrag.show(getSupportFragmentManager(), "SUBLIME_PICKER");
     }
     void loaddata(){
         progressDialog.setMessage("Please Wait");
@@ -141,7 +141,7 @@ public class MengajarFragment extends AppCompatActivity {
                     JSONObject res = new JSONObject(response);
                     JSONObject respon = res.getJSONObject("respon");
                     if (respon.getBoolean("status")) {
-                        Toast.makeText(getContext(), respon.getString("pesan"), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), respon.getString("pesan"), Toast.LENGTH_SHORT).show();
 
                         judulpage.setText(res.getString("title"));
                         JSONArray arr = res.getJSONArray("data");
@@ -165,7 +165,7 @@ public class MengajarFragment extends AppCompatActivity {
                         mAdapter.notifyDataSetChanged();
                         progressDialog.dismiss();
                     } else {
-                        Toast.makeText(getContext(), respon.getString("pesan"), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), respon.getString("pesan"), Toast.LENGTH_SHORT).show();
 
                     }
 
@@ -179,13 +179,13 @@ public class MengajarFragment extends AppCompatActivity {
             public void onErrorResponse(VolleyError error) {
                 progressDialog.dismiss();
                 Log.e("errornyaa ", "" + error);
-                Toast.makeText(getContext(), "Terjadi Kesalahan " + error, Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Terjadi Kesalahan " + error, Toast.LENGTH_SHORT).show();
             }
         }){
             @Override
             public Map<String, String> getHeaders() throws AuthFailureError {
                 Map<String, String> params = new HashMap<String, String>();
-                params.put("token", authdata.getInstance(getContext()).getToken());
+                params.put("token", authdata.getInstance(getApplicationContext()).getToken());
 
                 return params;
             }

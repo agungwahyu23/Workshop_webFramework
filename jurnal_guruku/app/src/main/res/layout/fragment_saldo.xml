@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".guru.ui.akun.saldo.SaldoFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:gravity="left"
+        android:padding="2dp">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="0.7"
+            android:layout_height="wrap_content"
+            android:text="Data Riwayat Saldo"
+            android:paddingHorizontal="10dp"
+            android:textSize="17sp"
+            android:textColor="@color/white"
+            android:layout_marginVertical="20dp"
+            />
+
+        <ImageButton
+            android:id="@+id/refresh"
+            android:layout_width="59dp"
+            android:layout_height="59dp"
+            android:background="@android:color/transparent"
+            android:padding="10dp"
+            app:srcCompat="@drawable/ic_refresh"
+            tools:ignore="VectorDrawableCompat" />
+
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingHorizontal="10dp"
+        android:paddingTop="10dp"
+        android:layout_marginBottom="20dp"
+        android:id="@+id/tmpdatasaldo"/>
+</LinearLayout>
